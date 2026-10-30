@@ -121,6 +121,7 @@
   @media(max-width:520px){.lines{grid-template-columns:1fr}}
 
   /* ===== v10: flujo simplificado ===== */
+  .backbar{position:sticky;top:0;z-index:30;display:block;width:calc(100% + 36px);margin:0 -18px;padding:12px 18px;background:rgba(244,239,230,.96);border-bottom:1px solid var(--line);text-align:left;backdrop-filter:blur(6px)}
   .back{background:none;border:none;color:var(--accent);font-family:'Jost';font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:14px 0 0}
   textarea{width:100%;padding:11px 13px;font-family:'Jost';font-size:15px;background:#fbf8f1;border:1px solid var(--line);border-radius:3px;color:var(--ink);resize:vertical;line-height:1.45}
   textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,0,0,.06)}
@@ -291,7 +292,7 @@
   <div class="slogan">Historias para llevar</div>
 </div>
 <div class="wrap">
-  <button class="back" onclick="goHome()">← Volver a colecciones</button>
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
 
   <!-- PASO 1 -->
   <section class="card" id="ns_step1">
@@ -420,7 +421,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v30</div>
+  <div class="seal">Signes Collections · Desde 1968 · v33</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -429,7 +430,7 @@
   <div class="slogan">El Mediterráneo en color</div>
 </div>
 <div class="wrap">
-  <button class="back" onclick="goHome()">← Volver a colecciones</button>
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
 
   <!-- PASO 1 -->
   <section class="card" id="mp_step1">
@@ -556,7 +557,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v30</div>
+  <div class="seal">Signes Collections · Desde 1968 · v33</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -565,7 +566,7 @@
   <div class="slogan">La esencia y el origen de cada territorio</div>
 </div>
 <div class="wrap">
-  <button class="back" onclick="goHome()">← Volver a colecciones</button>
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
 
   <!-- PASO 1 -->
   <section class="card" id="hr_step1">
@@ -693,7 +694,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v30</div>
+  <div class="seal">Signes Collections · Desde 1968 · v33</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -702,7 +703,7 @@
   <div class="slogan">Pegatinas de viaje · Espíritu aventurero</div>
 </div>
 <div class="wrap">
-  <button class="back" onclick="goHome()">← Volver a colecciones</button>
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
 
   <!-- PASO 1 -->
   <section class="card" id="pc_step1">
@@ -829,7 +830,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v30</div>
+  <div class="seal">Signes Collections · Desde 1968 · v33</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -838,7 +839,7 @@
   <div class="slogan">El destino, vivido</div>
 </div>
 <div class="wrap">
-  <button class="back" onclick="goHome()">← Volver a colecciones</button>
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
 
   <!-- PASO 1 -->
   <section class="card" id="pa_step1">
@@ -972,7 +973,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v30</div>
+  <div class="seal">Signes Collections · Desde 1968 · v33</div>
 </div>
 </div><!-- /#apppa -->
 
@@ -1278,7 +1279,8 @@ const FIX_PRODUCTS=`The products have changed the design or the shapes. Use EXAC
    NAVEGACIÓN
    ============================================================ */
 const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa'};
-function enterCol(k){
+function enterCol(k,fromHistory){
+  if(!fromHistory){ try{ history.pushState({col:k},'','#'+k); }catch(e){} }
   document.getElementById('home').classList.add('hidden');
   Object.values(APP_IDS).forEach(id=>$(id).classList.add('hidden'));
   $(APP_IDS[k]).classList.remove('hidden');
@@ -1289,11 +1291,21 @@ function enterMosaic(){enterCol('mp');}
 function enterPopCollage(){enterCol('pc');}
 function enterHeritage(){enterCol('hr');}
 function enterPanorama(){enterCol('pa');}
-function goHome(){
+function showHome(){
   Object.values(APP_IDS).forEach(id=>$(id).classList.add('hidden'));
+  closePresentation&&$('pres').classList.contains('on')&&closePresentation();
   $('home').classList.remove('hidden');
   window.scrollTo({top:0,behavior:'smooth'});
 }
+function goHome(){
+  if(history.state && history.state.col){ history.back(); } else { showHome(); }
+}
+window.addEventListener('popstate',e=>{
+  if($('pres').classList.contains('on')){ closePresentation(); }
+  const k=e.state&&e.state.col;
+  if(k && APP_IDS[k]) enterCol(k,true); else showHome();
+});
+
 
 /* ============================================================
    FOTOS DE REFERENCIA
@@ -1822,7 +1834,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=30;
+const APP_VERSION=33;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
