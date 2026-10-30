@@ -121,6 +121,8 @@
   @media(max-width:520px){.lines{grid-template-columns:1fr}}
 
   /* ===== v10: flujo simplificado ===== */
+  #fabHome{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:60;padding:12px 18px;border:none;border-radius:30px;background:#1d1a17;color:#f4efe6;font-family:'Jost';font-size:15px;box-shadow:0 6px 18px -6px rgba(0,0,0,.5);cursor:pointer}
+  body.pres-open #fabHome{display:none !important}
   .backbar{position:sticky;top:0;z-index:30;display:block;width:calc(100% + 36px);margin:0 -18px;padding:12px 18px;background:rgba(244,239,230,.96);border-bottom:1px solid var(--line);text-align:left;backdrop-filter:blur(6px)}
   .back{background:none;border:none;color:var(--accent);font-family:'Jost';font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:14px 0 0}
   textarea{width:100%;padding:11px 13px;font-family:'Jost';font-size:15px;background:#fbf8f1;border:1px solid var(--line);border-radius:3px;color:var(--ink);resize:vertical;line-height:1.45}
@@ -421,7 +423,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v33</div>
+  <div class="seal">Signes Collections · Desde 1968 · v34</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -557,7 +559,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v33</div>
+  <div class="seal">Signes Collections · Desde 1968 · v34</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -694,7 +696,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v33</div>
+  <div class="seal">Signes Collections · Desde 1968 · v34</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -830,7 +832,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v33</div>
+  <div class="seal">Signes Collections · Desde 1968 · v34</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -973,7 +975,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v33</div>
+  <div class="seal">Signes Collections · Desde 1968 · v34</div>
 </div>
 </div><!-- /#apppa -->
 
@@ -1834,7 +1836,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=33;
+const APP_VERSION=34;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
@@ -1846,6 +1848,15 @@ const APP_VERSION=33;
       document.body.prepend(bar);
     }
   }catch(e){}
+})();
+
+/* Botón flotante y logo para volver a las colecciones */
+(function(){
+  const fb=document.createElement('button'); fb.type='button'; fb.id='fabHome'; fb.textContent='← Colecciones';
+  fb.onclick=()=>goHome(); document.body.appendChild(fb);
+  const logo=document.querySelector('.topbar'); if(logo){ logo.style.cursor='pointer'; logo.addEventListener('click',()=>goHome()); }
+  const upd=()=>{ fb.style.display=document.getElementById('home').classList.contains('hidden')?'':'none'; };
+  new MutationObserver(upd).observe(document.getElementById('home'),{attributes:true,attributeFilter:['class']}); upd();
 })();
 
 </script>
