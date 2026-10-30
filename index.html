@@ -401,6 +401,8 @@
     <div class="totalbar"><span class="lab">TOTAL <small id="ns_budCount" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="ns_budTotal">0,00 €</span></div>
     <p class="minnote">Precios por unidad según tarifa. El cuadro 40×25 es solo para la presentación (sin cargo).</p>
     <div class="actions">
+      <div style="flex-basis:100%"><label>Email del cliente</label><input id="ns_emailCli" type="email" placeholder="cliente@tienda.com"></div>
+      <button class="btn acc" id="ns_btnEmailCli">Enviar al cliente</button>
       <button class="btn gold" id="ns_btnEmail">Enviar a mi email</button>
       <button class="btn ghost" id="ns_btnCopyBud">Copiar presupuesto</button>
     </div>
@@ -416,7 +418,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v22</div>
+  <div class="seal">Signes Collections · Desde 1968 · v23</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -535,6 +537,8 @@
     <div class="totalbar"><span class="lab">TOTAL <small id="mp_budCount" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="mp_budTotal">0,00 €</span></div>
     <p class="minnote">Precios por unidad según tarifa. El cuadro 40×25 es solo para la presentación (sin cargo).</p>
     <div class="actions">
+      <div style="flex-basis:100%"><label>Email del cliente</label><input id="mp_emailCli" type="email" placeholder="cliente@tienda.com"></div>
+      <button class="btn acc" id="mp_btnEmailCli">Enviar al cliente</button>
       <button class="btn gold" id="mp_btnEmail">Enviar a mi email</button>
       <button class="btn ghost" id="mp_btnCopyBud">Copiar presupuesto</button>
     </div>
@@ -550,7 +554,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v22</div>
+  <div class="seal">Signes Collections · Desde 1968 · v23</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -670,6 +674,8 @@
     <div class="totalbar"><span class="lab">TOTAL <small id="hr_budCount" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="hr_budTotal">0,00 €</span></div>
     <p class="minnote">Precios por unidad según tarifa. El cuadro 40×25 es solo para la presentación (sin cargo).</p>
     <div class="actions">
+      <div style="flex-basis:100%"><label>Email del cliente</label><input id="hr_emailCli" type="email" placeholder="cliente@tienda.com"></div>
+      <button class="btn acc" id="hr_btnEmailCli">Enviar al cliente</button>
       <button class="btn gold" id="hr_btnEmail">Enviar a mi email</button>
       <button class="btn ghost" id="hr_btnCopyBud">Copiar presupuesto</button>
     </div>
@@ -685,7 +691,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v22</div>
+  <div class="seal">Signes Collections · Desde 1968 · v23</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -804,6 +810,8 @@
     <div class="totalbar"><span class="lab">TOTAL <small id="pc_budCount" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="pc_budTotal">0,00 €</span></div>
     <p class="minnote">Precios por unidad según tarifa. El cuadro 40×25 es solo para la presentación (sin cargo).</p>
     <div class="actions">
+      <div style="flex-basis:100%"><label>Email del cliente</label><input id="pc_emailCli" type="email" placeholder="cliente@tienda.com"></div>
+      <button class="btn acc" id="pc_btnEmailCli">Enviar al cliente</button>
       <button class="btn gold" id="pc_btnEmail">Enviar a mi email</button>
       <button class="btn ghost" id="pc_btnCopyBud">Copiar presupuesto</button>
     </div>
@@ -819,7 +827,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v22</div>
+  <div class="seal">Signes Collections · Desde 1968 · v23</div>
 </div>
 </div><!-- /#apppc -->
 
@@ -1281,7 +1289,17 @@ function emailBudget(k){
   window.location.href=`mailto:${dest}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(t+`\n\n— Generado con Signes Collections.`)}`;
   flash(k+'_copiedBud','Abriendo tu correo… (también se ha copiado por si acaso)',4000);
 }
-function showBudget(k){$(k+'_step3').classList.remove('hidden');if(!BUD[k].length)buildBudget(k);else renderBudget(k);$(k+'_step3').scrollIntoView({behavior:'smooth'});}
+function emailClient(k){
+  const C=COLS[k], d=getD(k);
+  const to=q($(k+'_emailCli').value)||d.email;
+  if(!to||to.indexOf('@')<1){flash(k+'_copiedBud','Escribe el email del cliente.',4000);$(k+'_emailCli').focus();return;}
+  const t=budgetText(k); copyText(t);
+  const subj=`Propuesta ${C.label} — ${d.destino||''}${d.tienda?' — '+d.tienda:''}`;
+  const body=`Hola,\n\nTe envío el presupuesto de la colección ${C.label} personalizada para ${d.destino||''}.\n\n${t}\n\nQuedo a tu disposición para cualquier cambio.\n\nUn saludo,\nMarcos Guardia\nSignes Collections · Signes Grimalt`;
+  window.location.href=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  flash(k+'_copiedBud','Abriendo Mail con el presupuesto para el cliente…',5000);
+}
+function showBudget(k){$(k+'_step3').classList.remove('hidden');if(!$(k+'_emailCli').value)$(k+'_emailCli').value=getD(k).email;if(!BUD[k].length)buildBudget(k);else renderBudget(k);$(k+'_step3').scrollIntoView({behavior:'smooth'});}
 
 /* ============================================================
    PRESENTACIÓN PARA EL CLIENTE (PDF)
@@ -1371,6 +1389,8 @@ Object.keys(COLS).forEach(k=>{
   $(k+'_btnGoBud').onclick=()=>showBudget(k);
   $(k+'_btnCopyBud').onclick=()=>copyBudget(k);
   $(k+'_btnEmail').onclick=()=>emailBudget(k);
+  $(k+'_btnEmailCli').onclick=()=>emailClient(k);
+  $(k+'_email').addEventListener('input',()=>{$(k+'_emailCli').value=$(k+'_email').value;});
   $(k+'_btnGoPres').onclick=()=>showPres(k);
   $(k+'_btnPres').onclick=()=>openPresentation(k);
   renderFotos(k);
