@@ -420,7 +420,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v26</div>
+  <div class="seal">Signes Collections · Desde 1968 · v27</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -556,7 +556,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v26</div>
+  <div class="seal">Signes Collections · Desde 1968 · v27</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -693,7 +693,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v26</div>
+  <div class="seal">Signes Collections · Desde 1968 · v27</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -829,7 +829,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v26</div>
+  <div class="seal">Signes Collections · Desde 1968 · v27</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -972,7 +972,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v26</div>
+  <div class="seal">Signes Collections · Desde 1968 · v27</div>
 </div>
 </div><!-- /#apppa -->
 
@@ -1062,7 +1062,7 @@ const PRODUCTS=[
  {ref:'42183', nombre:'Estuche de gafas',               medidas:'16,5 × 6 × 4 cm',             precio:1.58, min:240, esc:2,
   en:'Hard clamshell glasses case, 16.5×6×4 cm, elongated oval with rounded ends, printed all over the outside, beige lining inside; shown closed, or one open next to a plain microfibre cloth with no logo.'},
  {ref:'39754', nombre:'Abanico',                        medidas:'23 cm (42 cm abierto)',       precio:1.78, min:360, esc:2,
-  en:'Hand fan, 23 cm tall and about 42 cm wide when open, natural light-wood ribs with a small metal rivet at the base, printed fabric — shown OPEN with the artwork across the fabric.'},
+  en:'Hand fan, 23 cm tall and about 42 cm wide when open, natural light-wood ribs with a small metal rivet at the base, printed fabric — shown OPEN with the artwork across the fabric. MANDATORY: the DESTINATION NAME (and the region below it, smaller) must be printed clearly on the fabric, centred in the upper part of the open fan or inside the collection\'s name band — never a fan without the name.'},
  {ref:'41288', nombre:'Reloj de pared',               medidas:'Ø34 × 4 cm',                  precio:3.98, min:96,  esc:3,
   en:'Round wall clock, 34 cm diameter, 4 cm deep, MDF with a slightly bevelled edge — clearly the largest round item, a bit smaller than the framed picture. The artwork fills the clock face edge to edge, with the 12 hour numbers (1 to 12) printed around the edge in a typeface that matches the collection, a ring of small dots, and two black ornate hands with a small brass centre pin, exactly like its photos. MANDATORY: the DESTINATION NAME (and the region below it, smaller) must be printed clearly on the clock face, in the lower half between the centre and the 6 — inside the collection\'s name band if the collection uses one — exactly as on the other products; never a clock without the name. Shown hanging on the wall or leaning upright next to the framed picture.'},
  {ref:'39674', nombre:'Botella térmica con caja regalo',medidas:'26,5 × Ø7 cm',                precio:6.98, min:120, esc:3,
@@ -1110,6 +1110,7 @@ PRODUCT SHEET: if an image titled "REAL PRODUCTS — SCENE …" is attached, it 
 ALL-OVER PRINT: every product is fully printed (sublimation) — the artwork plus its background colour or pattern covers the whole printed surface to the edges, like the product photos (only the parts that are plain in the photos stay plain: cork back, wooden ribs, cream bag handles, steel cap). No products with a plain cream surface and a small logo in the middle.
 SMALL PRODUCTS (coasters, spoon rest, mirror, purse, glasses case): show only the destination name and the main drawing; leave out small texts and stamps so nothing becomes blurred or misspelled.
 SCALE: the mug (9.5 cm tall) is the size reference for everything else.
+DESTINATION NAME ON EVERY PRODUCT: every single product (including the clock, the fan, the bottle, the bag, the book box and the boxes) must show the destination name clearly and correctly spelled. Check each product before finishing — none may be left without the name.
 
 PRODUCTS (one unit of each unless stated, real sizes and real proportions between them):
 ${frameLine}
@@ -1819,7 +1820,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=26;
+const APP_VERSION=27;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
