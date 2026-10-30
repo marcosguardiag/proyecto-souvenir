@@ -149,6 +149,7 @@
   .astate{font-size:12px;color:#8a7e6b}
   .astate.busy{color:#b08832}.astate.ok{color:var(--oliva)}.astate.err{color:#b33}
   .aimg img{display:block;width:100%;margin-top:8px;border-radius:3px}
+  .aerr{color:#b33;font-size:13.5px;margin-top:8px;line-height:1.45;background:#fbecec;border-radius:4px;padding:8px 10px}
   .aimg small{display:block;font-size:11.5px;color:#8a7e6b;margin-top:3px}
   .aact textarea{margin-top:8px;font-size:13.5px}
   .arow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
@@ -1411,10 +1412,12 @@ async function openaiImage(prompt,images,size){
     fd.append('model',model); fd.append('prompt',prompt); fd.append('size',size); fd.append('quality',quality); fd.append('n','1');
     if(model==='gpt-image-1') fd.append('input_fidelity','high');
     images.forEach(im=>fd.append('image[]',im.blob,im.name));
-    res=await fetch('https://api.openai.com/v1/images/edits',{method:'POST',headers:{Authorization:'Bearer '+key},body:fd});
+    try{ res=await fetch('https://api.openai.com/v1/images/edits',{method:'POST',headers:{Authorization:'Bearer '+key},body:fd}); }
+    catch(e){ throw new Error('No se pudo conectar con OpenAI ('+(e.message||e)+'). Comprueba la conexión a internet y que no se haya bloqueado la pantalla, y pulsa Repetir.'); }
   } else {
-    res=await fetch('https://api.openai.com/v1/images/generations',{method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},
-      body:JSON.stringify({model,prompt,size,quality,n:1})});
+    try{ res=await fetch('https://api.openai.com/v1/images/generations',{method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},
+      body:JSON.stringify({model,prompt,size,quality,n:1})}); }
+    catch(e){ throw new Error('No se pudo conectar con OpenAI ('+(e.message||e)+'). Comprueba la conexión y pulsa Repetir.'); }
   }
   let j={}; try{j=await res.json();}catch(e){}
   if(!res.ok) throw new Error(apiErrorText(res.status,j.error&&j.error.message));
@@ -1445,6 +1448,11 @@ function cardHTML(k,slot,title){
 function renderAutoCards(k){
   const box=$(k+'_autoCards');
   box.innerHTML=cardHTML(k,'art','Dibujo')+SCENES.map(s=>cardHTML(k,'s'+s.n,`Escena ${s.n} · ${s.es}`)).join('');
+}
+function showErr(k,slot,msg){
+  const box=$(k+'_ai_'+slot); if(box) box.innerHTML=`<p class="aerr">${esc(msg)}</p>`;
+  const act=$(k+'_aa_'+slot); if(act) act.style.display='';
+  setState(k,slot,'Error','err');
 }
 function setState(k,slot,txt,cls){const el=$(k+'_as_'+slot); if(el){el.textContent=txt; el.className='astate '+(cls||'');}}
 function showImg(k,slot){
@@ -1487,14 +1495,14 @@ async function autoStart(k){
   AUTO[k]={}; renderAutoCards(k); $(k+'_autoCards').style.display='';
   AUTO_BUSY=true; $(k+'_autoGo').disabled=true;
   try{ await runSlot(k,'art'); flash(k+'_autoMsg','Revisa el dibujo: apruébalo o repítelo con una nota.',8000); }
-  catch(e){ setState(k,'art','Error','err'); flash(k+'_autoMsg',e.message,15000); }
+  catch(e){ showErr(k,'art',e.message); }
   finally{ AUTO_BUSY=false; $(k+'_autoGo').disabled=false; }
 }
 window.autoRedo=async(k,slot)=>{
   if(AUTO_BUSY) return; AUTO_BUSY=true;
   const note=q($(k+'_an_'+slot).value);
   try{ await runSlot(k,slot,note); $(k+'_an_'+slot).value=''; }
-  catch(e){ setState(k,slot,'Error','err'); flash(k+'_autoMsg',e.message,15000); }
+  catch(e){ showErr(k,slot,e.message); }
   finally{ AUTO_BUSY=false; }
 };
 window.autoApprove=async(k)=>{
@@ -1503,7 +1511,7 @@ window.autoApprove=async(k)=>{
   for(const s of SCENES){
     const slot='s'+s.n;
     try{ await runSlot(k,slot); }
-    catch(e){ setState(k,slot,'Error','err'); flash(k+'_autoMsg',e.message,15000); }
+    catch(e){ showErr(k,slot,e.message); }
   }
   AUTO_BUSY=false; if(ab) ab.disabled=false;
   flash(k+'_autoMsg','Listo. Ya puedes revisar el escandallo y abrir la presentación (paso 4): las imágenes ya están puestas.',10000);
