@@ -136,6 +136,25 @@
   .btn.acc:hover{filter:brightness(.9)}
   .fixrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
   .fixrow button{flex:1;min-width:150px;padding:9px;border:1px dashed var(--accent);background:transparent;color:var(--accent);border-radius:3px;font-family:'Jost';font-size:12.5px;cursor:pointer}
+  .autobox{border:1px solid var(--accent);border-radius:5px;padding:4px 14px 14px;margin-top:14px;background:#fffdf8}
+  .keyrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
+  .keyrow input{flex:1;min-width:180px}
+  .keyok{font-size:13px;color:var(--oliva)}
+  .keyok a{color:#8a7e6b}
+  .abtn{padding:10px 14px;border:none;border-radius:3px;background:var(--accent);color:#fff;font-family:'Jost';font-size:13.5px;cursor:pointer}
+  .abtn.ghost{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+  .abtn:disabled,.btn:disabled{opacity:.5;cursor:default}
+  .acard{border:1px solid var(--line);border-radius:5px;padding:10px;margin-top:12px;background:#fff}
+  .ahead{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+  .astate{font-size:12px;color:#8a7e6b}
+  .astate.busy{color:#b08832}.astate.ok{color:var(--oliva)}.astate.err{color:#b33}
+  .aimg img{display:block;width:100%;margin-top:8px;border-radius:3px}
+  .aimg small{display:block;font-size:11.5px;color:#8a7e6b;margin-top:3px}
+  .aact textarea{margin-top:8px;font-size:13.5px}
+  .arow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .arow .abtn{flex:1;min-width:140px}
+  .manual{margin-top:18px;border-top:1px solid var(--line);padding-top:10px}
+  .manual>summary{cursor:pointer;color:var(--accent);font-size:14px}
   .sheetbox{margin-top:6px;font-size:13px;color:var(--accent)}
   .sheetbox summary{cursor:pointer}
   .sheetbox img{display:block;width:100%;margin-top:8px;border:1px solid var(--line);border-radius:4px}
@@ -299,6 +318,25 @@
   <section class="card hidden" id="ns_step2">
     <h2 class="step"><span class="num">2</span> Crear las imágenes</h2>
     <div class="summary" id="ns_summary"></div>
+
+    <div class="autobox">
+      <div class="phase" style="margin-top:6px">✦ Modo automático<small>La web crea el dibujo y las 3 escenas con OpenAI, enviando ella sola tus fotos y las hojas de producto.</small></div>
+      <div class="keyrow">
+        <input id="ns_keyIn" type="password" autocomplete="off" placeholder="Pega aquí tu clave de OpenAI (sk-…)">
+        <button type="button" class="abtn" id="ns_keySave">Guardar</button>
+        <span id="ns_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="ns_keyDel">borrar</a></span>
+      </div>
+      <div class="row">
+        <div><label>Modelo</label><select id="ns_model"><option value="gpt-image-1">gpt-image-1</option><option value="gpt-image-1.5">gpt-image-1.5</option><option value="gpt-image-2">gpt-image-2</option></select></div>
+        <div><label>Calidad</label><select id="ns_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
+      </div>
+      <button class="btn acc" id="ns_autoGo">✦ Crear proyecto automáticamente</button>
+      <div class="msg" id="ns_autoMsg"></div>
+      <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
+      <div id="ns_autoCards" style="display:none"></div>
+    </div>
+
+    <details class="manual"><summary>Hacerlo a mano en ChatGPT (sin clave)</summary>
     <div class="howto"><b>Cómo hacerlo en ChatGPT (todo en el mismo chat):</b>
       <ol>
         <li>Abre un <b>chat nuevo</b>, adjunta la foto de referencia y pega el <b>Prompt 1</b>. Saldrá solo el dibujo.</li>
@@ -337,6 +375,7 @@
       <button type="button" id="ns_fixP">Los productos cambian el dibujo</button>
     </div>
     <div class="msg" id="ns_msgFix"></div>
+    </details>
 
     <button class="btn ghost" id="ns_btnGoBud">Ver escandallo →</button>
   </section>
@@ -413,6 +452,25 @@
   <section class="card hidden" id="mp_step2">
     <h2 class="step"><span class="num">2</span> Crear las imágenes</h2>
     <div class="summary" id="mp_summary"></div>
+
+    <div class="autobox">
+      <div class="phase" style="margin-top:6px">✦ Modo automático<small>La web crea el dibujo y las 3 escenas con OpenAI, enviando ella sola tus fotos y las hojas de producto.</small></div>
+      <div class="keyrow">
+        <input id="mp_keyIn" type="password" autocomplete="off" placeholder="Pega aquí tu clave de OpenAI (sk-…)">
+        <button type="button" class="abtn" id="mp_keySave">Guardar</button>
+        <span id="mp_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="mp_keyDel">borrar</a></span>
+      </div>
+      <div class="row">
+        <div><label>Modelo</label><select id="mp_model"><option value="gpt-image-1">gpt-image-1</option><option value="gpt-image-1.5">gpt-image-1.5</option><option value="gpt-image-2">gpt-image-2</option></select></div>
+        <div><label>Calidad</label><select id="mp_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
+      </div>
+      <button class="btn acc" id="mp_autoGo">✦ Crear proyecto automáticamente</button>
+      <div class="msg" id="mp_autoMsg"></div>
+      <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
+      <div id="mp_autoCards" style="display:none"></div>
+    </div>
+
+    <details class="manual"><summary>Hacerlo a mano en ChatGPT (sin clave)</summary>
     <div class="howto"><b>Cómo hacerlo en ChatGPT (todo en el mismo chat):</b>
       <ol>
         <li>Abre un <b>chat nuevo</b>, adjunta la foto de referencia y pega el <b>Prompt 1</b>. Saldrá solo el dibujo.</li>
@@ -451,6 +509,7 @@
       <button type="button" id="mp_fixP">Los productos cambian el dibujo</button>
     </div>
     <div class="msg" id="mp_msgFix"></div>
+    </details>
 
     <button class="btn ghost" id="mp_btnGoBud">Ver escandallo →</button>
   </section>
@@ -528,6 +587,25 @@
   <section class="card hidden" id="hr_step2">
     <h2 class="step"><span class="num">2</span> Crear las imágenes</h2>
     <div class="summary" id="hr_summary"></div>
+
+    <div class="autobox">
+      <div class="phase" style="margin-top:6px">✦ Modo automático<small>La web crea el dibujo y las 3 escenas con OpenAI, enviando ella sola tus fotos y las hojas de producto.</small></div>
+      <div class="keyrow">
+        <input id="hr_keyIn" type="password" autocomplete="off" placeholder="Pega aquí tu clave de OpenAI (sk-…)">
+        <button type="button" class="abtn" id="hr_keySave">Guardar</button>
+        <span id="hr_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="hr_keyDel">borrar</a></span>
+      </div>
+      <div class="row">
+        <div><label>Modelo</label><select id="hr_model"><option value="gpt-image-1">gpt-image-1</option><option value="gpt-image-1.5">gpt-image-1.5</option><option value="gpt-image-2">gpt-image-2</option></select></div>
+        <div><label>Calidad</label><select id="hr_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
+      </div>
+      <button class="btn acc" id="hr_autoGo">✦ Crear proyecto automáticamente</button>
+      <div class="msg" id="hr_autoMsg"></div>
+      <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
+      <div id="hr_autoCards" style="display:none"></div>
+    </div>
+
+    <details class="manual"><summary>Hacerlo a mano en ChatGPT (sin clave)</summary>
     <div class="howto"><b>Cómo hacerlo en ChatGPT (todo en el mismo chat):</b>
       <ol>
         <li>Abre un <b>chat nuevo</b>, adjunta la foto de referencia y pega el <b>Prompt 1</b>. Saldrá solo el dibujo.</li>
@@ -566,6 +644,7 @@
       <button type="button" id="hr_fixP">Los productos cambian el dibujo</button>
     </div>
     <div class="msg" id="hr_msgFix"></div>
+    </details>
 
     <button class="btn ghost" id="hr_btnGoBud">Ver escandallo →</button>
   </section>
@@ -642,6 +721,25 @@
   <section class="card hidden" id="pc_step2">
     <h2 class="step"><span class="num">2</span> Crear las imágenes</h2>
     <div class="summary" id="pc_summary"></div>
+
+    <div class="autobox">
+      <div class="phase" style="margin-top:6px">✦ Modo automático<small>La web crea el dibujo y las 3 escenas con OpenAI, enviando ella sola tus fotos y las hojas de producto.</small></div>
+      <div class="keyrow">
+        <input id="pc_keyIn" type="password" autocomplete="off" placeholder="Pega aquí tu clave de OpenAI (sk-…)">
+        <button type="button" class="abtn" id="pc_keySave">Guardar</button>
+        <span id="pc_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="pc_keyDel">borrar</a></span>
+      </div>
+      <div class="row">
+        <div><label>Modelo</label><select id="pc_model"><option value="gpt-image-1">gpt-image-1</option><option value="gpt-image-1.5">gpt-image-1.5</option><option value="gpt-image-2">gpt-image-2</option></select></div>
+        <div><label>Calidad</label><select id="pc_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
+      </div>
+      <button class="btn acc" id="pc_autoGo">✦ Crear proyecto automáticamente</button>
+      <div class="msg" id="pc_autoMsg"></div>
+      <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
+      <div id="pc_autoCards" style="display:none"></div>
+    </div>
+
+    <details class="manual"><summary>Hacerlo a mano en ChatGPT (sin clave)</summary>
     <div class="howto"><b>Cómo hacerlo en ChatGPT (todo en el mismo chat):</b>
       <ol>
         <li>Abre un <b>chat nuevo</b>, adjunta la foto de referencia y pega el <b>Prompt 1</b>. Saldrá solo el dibujo.</li>
@@ -680,6 +778,7 @@
       <button type="button" id="pc_fixP">Los productos cambian el dibujo</button>
     </div>
     <div class="msg" id="pc_msgFix"></div>
+    </details>
 
     <button class="btn ghost" id="pc_btnGoBud">Ver escandallo →</button>
   </section>
@@ -1265,6 +1364,162 @@ Object.keys(COLS).forEach(k=>{
 (function(){const rs=document.querySelectorAll('#rotator .rslide');
   if(rs.length<2)return;let i=0;
   setInterval(()=>{rs[i].classList.remove('on');i=(i+1)%rs.length;rs[i].classList.add('on');},3000);})();
+
+
+/* ============================================================
+   MODO AUTOMÁTICO — la web genera las imágenes con la API de OpenAI
+   La clave se guarda solo en este dispositivo (localStorage).
+   ============================================================ */
+const KEY_STORE='sc_openai_key', MODEL_STORE='sc_openai_model', QUAL_STORE='sc_openai_quality';
+function lsGet(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
+function lsSet(k,v){try{ if(v) localStorage.setItem(k,v); else localStorage.removeItem(k);}catch(e){}}
+const AUTO={ns:{},mp:{},pc:{},hr:{}};   // blobs: art, s1, s2, s3
+let AUTO_BUSY=false;
+
+function keyState(){return !!lsGet(KEY_STORE);}
+function renderKeyRow(k){
+  const has=keyState();
+  $(k+'_keyIn').style.display=has?'none':'';
+  $(k+'_keySave').style.display=has?'none':'';
+  $(k+'_keyOk').style.display=has?'':'none';
+  $(k+'_model').value=lsGet(MODEL_STORE)||'gpt-image-1';
+  $(k+'_quality').value=lsGet(QUAL_STORE)||'high';
+}
+function renderAllKeyRows(){Object.keys(COLS).forEach(renderKeyRow);}
+
+function b64ToBlob(b64,type){const bin=atob(b64);const a=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)a[i]=bin.charCodeAt(i);return new Blob([a],{type:type||'image/png'});}
+function dataUrlToBlob(u){const f=dataUrlToFile(u,'x.jpg');return new Blob([f],{type:f.type});}
+
+function apiErrorText(status,msg){
+  const m=(msg||'').toLowerCase();
+  if(status===401) return 'La clave no es válida. Bórrala y vuelve a pegarla (empieza por sk-).';
+  if(status===429 && m.includes('quota')) return 'No hay saldo en tu cuenta de OpenAI. Añade crédito en platform.openai.com → Billing.';
+  if(status===429) return 'OpenAI está saturado o has hecho muchas peticiones seguidas. Espera un minuto y repite.';
+  if(m.includes('verif')) return 'OpenAI pide verificar tu organización para usar este modelo de imágenes: platform.openai.com → Settings → Organization → Verify. Cuando esté verificada, repite.';
+  if(m.includes('safety')||m.includes('moderation')) return 'OpenAI ha rechazado la imagen por sus normas de contenido. Cambia algo del enfoque o la foto y repite.';
+  if(m.includes('model')) return 'Este modelo no está disponible en tu cuenta. Elige otro en «Modelo» y repite. ('+msg+')';
+  return 'Error de OpenAI ('+status+'): '+(msg||'sin detalle');
+}
+
+/* images: array de {blob,name}. Sin imágenes → generations; con imágenes → edits */
+async function openaiImage(prompt,images,size){
+  const key=lsGet(KEY_STORE); if(!key) throw new Error('Falta la clave de OpenAI.');
+  const model=lsGet(MODEL_STORE)||'gpt-image-1', quality=lsGet(QUAL_STORE)||'high';
+  let res;
+  if(images && images.length){
+    const fd=new FormData();
+    fd.append('model',model); fd.append('prompt',prompt); fd.append('size',size); fd.append('quality',quality); fd.append('n','1');
+    if(model==='gpt-image-1') fd.append('input_fidelity','high');
+    images.forEach(im=>fd.append('image[]',im.blob,im.name));
+    res=await fetch('https://api.openai.com/v1/images/edits',{method:'POST',headers:{Authorization:'Bearer '+key},body:fd});
+  } else {
+    res=await fetch('https://api.openai.com/v1/images/generations',{method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},
+      body:JSON.stringify({model,prompt,size,quality,n:1})});
+  }
+  let j={}; try{j=await res.json();}catch(e){}
+  if(!res.ok) throw new Error(apiErrorText(res.status,j.error&&j.error.message));
+  const b64=j.data&&j.data[0]&&j.data[0].b64_json;
+  if(!b64) throw new Error('OpenAI no ha devuelto ninguna imagen. Repite.');
+  return b64ToBlob(b64,'image/png');
+}
+
+function setSlotImage(k,slot,blob){
+  AUTO[k][slot]=blob;
+  if(PRES[k][slot]) URL.revokeObjectURL(PRES[k][slot]);
+  PRES[k][slot]=URL.createObjectURL(blob);
+}
+
+function cardHTML(k,slot,title){
+  return `<div class="acard" id="${k}_ac_${slot}">
+    <div class="ahead"><b>${title}</b><span class="astate" id="${k}_as_${slot}">Pendiente</span></div>
+    <div class="aimg" id="${k}_ai_${slot}"></div>
+    <div class="aact" id="${k}_aa_${slot}" style="display:none">
+      <textarea id="${k}_an_${slot}" rows="2" placeholder="Nota para repetir (opcional). Ej.: la tabla no tiene mango, solo un agujero"></textarea>
+      <div class="arow">
+        <button type="button" class="abtn ghost" onclick="autoRedo('${k}','${slot}')">↻ Repetir</button>
+        ${slot==='art'?`<button type="button" class="abtn" id="${k}_approve" onclick="autoApprove('${k}')">✓ Aprobar dibujo y crear escenas</button>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+function renderAutoCards(k){
+  const box=$(k+'_autoCards');
+  box.innerHTML=cardHTML(k,'art','Dibujo')+SCENES.map(s=>cardHTML(k,'s'+s.n,`Escena ${s.n} · ${s.es}`)).join('');
+}
+function setState(k,slot,txt,cls){const el=$(k+'_as_'+slot); if(el){el.textContent=txt; el.className='astate '+(cls||'');}}
+function showImg(k,slot){
+  const b=AUTO[k][slot]; const box=$(k+'_ai_'+slot);
+  box.innerHTML=b?`<img src="${PRES[k][slot]}" alt=""><small>Mantén pulsada la imagen para guardarla en Fotos.</small>`:'';
+  $(k+'_aa_'+slot).style.display=b?'':'none';
+}
+function startTimer(k,slot){const t0=Date.now();const id=setInterval(()=>{setState(k,slot,`Generando… ${Math.round((Date.now()-t0)/1000)} s`,'busy');},1000);return id;}
+
+async function runSlot(k,slot,note){
+  const d=getD(k);
+  const noteTxt=note?`\n\nCORRECTION REQUESTED BY THE CLIENT (most important): ${note}`:'';
+  let prompt,images,size;
+  if(slot==='art'){
+    prompt=COLS[k].promptA(d)+noteTxt;
+    images=FOTOS[k].map((f,i)=>({blob:f.blob,name:`referencia-${i+1}.jpg`}));
+    size='1024x1536';
+  } else {
+    const n=+slot.slice(1);
+    if(!AUTO[k].art) throw new Error('Primero hay que crear y aprobar el dibujo.');
+    prompt=scenePrompt(k,n)
+      .replace('Use the master artwork you created earlier in this conversation as the ONE AND ONLY design.','The FIRST attached image is the approved master artwork: use it as the ONE AND ONLY design.')
+      .replace('PRODUCT SHEET: if an image titled','PRODUCT SHEET: the SECOND attached image, titled')
+      .replace(' is attached, it shows',', shows')
+      .replace('Generate the image now, without asking questions or describing it first.','')+noteTxt;
+    images=[{blob:AUTO[k].art,name:'dibujo.png'},{blob:dataUrlToBlob(SCENE_SHEET[n]),name:`productos-escena-${n}.jpg`}];
+    size='1536x1024';
+  }
+  const tid=startTimer(k,slot);
+  try{
+    const blob=await openaiImage(prompt,images,size);
+    setSlotImage(k,slot,blob); showImg(k,slot); setState(k,slot,'Lista ✓','ok');
+  } finally { clearInterval(tid); }
+}
+
+async function autoStart(k){
+  if(AUTO_BUSY) return;
+  if(!keyState()){flash(k+'_autoMsg','Pega primero tu clave de OpenAI y pulsa Guardar.',5000);$(k+'_keyIn').focus();return;}
+  const d=getD(k); if(!d.destino){flash(k+'_autoMsg','Falta el destino (paso 1).',4000);return;}
+  AUTO[k]={}; renderAutoCards(k); $(k+'_autoCards').style.display='';
+  AUTO_BUSY=true; $(k+'_autoGo').disabled=true;
+  try{ await runSlot(k,'art'); flash(k+'_autoMsg','Revisa el dibujo: apruébalo o repítelo con una nota.',8000); }
+  catch(e){ setState(k,'art','Error','err'); flash(k+'_autoMsg',e.message,15000); }
+  finally{ AUTO_BUSY=false; $(k+'_autoGo').disabled=false; }
+}
+window.autoRedo=async(k,slot)=>{
+  if(AUTO_BUSY) return; AUTO_BUSY=true;
+  const note=q($(k+'_an_'+slot).value);
+  try{ await runSlot(k,slot,note); $(k+'_an_'+slot).value=''; }
+  catch(e){ setState(k,slot,'Error','err'); flash(k+'_autoMsg',e.message,15000); }
+  finally{ AUTO_BUSY=false; }
+};
+window.autoApprove=async(k)=>{
+  if(AUTO_BUSY||!AUTO[k].art) return; AUTO_BUSY=true;
+  const ab=$(k+'_approve'); if(ab){ab.disabled=true; ab.textContent='✓ Dibujo aprobado';}
+  for(const s of SCENES){
+    const slot='s'+s.n;
+    try{ await runSlot(k,slot); }
+    catch(e){ setState(k,slot,'Error','err'); flash(k+'_autoMsg',e.message,15000); }
+  }
+  AUTO_BUSY=false; if(ab) ab.disabled=false;
+  flash(k+'_autoMsg','Listo. Ya puedes revisar el escandallo y abrir la presentación (paso 4): las imágenes ya están puestas.',10000);
+  if(!BUD[k].length) buildBudget(k);
+  $(k+'_step3').classList.remove('hidden'); renderBudget(k);
+  $(k+'_step4').classList.remove('hidden'); renderPresSlots(k);
+};
+
+Object.keys(COLS).forEach(k=>{
+  $(k+'_keySave').onclick=()=>{const v=q($(k+'_keyIn').value); if(!/^sk-/.test(v)){flash(k+'_autoMsg','La clave debe empezar por sk-.',4000);return;} lsSet(KEY_STORE,v); $(k+'_keyIn').value=''; renderAllKeyRows(); flash(k+'_autoMsg','✓ Clave guardada en este dispositivo.',4000);};
+  $(k+'_keyDel').onclick=()=>{lsSet(KEY_STORE,''); renderAllKeyRows(); flash(k+'_autoMsg','Clave borrada de este dispositivo.',4000);};
+  $(k+'_model').onchange=e=>{lsSet(MODEL_STORE,e.target.value);renderAllKeyRows();};
+  $(k+'_quality').onchange=e=>{lsSet(QUAL_STORE,e.target.value);renderAllKeyRows();};
+  $(k+'_autoGo').onclick=()=>autoStart(k);
+  renderKeyRow(k);
+});
 
 </script>
 </body>
