@@ -328,7 +328,7 @@
         <span id="ns_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="ns_keyDel">borrar</a></span>
       </div>
       <div class="row">
-        <div><label>Modelo</label><select id="ns_model"><option value="gpt-image-1">gpt-image-1</option><option value="gpt-image-1.5">gpt-image-1.5</option><option value="gpt-image-2">gpt-image-2</option></select></div>
+        <div><label>Modelo</label><select id="ns_model"></select></div>
         <div><label>Calidad</label><select id="ns_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
       <button class="btn acc" id="ns_autoGo">✦ Crear proyecto automáticamente</button>
@@ -462,7 +462,7 @@
         <span id="mp_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="mp_keyDel">borrar</a></span>
       </div>
       <div class="row">
-        <div><label>Modelo</label><select id="mp_model"><option value="gpt-image-1">gpt-image-1</option><option value="gpt-image-1.5">gpt-image-1.5</option><option value="gpt-image-2">gpt-image-2</option></select></div>
+        <div><label>Modelo</label><select id="mp_model"></select></div>
         <div><label>Calidad</label><select id="mp_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
       <button class="btn acc" id="mp_autoGo">✦ Crear proyecto automáticamente</button>
@@ -597,7 +597,7 @@
         <span id="hr_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="hr_keyDel">borrar</a></span>
       </div>
       <div class="row">
-        <div><label>Modelo</label><select id="hr_model"><option value="gpt-image-1">gpt-image-1</option><option value="gpt-image-1.5">gpt-image-1.5</option><option value="gpt-image-2">gpt-image-2</option></select></div>
+        <div><label>Modelo</label><select id="hr_model"></select></div>
         <div><label>Calidad</label><select id="hr_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
       <button class="btn acc" id="hr_autoGo">✦ Crear proyecto automáticamente</button>
@@ -731,7 +731,7 @@
         <span id="pc_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="pc_keyDel">borrar</a></span>
       </div>
       <div class="row">
-        <div><label>Modelo</label><select id="pc_model"><option value="gpt-image-1">gpt-image-1</option><option value="gpt-image-1.5">gpt-image-1.5</option><option value="gpt-image-2">gpt-image-2</option></select></div>
+        <div><label>Modelo</label><select id="pc_model"></select></div>
         <div><label>Calidad</label><select id="pc_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
       <button class="btn acc" id="pc_autoGo">✦ Crear proyecto automáticamente</button>
@@ -1383,7 +1383,7 @@ function renderKeyRow(k){
   $(k+'_keyIn').style.display=has?'none':'';
   $(k+'_keySave').style.display=has?'none':'';
   $(k+'_keyOk').style.display=has?'':'none';
-  $(k+'_model').value=lsGet(MODEL_STORE)||'gpt-image-1';
+  fillModelSelect($(k+'_model'));
   $(k+'_quality').value=lsGet(QUAL_STORE)||'high';
 }
 function renderAllKeyRows(){Object.keys(COLS).forEach(renderKeyRow);}
@@ -1403,26 +1403,70 @@ function apiErrorText(status,msg){
 }
 
 /* images: array de {blob,name}. Sin imágenes → generations; con imágenes → edits */
-async function openaiImage(prompt,images,size){
-  const key=lsGet(KEY_STORE); if(!key) throw new Error('Falta la clave de OpenAI.');
-  const model=lsGet(MODEL_STORE)||'gpt-image-1', quality=lsGet(QUAL_STORE)||'high';
+/* Modelos de imagen disponibles en la cuenta (se consultan con la clave) */
+let IMAGE_MODELS=[];
+function rankModel(id){ // más nuevo primero
+  const m=id.match(/(\d+(?:\.\d+)?)/); const v=m?parseFloat(m[1]):0;
+  return v*10 - (/mini/.test(id)?3:0) - (/latest|chatgpt/.test(id)?1:0);
+}
+async function loadModels(){
+  const key=lsGet(KEY_STORE); if(!key) return;
+  try{
+    const r=await fetch('https://api.openai.com/v1/models',{headers:{Authorization:'Bearer '+key}});
+    if(!r.ok) return;
+    const j=await r.json();
+    IMAGE_MODELS=(j.data||[]).map(m=>m.id).filter(id=>/image/i.test(id)&&!/dall-e/i.test(id)).sort((x,y)=>rankModel(y)-rankModel(x));
+    const cur=lsGet(MODEL_STORE);
+    if(IMAGE_MODELS.length && (!cur || !IMAGE_MODELS.includes(cur))) lsSet(MODEL_STORE,IMAGE_MODELS[0]);
+    renderAllKeyRows();
+  }catch(e){}
+}
+function fillModelSelect(sel){
+  const list=IMAGE_MODELS.length?IMAGE_MODELS:['gpt-image-2','gpt-image-1.5','gpt-image-1'];
+  const cur=lsGet(MODEL_STORE)||list[0];
+  sel.innerHTML=list.map(id=>`<option value="${id}">${id}</option>`).join('')+(list.includes(cur)?'':`<option value="${cur}">${cur}</option>`);
+  sel.value=cur;
+}
+
+async function openaiCall(key,model,prompt,images,size,quality,minimal){
   let res;
   if(images && images.length){
     const fd=new FormData();
-    fd.append('model',model); fd.append('prompt',prompt); fd.append('size',size); fd.append('quality',quality); fd.append('n','1');
-    if(model==='gpt-image-1') fd.append('input_fidelity','high');
+    fd.append('model',model); fd.append('prompt',prompt);
+    if(!minimal){ fd.append('size',size); fd.append('quality',quality); fd.append('n','1'); if(model==='gpt-image-1') fd.append('input_fidelity','high'); }
     images.forEach(im=>fd.append('image[]',im.blob,im.name));
     try{ res=await fetch('https://api.openai.com/v1/images/edits',{method:'POST',headers:{Authorization:'Bearer '+key},body:fd}); }
     catch(e){ throw new Error('No se pudo conectar con OpenAI ('+(e.message||e)+'). Comprueba la conexión a internet y que no se haya bloqueado la pantalla, y pulsa Repetir.'); }
   } else {
-    try{ res=await fetch('https://api.openai.com/v1/images/generations',{method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},
-      body:JSON.stringify({model,prompt,size,quality,n:1})}); }
+    const body=minimal?{model,prompt}:{model,prompt,size,quality,n:1};
+    try{ res=await fetch('https://api.openai.com/v1/images/generations',{method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify(body)}); }
     catch(e){ throw new Error('No se pudo conectar con OpenAI ('+(e.message||e)+'). Comprueba la conexión y pulsa Repetir.'); }
   }
   let j={}; try{j=await res.json();}catch(e){}
-  if(!res.ok) throw new Error(apiErrorText(res.status,j.error&&j.error.message));
+  return {res,j};
+}
+async function openaiImage(prompt,images,size){
+  const key=lsGet(KEY_STORE); if(!key) throw new Error('Falta la clave de OpenAI.');
+  if(!IMAGE_MODELS.length) await loadModels();
+  const model=lsGet(MODEL_STORE)||IMAGE_MODELS[0]||'gpt-image-2', quality=lsGet(QUAL_STORE)||'high';
+  let {res,j}=await openaiCall(key,model,prompt,images,size,quality,false);
+  const msg=(j.error&&j.error.message)||'';
+  // si el modelo no acepta algún parámetro (tamaño, calidad…), repetir con lo mínimo
+  if(!res.ok && res.status===400 && /param|size|quality|fidelity|unsupported|invalid value/i.test(msg)){
+    ({res,j}=await openaiCall(key,model,prompt,images,size,quality,true));
+  }
+  if(!res.ok){
+    const m2=(j.error&&j.error.message)||'';
+    if(/does not exist|not found|model/i.test(m2) && IMAGE_MODELS.length===0)
+      throw new Error('Tu cuenta no tiene ningún modelo de imágenes disponible todavía. Suele ser porque falta verificar la organización: platform.openai.com → Settings → Organization → Verify. ('+m2+')');
+    throw new Error(apiErrorText(res.status,m2));
+  }
   const b64=j.data&&j.data[0]&&j.data[0].b64_json;
-  if(!b64) throw new Error('OpenAI no ha devuelto ninguna imagen. Repite.');
+  if(!b64){
+    const url=j.data&&j.data[0]&&j.data[0].url;
+    if(url){ const r=await fetch(url); return await r.blob(); }
+    throw new Error('OpenAI no ha devuelto ninguna imagen. Repite.');
+  }
   return b64ToBlob(b64,'image/png');
 }
 
@@ -1521,13 +1565,14 @@ window.autoApprove=async(k)=>{
 };
 
 Object.keys(COLS).forEach(k=>{
-  $(k+'_keySave').onclick=()=>{const v=q($(k+'_keyIn').value); if(!/^sk-/.test(v)){flash(k+'_autoMsg','La clave debe empezar por sk-.',4000);return;} lsSet(KEY_STORE,v); $(k+'_keyIn').value=''; renderAllKeyRows(); flash(k+'_autoMsg','✓ Clave guardada en este dispositivo.',4000);};
+  $(k+'_keySave').onclick=()=>{const v=q($(k+'_keyIn').value); if(!/^sk-/.test(v)){flash(k+'_autoMsg','La clave debe empezar por sk-.',4000);return;} lsSet(KEY_STORE,v); $(k+'_keyIn').value=''; renderAllKeyRows(); loadModels(); flash(k+'_autoMsg','✓ Clave guardada en este dispositivo.',4000);};
   $(k+'_keyDel').onclick=()=>{lsSet(KEY_STORE,''); renderAllKeyRows(); flash(k+'_autoMsg','Clave borrada de este dispositivo.',4000);};
   $(k+'_model').onchange=e=>{lsSet(MODEL_STORE,e.target.value);renderAllKeyRows();};
   $(k+'_quality').onchange=e=>{lsSet(QUAL_STORE,e.target.value);renderAllKeyRows();};
   $(k+'_autoGo').onclick=()=>autoStart(k);
   renderKeyRow(k);
 });
+loadModels();
 
 </script>
 </body>
