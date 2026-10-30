@@ -167,6 +167,8 @@
   .sheetbox summary{cursor:pointer}
   .sheetbox img{display:block;width:100%;margin-top:8px;border:1px solid var(--line);border-radius:4px}
   .sheetbox small{display:block;color:#8a7e6b;margin-top:4px}
+  .updbar{position:sticky;top:0;z-index:50;background:#c9a24b;color:#1d1a17;text-align:center;padding:10px 14px;font-size:14px}
+  .updbar a{color:#1d1a17;font-weight:600;margin-left:6px}
   .msg{color:var(--oliva);font-size:13px;text-align:center;margin-top:8px;min-height:16px}
   /* ===== v11: escandallo + presentación ===== */
   .bimg{width:46px;height:46px;flex:0 0 46px;border-radius:4px;object-fit:cover;border:1px solid var(--line);background:#fff}
@@ -418,7 +420,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v23</div>
+  <div class="seal">Signes Collections · Desde 1968 · v24</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -554,7 +556,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v23</div>
+  <div class="seal">Signes Collections · Desde 1968 · v24</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -691,7 +693,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v23</div>
+  <div class="seal">Signes Collections · Desde 1968 · v24</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -827,7 +829,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v23</div>
+  <div class="seal">Signes Collections · Desde 1968 · v24</div>
 </div>
 </div><!-- /#apppc -->
 
@@ -1631,6 +1633,23 @@ Object.keys(COLS).forEach(k=>{
   renderKeyRow(k);
 });
 loadModels();
+
+/* ============================================================
+   AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
+   ============================================================ */
+const APP_VERSION=24;
+(async function(){
+  try{
+    const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
+    if(!r.ok) return; const sha=(await r.json()).sha; if(!sha) return;
+    const v=await fetch(`https://raw.githack.com/marcosguardiag/proyecto-souvenir/${sha}/version.json`,{cache:'no-store'}).then(x=>x.json());
+    if(v && v.v>APP_VERSION){
+      const bar=document.createElement('div'); bar.className='updbar';
+      bar.innerHTML=`Hay una versión nueva de la web (v${v.v}). <a href="https://raw.githack.com/marcosguardiag/proyecto-souvenir/${sha}/index.html">Actualizar</a>`;
+      document.body.prepend(bar);
+    }
+  }catch(e){}
+})();
 
 </script>
 </body>
