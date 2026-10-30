@@ -274,14 +274,14 @@
       <div class="lname" style="color:#E8390E">Pop Collage</div>
       <div class="ldesc">Stickers ilustrados, espíritu viajero</div>
     </div>
-    <div class="linecard soon">
-      <span class="badge">Próximamente</span>
-      <div class="lname">Classics Custom</div>
-      <div class="ldesc">Clásicos personalizados</div>
+    <div class="linecard go" onclick="enterPanorama()">
+      <span class="badge" style="background:#2A7F9E;color:#fff">Nuevo</span>
+      <div class="lname" style="color:#2A7F9E">Panorama</div>
+      <div class="ldesc">Cartel moderno · el destino lleno de vida</div>
     </div>
   </div>
   <div class="home-links">
-    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a>Classics</a>
+    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a>
   </div>
 </div>
 
@@ -420,7 +420,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v24</div>
+  <div class="seal">Signes Collections · Desde 1968 · v25</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -556,7 +556,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v24</div>
+  <div class="seal">Signes Collections · Desde 1968 · v25</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -693,7 +693,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v24</div>
+  <div class="seal">Signes Collections · Desde 1968 · v25</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -829,9 +829,152 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v24</div>
+  <div class="seal">Signes Collections · Desde 1968 · v25</div>
 </div>
 </div><!-- /#apppc -->
+<div id="apppa" class="hidden" style="--accent:#2A7F9E">
+<div class="subbar">
+  <div class="collection-tag" style="color:#2A7F9E;font-size:16px">Panorama</div>
+  <div class="slogan">El destino, vivido</div>
+</div>
+<div class="wrap">
+  <button class="back" onclick="goHome()">← Volver a colecciones</button>
+
+  <!-- PASO 1 -->
+  <section class="card" id="pa_step1">
+    <h2 class="step"><span class="num">1</span> Proyecto del cliente</h2>
+    <p class="hint">Destino, lo que quiere destacar el cliente y una foto de referencia. Nada más.</p>
+    <div class="row">
+      <div><label>Destino</label><input id="pa_destino" placeholder="Ej. Roses · Chamonix"></div>
+      <div><label>Región <span class="opt">(opcional)</span></label><input id="pa_region" placeholder="Ej. Occitanie, Costa Brava"></div>
+    </div>
+    <label>¿Qué quiere destacar el cliente?</label>
+    <textarea id="pa_orient" rows="2" placeholder="Ej. La Ciutadella, el puerto y la playa, con gente en las terrazas"></textarea>
+    <label>Foto de referencia <span class="opt">(la 1.ª es la principal · máx. 7)</span></label>
+    <div class="fotozone">
+      <div id="pa_thumbs" style="display:contents"></div>
+      <button type="button" class="addfoto" id="pa_addFoto"><b>+</b>Añadir foto</button>
+    </div>
+    <input type="file" id="pa_file" accept="image/*" multiple style="display:none">
+    <div class="msg" id="pa_fotoMsg" style="text-align:left"></div>
+    <p class="hint" style="margin:0">La foto es lo que garantiza la fidelidad: el monumento que quiere el cliente, una postal o una pieza que te haya enviado.</p>
+    <div class="row">
+      <div><label>Nombre de la tienda <span class="opt">(opcional)</span></label><input id="pa_tienda" placeholder="Ej. Casa Ideas"></div>
+      <div><label>Idioma de los textos</label><select id="pa_lang">
+        <option value="">Automático (idioma local)</option>
+        <option value="es">Español</option><option value="ca">Català</option>
+        <option value="fr">Français</option><option value="it">Italiano</option></select></div>
+    </div>
+    <label>Entorno</label>
+    <select id="pa_env">
+      <option value="">Automático (según el destino)</option>
+      <option value="costa">Costa · verano</option>
+      <option value="montana">Montaña · verano</option>
+      <option value="nieve">Nieve · estación de esquí</option>
+      <option value="ciudad">Ciudad · interior</option>
+    </select>
+    <div class="row">
+      <div><label>Código de cliente <span class="opt">(opcional)</span></label><input id="pa_codigo" placeholder="Ej. 30567"></div>
+      <div><label>Email <span class="opt">(opcional)</span></label><input id="pa_email" type="email" placeholder="tienda@correo.com"></div>
+    </div>
+    <button class="btn acc" id="pa_btnGen">Crear prompts</button>
+  </section>
+
+  <!-- PASO 2 -->
+  <section class="card hidden" id="pa_step2">
+    <h2 class="step"><span class="num">2</span> Crear las imágenes</h2>
+    <div class="summary" id="pa_summary"></div>
+
+    <div class="autobox">
+      <div class="phase" style="margin-top:6px">✦ Modo automático<small>La web crea el dibujo y las 3 escenas con OpenAI, enviando ella sola tus fotos y las hojas de producto.</small></div>
+      <div class="keyrow">
+        <input id="pa_keyIn" type="password" autocomplete="off" placeholder="Pega aquí tu clave de OpenAI (sk-…)">
+        <button type="button" class="abtn" id="pa_keySave">Guardar</button>
+        <span id="pa_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="pa_keyDel">borrar</a></span>
+      </div>
+      <div class="row">
+        <div><label>Modelo</label><select id="pa_model"></select></div>
+        <div><label>Calidad</label><select id="pa_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
+      </div>
+      <button class="btn acc" id="pa_autoGo">✦ Crear proyecto automáticamente</button>
+      <div class="msg" id="pa_autoMsg"></div>
+      <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
+      <div id="pa_autoCards" style="display:none"></div>
+    </div>
+
+    <details class="manual"><summary>Hacerlo a mano en ChatGPT (sin clave)</summary>
+    <div class="howto"><b>Cómo hacerlo en ChatGPT (todo en el mismo chat):</b>
+      <ol>
+        <li>Abre un <b>chat nuevo</b>, adjunta la foto de referencia y pega el <b>Prompt 1</b>. Saldrá solo el dibujo.</li>
+        <li>Comprueba que el monumento se parece a la foto. Si no, pega la <i>corrección</i>.</li>
+        <li>Con el dibujo aprobado, pega las <b>escenas 1, 2 y 3</b> una a una. Cada botón envía también la hoja con las fotos reales de esos artículos (varios ángulos y detalles) para que ChatGPT copie su forma.</li>
+        <li>Guarda las 4 imágenes en tu carrete: las usarás en el paso 4 para la presentación.</li>
+      </ol>
+    </div>
+
+    <div class="phase">Prompt 1 · Dibujo<small>Solo la ilustración, fiel a la foto</small></div>
+    <div class="prompt-box short" id="pa_pA"></div>
+    <button class="btn acc" id="pa_shareBtn">Copiar prompt 1</button>
+    <div class="msg" id="pa_msgA"></div>
+
+    <div class="phase">Escena 1 · Mesa y cocina<small>Cuadro + mug, posavasos, tabla, paño y reposacucharas</small></div>
+    <div class="prompt-box short" id="pa_pS1"></div>
+    <button class="btn gold" id="pa_shareS1">📎 Enviar fotos de producto y copiar escena 1</button>
+    <div class="msg" id="pa_msgS1"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 1</summary><img id="pa_sheet1" alt="Hoja de productos escena 1"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+    <div class="phase">Escena 2 · Accesorios<small>Cuadro + espejo, monedero, estuche de gafas y abanico</small></div>
+    <div class="prompt-box short" id="pa_pS2"></div>
+    <button class="btn gold" id="pa_shareS2">📎 Enviar fotos de producto y copiar escena 2</button>
+    <div class="msg" id="pa_msgS2"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 2</summary><img id="pa_sheet2" alt="Hoja de productos escena 2"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+    <div class="phase">Escena 3 · Regalo<small>Cuadro protagonista + reloj, botella térmica, caja libro y bolsa</small></div>
+    <div class="prompt-box short" id="pa_pS3"></div>
+    <button class="btn gold" id="pa_shareS3">📎 Enviar fotos de producto y copiar escena 3</button>
+    <div class="msg" id="pa_msgS3"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 3</summary><img id="pa_sheet3" alt="Hoja de productos escena 3"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+    <div class="phase" style="font-size:15px">¿No ha salido fiel?<small>Copia la corrección y pégala en la misma conversación</small></div>
+    <div class="fixrow">
+      <button type="button" id="pa_fixS">Corregir el monumento</button>
+      <button type="button" id="pa_fixP">Los productos cambian el dibujo</button>
+    </div>
+    <div class="msg" id="pa_msgFix"></div>
+    </details>
+
+    <button class="btn ghost" id="pa_btnGoBud">Ver presupuesto →</button>
+  </section>
+
+  <!-- PASO 3 -->
+  <section class="card hidden" id="pa_step3">
+    <h2 class="step"><span class="num">3</span> Presupuesto</h2>
+    <p class="hint">Quita o deja cada artículo para afinar el presupuesto. Las cantidades suben en múltiplos del mínimo.</p>
+    <div class="summary" id="pa_budHead"></div>
+    <div class="budlist" id="pa_budBody"></div>
+    <div class="totalbar"><span class="lab">TOTAL <small id="pa_budCount" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="pa_budTotal">0,00 €</span></div>
+    <p class="minnote">Precios por unidad según tarifa. El cuadro 40×25 es solo para la presentación (sin cargo).</p>
+    <div class="actions">
+      <div style="flex-basis:100%"><label>Email del cliente</label><input id="pa_emailCli" type="email" placeholder="cliente@tienda.com"></div>
+      <button class="btn acc" id="pa_btnEmailCli">Enviar al cliente</button>
+      <button class="btn gold" id="pa_btnEmail">Enviar a mi email</button>
+      <button class="btn ghost" id="pa_btnCopyBud">Copiar presupuesto</button>
+    </div>
+    <div class="msg" id="pa_copiedBud"></div>
+    <button class="btn acc" id="pa_btnGoPres">Crear presentación para el cliente →</button>
+  </section>
+
+  <!-- PASO 4 -->
+  <section class="card hidden" id="pa_step4">
+    <h2 class="step"><span class="num">4</span> Presentación</h2>
+    <p class="hint">Sube las imágenes que te ha dado ChatGPT. La presentación junta portada, las 3 escenas con sus artículos y el presupuesto con lo que hayas dejado marcado.</p>
+    <div class="pslots" id="pa_presSlots"></div>
+    <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
+    <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
+  </section>
+  <div class="seal">Signes Collections · Desde 1968 · v25</div>
+</div>
+</div><!-- /#apppa -->
 
 <div id="pres"></div>
 <script>
@@ -942,13 +1085,15 @@ const FRAME={
  ns:'dark aged walnut frame, matte',
  mp:'thin white wooden frame',
  pc:'natural light-wood frame',
- hr:'natural oak frame'
+ hr:'natural oak frame',
+ pa:'thin natural light-wood frame'
 };
 const SCENE_BG={
  ns:'warm wooden table, Mediterranean atmosphere, soft natural light',
  mp:'bright neutral background, sunny Mediterranean atmosphere, soft natural light',
  pc:'warm neutral surface (aged linen or light kraft), warm natural light, soft shadows',
- hr:'neutral natural background (linen / kraft tones), soft natural light, sober artisanal atmosphere'
+ hr:'neutral natural background (linen / kraft tones), soft natural light, sober artisanal atmosphere',
+ pa:d=>d.env==='nieve'?'warm wooden chalet table, cosy winter light, a hint of snowy mountains through the window':'bright neutral background, sunny atmosphere, soft natural light'
 };
 
 function scenePrompt(k,n){
@@ -970,7 +1115,7 @@ PRODUCTS (one unit of each unless stated, real sizes and real proportions betwee
 ${frameLine}
 ${items.map(p=>'• '+p.en).join('\n')}
 
-SCENE: ${SCENE_BG[k]}. Arrange the products with some space between them so every product is fully visible, front-facing, and the design can be read on each one. Nothing else on the table.
+SCENE: ${typeof SCENE_BG[k]==='function'?SCENE_BG[k](getD(k)):SCENE_BG[k]}.${k==='pa'?' On small products (coasters, mirror, purse, glasses case, spoon rest) use a crop of the panorama — the main landmark plus the toasting hands — with the cream name band at the bottom.':''} Arrange the products with some space between them so every product is fully visible, front-facing, and the design can be read on each one. Nothing else on the table.
 
 OUTPUT: ONE realistic premium catalogue photograph, retail B2B quality. One single image — no variants, no captions, no text outside the products.
 Generate the image now, without asking questions or describing it first.`;
@@ -1087,13 +1232,49 @@ TEXT: only these words, in ${L}, correctly spelled. Do not print "Signes Collect
  },
 };
 
+
+/* ---------------- PANORAMA ---------------- */
+const PA_ENV={
+ costa:{bg:'the sea, the bay and the coastline, with the hills or mountains behind',act:'swimming, sunbathing under striped umbrellas, sailing, playing pétanque, strolling on the promenade, cycling',drink:'two glasses of a cold local drink (lemonade, rosé or vermouth) with lemon slices',food:'a typical local dish or tapas',pal:'sky blue, sea turquoise, pine green, sand, terracotta, cream and sun yellow',sun:'a BIG ROUND SUN'},
+ montana:{bg:'green mountains, lakes and alpine meadows (the real mountain profile of the destination)',act:'hiking, cycling, a picnic, kayaking on the lake or river, paragliding',drink:'two glasses of local wine or cider',food:'local cheese and charcuterie',pal:'sky blue, meadow green, pine green, stone grey, wood brown, cream and sun yellow',sun:'a BIG ROUND SUN'},
+ nieve:{bg:'snow-capped peaks (the real mountain profile of the destination) under a clear winter sky, snowy slopes and pine forests',act:'skiing, snowboarding, people on a chairlift or cable car, sledding, walking in snow boots, a snowman',drink:'two steaming mugs of hot chocolate or vin chaud (mulled wine)',food:'a fondue or a raclette',pal:'snow white, ice blue, deep pine green, wood brown, ski-jacket red, cream and pale sun yellow',sun:'a BIG ROUND, pale winter SUN'},
+ ciudad:{bg:'the skyline and old town of the destination with the surrounding countryside',act:'strolling, sitting at terrace cafés, shopping at the market, cycling, chatting in a square',drink:'two coffees or two glasses of wine',food:'a local pastry or a typical dish',pal:'sky blue, warm stone, terracotta, olive green, cream and sun yellow',sun:'a BIG ROUND SUN'}
+};
+COLS.pa={
+  name:'PANORAMA', label:'Panorama',
+  promptA(d){
+    const L=langRule(d.lang,d.destino);
+    const E=PA_ENV[d.env];
+    const envTxt=E?`ENVIRONMENT: ${d.env==='nieve'?'WINTER / SNOW resort':d.env==='montana'?'MOUNTAIN in summer':d.env==='ciudad'?'CITY / inland town':'COAST in summer'}.`
+      :`ENVIRONMENT: decide it from the destination and the client brief — seaside in summer, mountain in summer, ski / snow resort in winter, or city / inland town — and use the matching background, activities, drinks, food and palette below.`;
+    const e=E||{bg:'the most characteristic landscape of the destination (sea, mountains, snow or city)',act:'the typical activities of the place in that season (beach, hiking, skiing, terraces, market…)',drink:'two local drinks typical of the season (cold drinks in summer, hot chocolate or mulled wine in winter)',food:'a typical local dish',pal:'a palette that suits the season and the place (Mediterranean summer tones, or snow white, ice blue and pine green in winter)',sun:'a BIG ROUND SUN'};
+    return `${stepAHead('PANORAMA',d)}
+
+${briefBlock(d)}
+
+${fidelityBlock(d)}
+
+STYLE — Panorama: modern travel poster in FLAT PAPER-CUT illustration — bold flat colour shapes, NO outlines, NO gradients, NO textures, 8–10 flat colours, clean geometric simplification, like contemporary French railway / post-office travel posters. Not photographic and not detailed painterly gouache.
+${envTxt}
+
+COMPOSITION (vertical 2:3, bird's-eye panorama in three planes):
+• BACKGROUND: ${e.bg}, with ${e.sun} in the top-right corner — the signature of the collection — and a few birds drawn as simple "V" shapes.
+• MIDDLE: 3 to 5 real landmarks or places of ${d.destino}, each one faithful to its real shape${d.fotos?` (use the reference photos; photo 1 is the main one, bigger and more central)`:''}, connected by the landscape (coast, river, roads or slopes).
+• FOREGROUND: life — 5 to 10 small people doing typical activities: ${e.act}. In a bottom corner, the SIGNATURE GESTURE of the collection: two hands toasting with ${e.drink} over a small table with ${e.food}.
+
+NAME BAND at the bottom: a cream band across the full width under the illustration with "${d.destino.toUpperCase()}" big in a bold geometric sans-serif and ${d.region?`"${d.region}"`:`the region of ${d.destino} (never the country)`} below, smaller. A thin cream border around the whole poster.
+PALETTE: ${e.pal}, plus ONE accent colour typical of ${d.destino}.
+TEXT: only the destination name and the region, in ${L}, correctly spelled. No other words.`;
+  }
+};
+
 const FIX_SUBJECT=`The subject does not match the reference photo. Redraw ONLY the subject, copying the photo exactly: same silhouette, same proportions, same number of arches / towers / floors / windows and the same viewpoint. Keep everything else (style, texts, colours, layout) exactly as it is.`;
 const FIX_PRODUCTS=`The products have changed the design or the shapes. Use EXACTLY the approved artwork from earlier in this conversation on every product — the same drawing of the subject, the same texts and colours — and keep the real product shapes from the product photos. Do not redraw or reinterpret the artwork. Keep the same products, composition and lighting.`;
 
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
-const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri'};
+const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa'};
 function enterCol(k){
   document.getElementById('home').classList.add('hidden');
   Object.values(APP_IDS).forEach(id=>$(id).classList.add('hidden'));
@@ -1104,6 +1285,7 @@ function enterNostalgics(){enterCol('ns');}
 function enterMosaic(){enterCol('mp');}
 function enterPopCollage(){enterCol('pc');}
 function enterHeritage(){enterCol('hr');}
+function enterPanorama(){enterCol('pa');}
 function goHome(){
   Object.values(APP_IDS).forEach(id=>$(id).classList.add('hidden'));
   $('home').classList.remove('hidden');
@@ -1113,7 +1295,7 @@ function goHome(){
 /* ============================================================
    FOTOS DE REFERENCIA
    ============================================================ */
-const FOTOS={ns:[],mp:[],pc:[],hr:[]};
+const FOTOS={ns:[],mp:[],pc:[],hr:[],pa:[]};
 const MAX_FOTOS=7;
 
 function resizeImage(file){
@@ -1159,7 +1341,7 @@ function getD(k){
   return {
     codigo:val(k+'_codigo'), email:val(k+'_email'), tienda:val(k+'_tienda'),
     destino:val(k+'_destino'), region:val(k+'_region'), lang:val(k+'_lang'),
-    orient:val(k+'_orient'), anio:val(k+'_anio'), anioFund:val(k+'_anioFund'),
+    orient:val(k+'_orient'), anio:val(k+'_anio'), anioFund:val(k+'_anioFund'), env:val(k+'_env'),
     fotos:FOTOS[k].length
   };
 }
@@ -1221,7 +1403,7 @@ async function copyFix(k,which){
 /* ============================================================
    ESCANDALLO (común a las 4 colecciones)
    ============================================================ */
-const BUD={ns:[],mp:[],pc:[],hr:[]};
+const BUD={ns:[],mp:[],pc:[],hr:[],pa:[]};
 function buildBudget(k){
   BUD[k]=PRODUCTS.map(p=>({...p,qty:p.min,activo:true}));
   renderBudget(k);
@@ -1307,7 +1489,7 @@ function showBudget(k){$(k+'_step3').classList.remove('hidden');if(!$(k+'_emailC
    PRESENTACIÓN PARA EL CLIENTE (PDF)
    ============================================================ */
 const PRES_SLOTS=[{key:'art',es:'Dibujo'},{key:'s1',es:'Escena 1 · Mesa y cocina'},{key:'s2',es:'Escena 2 · Accesorios'},{key:'s3',es:'Escena 3 · Regalo'}];
-const PRES={ns:{},mp:{},pc:{},hr:{}};
+const PRES={ns:{},mp:{},pc:{},hr:{},pa:{}};
 function renderPresSlots(k){
   const box=$(k+'_presSlots'); box.innerHTML='';
   PRES_SLOTS.forEach(s=>{
@@ -1419,7 +1601,7 @@ Object.keys(COLS).forEach(k=>{
 const KEY_STORE='sc_openai_key', MODEL_STORE='sc_openai_model', QUAL_STORE='sc_openai_quality';
 function lsGet(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
 function lsSet(k,v){try{ if(v) localStorage.setItem(k,v); else localStorage.removeItem(k);}catch(e){}}
-const AUTO={ns:{},mp:{},pc:{},hr:{}};   // blobs: art, s1, s2, s3
+const AUTO={ns:{},mp:{},pc:{},hr:{},pa:{}};   // blobs: art, s1, s2, s3
 let AUTO_BUSY=false;
 
 function keyState(){return !!lsGet(KEY_STORE);}
@@ -1637,7 +1819,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=24;
+const APP_VERSION=25;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
