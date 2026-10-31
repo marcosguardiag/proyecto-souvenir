@@ -145,6 +145,8 @@
   .fixrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
   .fixrow button{flex:1;min-width:150px;padding:9px;border:1px dashed var(--accent);background:transparent;color:var(--accent);border-radius:3px;font-family:'Jost';font-size:12.5px;cursor:pointer}
   .autobox{border:1px solid var(--accent);border-radius:5px;padding:4px 14px 14px;margin-top:14px;background:#fffdf8}
+  .chkline{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font-size:13.5px;color:#5d5346;margin-top:12px}
+  .chkline input{width:auto}
   .keyrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}
   .keyrow input{flex:1;min-width:180px}
   .keyok{font-size:13px;color:var(--oliva)}
@@ -349,6 +351,7 @@
         <div><label>Modelo</label><select id="ns_model"></select></div>
         <div><label>Calidad</label><select id="ns_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
+      <label class="chkline"><input type="checkbox" id="ns_autofix" checked> Repaso automático de la tabla en la escena 1 <span class="opt">(1 imagen más)</span></label>
       <button class="btn acc" id="ns_autoGo">✦ Crear proyecto automáticamente</button>
       <div class="msg" id="ns_autoMsg"></div>
       <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
@@ -425,7 +428,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v45</div>
+  <div class="seal">Signes Collections · Desde 1968 · v47</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -485,6 +488,7 @@
         <div><label>Modelo</label><select id="mp_model"></select></div>
         <div><label>Calidad</label><select id="mp_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
+      <label class="chkline"><input type="checkbox" id="mp_autofix" checked> Repaso automático de la tabla en la escena 1 <span class="opt">(1 imagen más)</span></label>
       <button class="btn acc" id="mp_autoGo">✦ Crear proyecto automáticamente</button>
       <div class="msg" id="mp_autoMsg"></div>
       <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
@@ -561,7 +565,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v45</div>
+  <div class="seal">Signes Collections · Desde 1968 · v47</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -622,6 +626,7 @@
         <div><label>Modelo</label><select id="hr_model"></select></div>
         <div><label>Calidad</label><select id="hr_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
+      <label class="chkline"><input type="checkbox" id="hr_autofix" checked> Repaso automático de la tabla en la escena 1 <span class="opt">(1 imagen más)</span></label>
       <button class="btn acc" id="hr_autoGo">✦ Crear proyecto automáticamente</button>
       <div class="msg" id="hr_autoMsg"></div>
       <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
@@ -698,7 +703,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v45</div>
+  <div class="seal">Signes Collections · Desde 1968 · v47</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -758,6 +763,7 @@
         <div><label>Modelo</label><select id="pc_model"></select></div>
         <div><label>Calidad</label><select id="pc_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
+      <label class="chkline"><input type="checkbox" id="pc_autofix" checked> Repaso automático de la tabla en la escena 1 <span class="opt">(1 imagen más)</span></label>
       <button class="btn acc" id="pc_autoGo">✦ Crear proyecto automáticamente</button>
       <div class="msg" id="pc_autoMsg"></div>
       <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
@@ -834,7 +840,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v45</div>
+  <div class="seal">Signes Collections · Desde 1968 · v47</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -901,6 +907,7 @@
         <div><label>Modelo</label><select id="pa_model"></select></div>
         <div><label>Calidad</label><select id="pa_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
       </div>
+      <label class="chkline"><input type="checkbox" id="pa_autofix" checked> Repaso automático de la tabla en la escena 1 <span class="opt">(1 imagen más)</span></label>
       <button class="btn acc" id="pa_autoGo">✦ Crear proyecto automáticamente</button>
       <div class="msg" id="pa_autoMsg"></div>
       <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
@@ -977,7 +984,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v45</div>
+  <div class="seal">Signes Collections · Desde 1968 · v47</div>
 </div>
 </div><!-- /#apppa -->
 
@@ -1055,11 +1062,11 @@ const PRODUCTS=[
  {ref:'39078', nombre:'Posavasos',                      medidas:'Ø10,8 × 0,5 cm',              precio:1.13, min:720, esc:1,
   en:'Round ceramic coasters, 10.8 cm diameter (a bit wider than the mug), about 0.5 cm thick with a smooth, slightly rounded edge, glossy top printed over the WHOLE surface edge to edge (no plain rim), like the photo of the coasters on the table. Show them in TWO ways: (1) a stack inside their small square printed cardboard box (about 11×11×3 cm) whose lid has a round die-cut HOLE through which the top coaster is visible, and (2) THREE or FOUR loose coasters spread out flat on the table next to the box, slightly overlapping, so the printed design is clearly visible.'},
  {ref:'39079', nombre:'Tabla de cortar / posaplatos',   medidas:'24 × 18 × 0,5 cm',            precio:2.78, min:196, esc:1,
-  en:'Board / trivet — copy its outline EXACTLY from the product sheet (the single-board photo, the CORRECT SHAPE & SIZE drawing next to the mug, and the dimensioned diagram). It is a WIDE board: 24 cm tall × 18 cm wide, so its WIDTH IS THREE QUARTERS OF ITS HEIGHT (4:3) — NEVER a long, narrow, cutting-board shape. Height about 2.5 times the mug and width about 2.25 times the mug (wider than two mugs side by side). Thin (about 0.5 cm), softly rounded corners, an OVAL / stadium-shaped handle HOLE cut out INSIDE the board near the top (about half the board width, centred). NO protruding handle, NO tab, NOT wood, NOT a thick chopping block. Front printed edge to edge (glossy), back plain CORK. Shown standing upright, leaning against the wall, perfectly front-facing (no perspective that makes it look narrower).'},
+  en:'Board / trivet — copy its outline EXACTLY from the product sheet (the single-board photo, the CORRECT SHAPE & SIZE drawing next to the mug, and the dimensioned diagram). It is a WIDE, ALMOST SQUARE board: 24 cm tall × 18 cm wide — draw its WIDTH at about 80% of its HEIGHT (for example 400 px tall → 320 px wide). It must look clearly WIDER than an ordinary cutting board — NEVER long and narrow. Height about 2.5 times the mug, width more than two mugs side by side. Thin (about 0.5 cm), softly rounded corners, an OVAL / stadium-shaped handle HOLE cut out INSIDE the board near the top (about half the board width, centred). NO protruding handle, NO tab, NOT wood, NOT a thick chopping block. Front printed edge to edge (glossy), back plain CORK. Shown standing upright, leaning against the wall, perfectly front-facing (no perspective that makes it look narrower).'},
  {ref:'42189', nombre:'Paño de cocina',                 medidas:'68 × 45 cm',                  precio:1.28, min:500, esc:1,
-  en:'Printed tea towel, 68×45 cm (a 3:2 rectangle; the long side is about 7 times the height of the mug): the front is printed ALL OVER edge to edge (artwork + background colour or pattern, destination name clearly visible), the back is plain white, and the edge is a thin overlocked seam in a colour from the design. NO woven stripes, NO striped hem, NO linen torchon look. Show it TWICE: (1) one tea towel hanging from a hook or laid flat UNFOLDED so its full rectangle is visible, and (2) right next to it the SAME tea towel folded inside its retail packaging, exactly like its packaging photo: a clear transparent plastic bag with a printed cardboard header card folded over the top (with the destination name and a small motif from the artwork) and a hanging hole / hook, so it clearly reads as a packaged tea towel for sale.'},
+  en:'Printed tea towel, 68×45 cm, soft and flexible cotton — it must clearly read as a CLOTH, never as a flat poster or a framed print. The front is printed ALL OVER edge to edge (artwork + background colour or pattern, destination name visible), the back is plain white, the edge is a thin overlocked seam in a colour from the design. NO woven stripes, NO striped hem, NO linen torchon look. Show it TWICE: (1) one tea towel HANGING FROM A HOOK BY ONE CORNER (or by a small fabric loop at one corner), so it falls diagonally in soft natural folds and drapes like real fabric — a slight wave, a folded-over flap showing a bit of the white back — while most of the design and the name stay readable; never stretched flat and rectangular against the wall; and (2) right next to it the SAME tea towel folded inside its retail packaging, exactly like its packaging photo: a clear transparent plastic bag with a printed cardboard header card folded over the top (destination name and a small motif) and a hanging hole.'},
  {ref:'42175', nombre:'Reposacucharas con caja regalo', medidas:'27 × 9 × 2,5 cm',             precio:2.58, min:196, esc:1,
-  en:'Glossy ceramic spoon rest, 27 cm long × 9 cm wide, shaped like a FLAT PADDLE: a wide, SHALLOW oval bowl (9 cm wide) that flows smoothly into a WIDE flat handle (about 4–5 cm wide, narrowing only slightly) with a small hole near the end; almost flat (2.5 cm high) with a thin raised rim. NOT a ladle, NOT a deep soup spoon, NOT a thin-handled spoon — copy the exact outline from its photos. The print covers the WHOLE piece, bowl AND handle, edge to edge, with a thin coloured line along the rim. Next to it, its gift box exactly as in its photos: a long, flat, CLOSED printed cardboard box (about 28×10×3 cm) with an OVAL die-cut WINDOW on the lid near one end, through which the printed bowl of the spoon rest inside is visible. The box is printed all over with our artwork and pattern.'},
+  en:'Glossy ceramic spoon rest, 27 cm long × 9 cm wide, shaped like a FLAT PADDLE: a wide, SHALLOW oval bowl (9 cm wide) that flows smoothly into a WIDE flat handle (about 4–5 cm wide, narrowing only slightly) with a small hole near the end; almost flat (2.5 cm high) with a thin raised rim. NOT a ladle, NOT a deep soup spoon, NOT a thin-handled spoon — copy the exact outline from its photos. The print covers the WHOLE piece, bowl AND handle, edge to edge, with a thin coloured line along the rim. Next to it, its gift box exactly as in its two box photos on the product sheet: a long, flat, CLOSED printed cardboard box (about 28×10×3 cm). The lid has ONE SMALL OVAL die-cut WINDOW placed at ONE END of the lid, right over the round bowl of the spoon rest — the window is only about 9 cm long × 6 cm wide (about ONE THIRD of the box length and roughly two thirds of its width), so only the printed bowl is visible through it. The rest of the lid (about two thirds) is solid printed cardboard with the destination name and the artwork; the handle of the spoon rest is hidden inside the box. NEVER a long window along the whole lid, never an open box.'},
  {ref:'42178', nombre:'Espejo de bolsillo',             medidas:'Ø7 × 2 cm',                   precio:1.58, min:240, esc:2,
   en:'Round double compact pocket mirrors, 7 cm diameter, 2 cm thick: TWO round halves of the same size joined by a small hinge, closing like a CLAMSHELL (not a box with a lid) — both outer halves are domed and printed with the artwork and the destination name. Show one loose mirror OPEN like a clamshell, exactly like the diagram on the product sheet: EXACTLY TWO round halves of the same size joined by ONE small hinge, opened flat side by side, each half showing one round mirror inside (two mirrors in total), the printed domed backs facing down — never three parts, never a separate lid. Drawn slightly larger than its real size so it can be seen well. POSITION: on the RIGHT side of the table. Show its COUNTER DISPLAY BOX exactly like its photo: an open cardboard display tray with a tall printed header card at the back, FULL with exactly 24 mirrors standing upright in FOUR ROWS of 6 (four rows from front to back, stepped so all four rows are visible — NOT two rows). Right next to the display, on the right, ONE loose mirror OPENED, showing the mirror glass inside. The whole display box and its header card are printed with our artwork, colours and the destination name — no brand logos, no other words.'},
  {ref:'42179', nombre:'Monedero',                       medidas:'13,5 × 9,5 cm',               precio:1.98, min:240, esc:2,
@@ -1733,6 +1740,7 @@ function cardHTML(k,slot,title){
       <div class="arow">
         <button type="button" class="abtn ghost" onclick="autoRedo('${k}','${slot}')">↻ Repetir</button>
         ${slot==='art'?`<button type="button" class="abtn" id="${k}_approve" onclick="autoApprove('${k}')">✓ Aprobar dibujo y crear escenas</button>`:''}
+        ${slot==='s1'?`<button type="button" class="abtn ghost" onclick="autoFix('${k}','board')">↔ Ensanchar tabla</button><button type="button" class="abtn ghost" onclick="autoFix('${k}','towel')">⤵ Paño colgado de una punta</button>`:''}
       </div>
     </div>
   </div>`;
@@ -1794,6 +1802,24 @@ async function runSlot(k,slot,note){
   } finally { clearInterval(tid); }
 }
 
+const BOARD_FIX="Edit this product photo. Change ONLY the board / trivet with the oval handle hole (the one standing against the wall): make it about 15% WIDER while keeping exactly the same height, so its width is about 80% of its height — an almost square board like the CORRECT SHAPE drawing on the product sheet (24 cm tall × 18 cm wide, wider than two mugs side by side). Keep its print, the oval hole inside near the top, the rounded corners and its position. Keep EVERYTHING ELSE in the image exactly as it is: all other products, their designs and texts, the background, lighting and composition.";
+const TOWEL_FIX="Edit this product photo. Change ONLY the unfolded tea towel: hang it from a hook by ONE CORNER so it falls diagonally in soft natural folds like real fabric (a slight wave and a small folded-over flap), instead of hanging flat like a poster. Keep its print and the destination name readable. Keep EVERYTHING ELSE exactly as it is, including the packaged tea towel next to it.";
+async function refineSlot(k,slot,fixPrompt,label){
+  const b=AUTO[k][slot]; if(!b) return;
+  const n=+slot.slice(1);
+  const tid=setInterval(()=>{},1000); const t0=Date.now();
+  const timer=setInterval(()=>setState(k,slot,`${label}… ${Math.round((Date.now()-t0)/1000)} s`,'busy'),1000);
+  try{
+    const out=await openaiImage(fixPrompt,[{blob:b,name:'escena.png'},{blob:dataUrlToBlob(SCENE_SHEET[n]),name:`productos-escena-${n}.jpg`}],'1536x1024');
+    setSlotImage(k,slot,out); showImg(k,slot); setState(k,slot,'Lista ✓','ok');
+  } finally { clearInterval(timer); clearInterval(tid); }
+}
+window.autoFix=async(k,which)=>{
+  if(AUTO_BUSY) return; AUTO_BUSY=true;
+  try{ await refineSlot(k,'s1',which==='board'?BOARD_FIX:TOWEL_FIX,which==='board'?'Ensanchando la tabla':'Ajustando el paño'); }
+  catch(e){ showErr(k,'s1',e.message); }
+  finally{ AUTO_BUSY=false; }
+};
 async function autoStart(k){
   if(AUTO_BUSY) return;
   if(!keyState()){flash(k+'_autoMsg','Pega primero tu clave de OpenAI y pulsa Guardar.',5000);$(k+'_keyIn').focus();return;}
@@ -1816,7 +1842,10 @@ window.autoApprove=async(k)=>{
   const ab=$(k+'_approve'); if(ab){ab.disabled=true; ab.textContent='✓ Dibujo aprobado';}
   for(const s of SCENES){
     const slot='s'+s.n;
-    try{ await runSlot(k,slot); }
+    try{
+      await runSlot(k,slot);
+      if(slot==='s1' && lsGet('sc_autofix_board')!=='off'){ await refineSlot(k,'s1',BOARD_FIX,'Revisando la tabla'); }
+    }
     catch(e){ showErr(k,slot,e.message); }
   }
   AUTO_BUSY=false; if(ab) ab.disabled=false;
@@ -1832,6 +1861,8 @@ Object.keys(COLS).forEach(k=>{
   $(k+'_model').onchange=e=>{lsSet(MODEL_STORE,e.target.value);renderAllKeyRows();};
   $(k+'_quality').onchange=e=>{lsSet(QUAL_STORE,e.target.value);renderAllKeyRows();};
   $(k+'_autoGo').onclick=()=>autoStart(k);
+  $(k+'_autofix').checked=lsGet('sc_autofix_board')!=='off';
+  $(k+'_autofix').onchange=e=>{lsSet('sc_autofix_board',e.target.checked?'':'off');Object.keys(COLS).forEach(x=>$(x+'_autofix').checked=e.target.checked);};
   renderKeyRow(k);
 });
 loadModels();
@@ -1839,7 +1870,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=45;
+const APP_VERSION=47;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
