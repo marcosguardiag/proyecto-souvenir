@@ -424,7 +424,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v54</div>
+  <div class="seal">Signes Collections · Desde 1968 · v55</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -557,7 +557,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v54</div>
+  <div class="seal">Signes Collections · Desde 1968 · v55</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -690,7 +690,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v54</div>
+  <div class="seal">Signes Collections · Desde 1968 · v55</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -823,7 +823,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v54</div>
+  <div class="seal">Signes Collections · Desde 1968 · v55</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -963,7 +963,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v54</div>
+  <div class="seal">Signes Collections · Desde 1968 · v55</div>
 </div>
 </div><!-- /#apppa -->
 
@@ -1713,7 +1713,6 @@ function cardHTML(k,slot,title){
       <div class="arow">
         <button type="button" class="abtn ghost" onclick="autoRedo('${k}','${slot}')">↻ Repetir</button>
         ${slot==='art'?`<button type="button" class="abtn" id="${k}_approve" onclick="autoApprove('${k}')">✓ Aprobar dibujo y crear escenas</button>`:''}
-        ${slot==='s1'?`<button type="button" class="abtn ghost" onclick="autoFix('${k}','board')">↔ Ensanchar tabla</button><button type="button" class="abtn ghost" onclick="autoFix('${k}','towel')">⤵ Paño colgado de una punta</button>`:''}
       </div>
     </div>
   </div>`;
@@ -1817,7 +1816,7 @@ window.autoApprove=async(k)=>{
     const slot='s'+s.n;
     try{
       await runSlot(k,slot);
-      if(slot==='s1' && lsGet('sc_autofix_board')!=='off'){ await refineSlot(k,'s1',BOARD_FIX,'Revisando la tabla'); }
+      if(slot==='s1' && lsGet('sc_autofix_board')!=='off'){ try{ await refineSlot(k,'s1',BOARD_FIX,'Revisando la tabla'); }catch(_){ setState(k,'s1','Lista ✓','ok'); } }
     }
     catch(e){ showErr(k,slot,e.message); }
   }
@@ -1843,7 +1842,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=54;
+const APP_VERSION=55;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
