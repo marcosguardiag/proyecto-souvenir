@@ -422,7 +422,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v61</div>
+  <div class="seal">Signes Collections · Desde 1968 · v62</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -550,7 +550,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v61</div>
+  <div class="seal">Signes Collections · Desde 1968 · v62</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -570,7 +570,7 @@
       <div><label>Región <span class="opt">(opcional)</span></label><input id="hr_region" placeholder="Recomendado · Ej. Haute-Savoie, Costa Brava"></div>
     </div>
     <label>¿Qué quiere destacar el cliente?</label>
-    <textarea id="hr_orient" rows="2" placeholder="Ej. El Pont du Gard, con la cigarra como símbolo"></textarea>
+    <textarea id="hr_orient" rows="2" placeholder="Ej. El puerto y la iglesia; símbolo: barca catalana (opcional)"></textarea>
     <label>Foto de referencia <span class="opt">(la 1.ª es la principal · máx. 7)</span></label>
     <div class="fotozone">
       <div id="hr_thumbs" style="display:contents"></div>
@@ -678,7 +678,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v61</div>
+  <div class="seal">Signes Collections · Desde 1968 · v62</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -806,7 +806,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v61</div>
+  <div class="seal">Signes Collections · Desde 1968 · v62</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -941,7 +941,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v61</div>
+  <div class="seal">Signes Collections · Desde 1968 · v62</div>
 </div>
 </div><!-- /#apppa -->
 
@@ -1191,7 +1191,7 @@ STYLE — Esencia & Origen: artisanal ENGRAVING / LINOCUT / etching printed in O
 LAYOUT (vertical 2:3):
 • "${d.destino}" in an elegant engraved serif at the top; below it, smaller, ${d.region?`"${d.region}"`:`the region or tourist area it belongs to (never repeat the same name; leave it out if there is no larger region)`}.
 • Central engraving of the subject, faithful to the reference, framed by 2–3 characteristic local plants.
-• A small circular stamp with an engraving of the regional symbol${d.orient?' (use the symbol from the client brief if it mentions one; otherwise':' ('} the traditional emblem of the region — e.g. bee for Provence, bull for Camargue, cicada for the Midi) ${stamp}.
+• A small circular stamp with an engraving of the LOCAL SYMBOL of ${d.destino}${d.orient?' (if the client brief mentions a symbol, use that one)':''}. Choose the symbol that is MOST DISTINCTIVE of this specific town, the one a local would recognise as its own — a typical product, boat, animal, plant, craft or tradition of the town itself (e.g. Collioure → a Catalan fishing boat or an anchovy; Cadaqués → a llaüt boat; Besalú → its medieval bridge; Camargue → a bull or a flamingo; Grasse → a jasmine flower; Roses → a sea urchin or a fishing boat; Annecy → a swan). Use a generic regional emblem (bee, cicada, lavender, olive branch) ONLY if the town has no more specific symbol. Never repeat the same symbol for every destination. ${stamp}.
 • ${d.frase?`Just below the stamp, the client's SIGNATURE PHRASE: "${d.frase}" (print exactly as written, never translate it), small and elegant, in italic serif.`:'A short poetic tagline just below the stamp.'}
 
 TEXT: only these words, in ${L}, correctly spelled. Do not print "Signes Collections" on the artwork.`;
@@ -1819,7 +1819,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=61;
+const APP_VERSION=62;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
