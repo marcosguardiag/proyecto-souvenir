@@ -425,7 +425,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v66</div>
+  <div class="seal">Signes Collections · Desde 1968 · v67</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -553,7 +553,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v66</div>
+  <div class="seal">Signes Collections · Desde 1968 · v67</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -681,7 +681,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v66</div>
+  <div class="seal">Signes Collections · Desde 1968 · v67</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -809,7 +809,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v66</div>
+  <div class="seal">Signes Collections · Desde 1968 · v67</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -944,7 +944,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v66</div>
+  <div class="seal">Signes Collections · Desde 1968 · v67</div>
 </div>
 </div><!-- /#apppa -->
 
@@ -1687,9 +1687,9 @@ function cardHTML(k,slot,title){
     <div class="ahead"><b>${title}</b><span class="astate" id="${k}_as_${slot}">Pendiente</span></div>
     <div class="aimg" id="${k}_ai_${slot}"></div>
     <div class="aact" id="${k}_aa_${slot}" style="display:none">
-      <textarea id="${k}_an_${slot}" rows="2" placeholder="Nota para repetir (opcional). Ej.: la tabla no tiene mango, solo un agujero"></textarea>
+      <textarea id="${k}_an_${slot}" rows="2" placeholder="${slot==='art'?'Cambios a hacer en el dibujo (opcional). Ej.: pon el sol más pequeño, añade una barca':'Nota para repetir (opcional). Ej.: la tabla debe ser más pequeña'}"></textarea>
       <div class="arow">
-        <button type="button" class="abtn ghost" onclick="autoRedo('${k}','${slot}')">↻ Repetir</button>
+        <button type="button" class="abtn ghost" onclick="autoRedo('${k}','${slot}')">${slot==='art'?'↻ Modificar / repetir dibujo':'↻ Repetir'}</button>
         ${slot==='art'?`<button type="button" class="abtn" id="${k}_approve" onclick="autoApprove('${k}')">✓ Aprobar dibujo y crear escenas</button>`:''}
       </div>
     </div>
@@ -1731,8 +1731,13 @@ async function runSlot(k,slot,note){
   const noteTxt=note?`\n\nCORRECTION REQUESTED BY THE CLIENT (most important): ${note}`:'';
   let prompt,images,size;
   if(slot==='art'){
-    prompt=COLS[k].promptA(d)+noteTxt;
-    images=FOTOS[k].map((f,i)=>({blob:f.blob,name:`referencia-${i+1}.jpg`}));
+    if(note && AUTO[k].art){
+      prompt=`Edit the FIRST attached image (the current master artwork of this souvenir collection). Apply ONLY these changes requested by the client: ${note}\nKeep EVERYTHING ELSE exactly as it is: the same style, composition, landmark drawing, colours, texts and layout. Any other attached images are the original reference photos of the place, to keep the landmark faithful. Output the full corrected artwork in the same vertical format.`;
+      images=[{blob:AUTO[k].art,name:'dibujo-actual.png'}].concat(FOTOS[k].map((f,i)=>({blob:f.blob,name:`referencia-${i+1}.jpg`})));
+    } else {
+      prompt=COLS[k].promptA(d)+noteTxt;
+      images=FOTOS[k].map((f,i)=>({blob:f.blob,name:`referencia-${i+1}.jpg`}));
+    }
     size='1024x1536';
   } else {
     const n=+slot.slice(1);
@@ -1786,7 +1791,14 @@ async function autoStart(k){
 window.autoRedo=async(k,slot)=>{
   if(AUTO_BUSY) return; AUTO_BUSY=true;
   const note=q($(k+'_an_'+slot).value);
-  try{ await runSlot(k,slot,note); $(k+'_an_'+slot).value=''; }
+  try{
+    await runSlot(k,slot,note); $(k+'_an_'+slot).value='';
+    if(slot==='art'){
+      const ab=$(k+'_approve'); if(ab){ab.disabled=false; ab.textContent='✓ Aprobar dibujo y crear escenas';}
+      SCENES.forEach(sc=>{ if(AUTO[k]['s'+sc.n]) setState(k,'s'+sc.n,'Dibujo cambiado: vuelve a aprobar','busy'); });
+      flash(k+'_autoMsg','Dibujo nuevo listo. Si te gusta, pulsa «Aprobar dibujo y crear escenas» para aplicarlo a los productos.',9000);
+    }
+  }
   catch(e){ showErr(k,slot,e.message); }
   finally{ AUTO_BUSY=false; }
 };
@@ -1822,7 +1834,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=66;
+const APP_VERSION=67;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
