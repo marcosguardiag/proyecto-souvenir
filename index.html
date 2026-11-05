@@ -438,7 +438,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v73</div>
+  <div class="seal">Signes Collections · Desde 1968 · v74</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -568,7 +568,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v73</div>
+  <div class="seal">Signes Collections · Desde 1968 · v74</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -698,7 +698,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v73</div>
+  <div class="seal">Signes Collections · Desde 1968 · v74</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -828,7 +828,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v73</div>
+  <div class="seal">Signes Collections · Desde 1968 · v74</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -965,7 +965,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v73</div>
+  <div class="seal">Signes Collections · Desde 1968 · v74</div>
 </div>
 </div><!-- /#apppa -->
 <div id="appmj" class="hidden" style="--accent:#1F4FA3">
@@ -979,13 +979,13 @@
   <!-- PASO 1 -->
   <section class="card" id="mj_step1">
     <h2 class="step"><span class="num">1</span> Proyecto del cliente</h2>
-    <p class="hint">Destino, tipo de mosaico, fruta y color. Nada más.</p>
+    <p class="hint">Destino, tipo de mosaico, fruta o elemento, color y, si quieres, una foto del lugar a destacar.</p>
     <div class="row">
       <div><label>Destino</label><input id="mj_destino" placeholder="Ej. Menton"></div>
       <div><label>Región <span class="opt">(opcional)</span></label><input id="mj_region" placeholder="Recomendado · Ej. Haute-Savoie, Costa Brava"></div>
     </div>
     
-    <div class="fotoblock" style="display:none">
+    <div class="fotoblock" style="">
     <label>Foto de referencia <span class="opt">(la 1.ª es la principal · máx. 7)</span></label>
     <div class="fotozone">
       <div id="mj_thumbs" style="display:contents"></div>
@@ -1004,7 +1004,7 @@
     </div>
     <label>Tipo de mosaico</label>
     <div class="mjgrid" id="mj_styles"></div>
-    <label>Fruta o elemento del mosaico</label>
+    <label>Fruta o elemento del mosaico <span class="opt">(opcional)</span></label>
     <input id="mj_elem" placeholder="Ej. limones · naranjas · pimientos · limones y sardinas">
     <div class="row">
       <div><label>Colores del mosaico</label><select id="mj_modo">
@@ -1109,7 +1109,7 @@
     <button class="btn acc" id="mj_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v73</div>
+  <div class="seal">Signes Collections · Desde 1968 · v74</div>
 </div>
 </div><!-- /#appmj -->
 
@@ -1414,22 +1414,22 @@ COLS.mj={
   name:'MAJOLICA', label:'Majolica',
   promptA(d){
     const L=langRule(d.lang,d.destino);
-    const elem=d.elem||'lemons with their green leaves and white blossoms';
+    const elem=d.elem||(d.fotos?'':'lemons with their green leaves and white blossoms');
     const tiles=d.modo==='mono'
       ? `MONOCHROME tile mosaic: all the tiles in shades of ${d.mcolor||'cobalt blue'} on white (light and dark tones of that one colour only), like classic one-colour faïence.`
       : `MULTICOLOUR tile mosaic: cobalt blue, turquoise, sunny yellow, orange and a touch of green on white, like Mediterranean majolica / Amalfi and Moorish ceramic tiles.`;
     const st=MJ_STYLES.find(x=>x.id===MJ_SEL)||MJ_STYLES[0];
-    const photos=`\nMOSAIC TYPE — ${st.en}. The attached image shows this exact mosaic type: copy its tile layout, motifs and drawing style faithfully, but apply the colour scheme described above.`;
+    const photos=`\nMOSAIC TYPE — ${st.en}. The FIRST attached image shows this exact mosaic type: copy its tile layout, motifs and drawing style faithfully, but apply the colour scheme described above.`+(d.fotos?`\nPLACE TO FEATURE — the other attached photo${d.fotos>1?'s show':' shows'} the place of ${d.destino} to feature (a church, a beach, a castle, a street…). Draw it faithfully (same silhouette, proportions and viewpoint) as a bright, colourful hand-painted ceramic picture, as if painted on the tiles, in the upper / central part of the design; the mosaic FRAMES it all around and blends into its edges with irregular broken-tile borders (never a hard rectangle). Ignore people, cars and modern clutter in the photo.`:'');
     return `STEP 1 OF 3 — MASTER ARTWORK ONLY (one flat design: no products, no mockup, no table, no hands).
 Create the master artwork of the MAJOLICA souvenir collection by Signes Collections for ${d.destino}${d.region?` (${d.region})`:''}. Generate the image directly, without asking questions or describing it first.
 
 STYLE — Majolica: a hand-painted glazed CERAMIC TILE design, rich, bright and joyful, like Mediterranean majolica.
 THREE ELEMENTS, all of them clearly visible:
 1. BACKGROUND — a dense ${tiles} Mosaic type: ${(MJ_STYLES.find(x=>x.id===MJ_SEL)||MJ_STYLES[0]).es.toUpperCase()} (see below). Square tiles with ornamental rosettes, stars and floral medallions, thin grout lines, slightly glossy hand-painted look. The pattern covers the whole background edge to edge and can be extended seamlessly to any product shape.
-2. FRUIT / ELEMENT — ${elem}, drawn realistically in rich colours, integrated with the tiles: grouped in generous clusters around the centre and in the corners, partly overlapping the tiles, never covering the name. Keep them recognisable and appetising.
-3. DESTINATION — "${d.destino}" in an elegant hand-lettered blue script (or a script in the main tile colour), inside a central white ornamental cartouche framed by a decorative scrollwork tile border.${d.region?` Below the name, smaller, "${d.region}".`:''}${d.frase?`\n• SIGNATURE PHRASE: "${d.frase}" (print exactly as written, never translate it) — small, in the lower part of the cartouche or just under it, in an elegant script.`:''}${d.orient?`\nCLIENT DETAILS to include: ${d.orient}`:''}${photos}
+${elem?`2. FRUIT / ELEMENT — ${elem}, drawn realistically in rich colours, integrated with the tiles${d.fotos?' and around the featured place':''}: grouped in generous clusters, partly overlapping the tiles, never covering the name or the featured place. Keep them recognisable and appetising.`:'2. (no fruit — the featured place is the protagonist).'}
+3. DESTINATION — "${d.destino}" in an elegant blue lettering (or in the main tile colour), inside a white ornamental cartouche framed by a decorative scrollwork tile border — ${d.fotos?'in the LOWER part, under the featured place':'in the centre'}.${d.region?` Below the name, smaller, "${d.region}".`:''}${d.frase?`\n• SIGNATURE PHRASE: "${d.frase}" (print exactly as written, never translate it) — small, in the lower part of the cartouche or just under it, in an elegant script.`:''}${d.orient?`\nCLIENT DETAILS to include: ${d.orient}`:''}${photos}
 
-FORMAT: vertical 2:3, the tile pattern filling the whole image, the cartouche with the name in the centre.
+FORMAT: vertical 2:3, the tile pattern filling the whole image${d.fotos?', the featured place in the upper / central part and the name cartouche below it':', the cartouche with the name in the centre'}.
 TEXT: only the destination name${d.region?', the region':''}${d.frase?' and the signature phrase':''}, in ${L}, correctly spelled. No other words.`;
   }
 };
@@ -1935,10 +1935,10 @@ async function runSlot(k,slot,note){
   if(slot==='art'){
     if(note && AUTO[k].art){
       prompt=`Edit the FIRST attached image (the current master artwork of this souvenir collection). Apply ONLY these changes requested by the client: ${note}\nKeep EVERYTHING ELSE exactly as it is: the same style, composition, landmark drawing, colours, texts and layout. Any other attached images are the original reference photos of the place, to keep the landmark faithful. Output the full corrected artwork in the same vertical format.`;
-      images=[{blob:AUTO[k].art,name:'dibujo-actual.png'}].concat(k==='mj'?[{blob:dataUrlToBlob((MJ_STYLES.find(x=>x.id===MJ_SEL)||MJ_STYLES[0]).ref),name:'mosaico.jpg'}]:FOTOS[k].map((f,i)=>({blob:f.blob,name:`referencia-${i+1}.jpg`})));
+      images=[{blob:AUTO[k].art,name:'dibujo-actual.png'}].concat(k==='mj'?[{blob:dataUrlToBlob((MJ_STYLES.find(x=>x.id===MJ_SEL)||MJ_STYLES[0]).ref),name:'mosaico.jpg'}].concat(FOTOS[k].map((f,i)=>({blob:f.blob,name:`lugar-${i+1}.jpg`}))):FOTOS[k].map((f,i)=>({blob:f.blob,name:`referencia-${i+1}.jpg`})));
     } else {
       prompt=COLS[k].promptA(d)+noteTxt;
-      images=k==='mj'?[{blob:dataUrlToBlob((MJ_STYLES.find(x=>x.id===MJ_SEL)||MJ_STYLES[0]).ref),name:'mosaico.jpg'}]:FOTOS[k].map((f,i)=>({blob:f.blob,name:`referencia-${i+1}.jpg`}));
+      images=k==='mj'?[{blob:dataUrlToBlob((MJ_STYLES.find(x=>x.id===MJ_SEL)||MJ_STYLES[0]).ref),name:'mosaico.jpg'}].concat(FOTOS[k].map((f,i)=>({blob:f.blob,name:`lugar-${i+1}.jpg`}))):FOTOS[k].map((f,i)=>({blob:f.blob,name:`referencia-${i+1}.jpg`}));
     }
     size='1024x1536';
   } else {
@@ -2036,7 +2036,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=73;
+const APP_VERSION=74;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
