@@ -294,9 +294,14 @@
       <div class="lname" style="color:#2A7F9E">Panorama</div>
       <div class="ldesc">Cartel moderno · el destino lleno de vida</div>
     </div>
+    <div class="linecard go" onclick="enterMajolica()">
+      <span class="badge" style="background:#1F4FA3;color:#fff">Nuevo</span>
+      <div class="lname" style="color:#1F4FA3">Majolica</div>
+      <div class="ldesc">Mosaico de azulejos con fruta y el nombre del destino</div>
+    </div>
   </div>
   <div class="home-links">
-    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a>
+    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a><span class="sep"> · </span><a onclick="enterMajolica()">Majolica</a>
   </div>
 </div>
 
@@ -427,7 +432,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v70</div>
+  <div class="seal">Signes Collections · Desde 1968 · v71</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -555,7 +560,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v70</div>
+  <div class="seal">Signes Collections · Desde 1968 · v71</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -683,7 +688,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v70</div>
+  <div class="seal">Signes Collections · Desde 1968 · v71</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -811,7 +816,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v70</div>
+  <div class="seal">Signes Collections · Desde 1968 · v71</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -946,9 +951,150 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v70</div>
+  <div class="seal">Signes Collections · Desde 1968 · v71</div>
 </div>
 </div><!-- /#apppa -->
+<div id="appmj" class="hidden" style="--accent:#1F4FA3">
+<div class="subbar">
+  <div class="collection-tag" style="color:#1F4FA3;font-size:16px">Majolica</div>
+  <div class="slogan">Azulejos, fruta y sol</div>
+</div>
+<div class="wrap">
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
+
+  <!-- PASO 1 -->
+  <section class="card" id="mj_step1">
+    <h2 class="step"><span class="num">1</span> Proyecto del cliente</h2>
+    <p class="hint">Destino, lo que quiere destacar el cliente y una foto de referencia. Nada más.</p>
+    <div class="row">
+      <div><label>Destino</label><input id="mj_destino" placeholder="Ej. Menton"></div>
+      <div><label>Región <span class="opt">(opcional)</span></label><input id="mj_region" placeholder="Recomendado · Ej. Haute-Savoie, Costa Brava"></div>
+    </div>
+    <label>¿Qué quiere destacar el cliente?</label>
+    <textarea id="mj_orient" rows="2" placeholder="Opcional: algún detalle más (ej. flores de azahar, un toque de rojo)"></textarea>
+    <label>Foto de referencia <span class="opt">(la 1.ª es la principal · máx. 7)</span></label>
+    <div class="fotozone">
+      <div id="mj_thumbs" style="display:contents"></div>
+      <button type="button" class="addfoto" id="mj_addFoto"><b>+</b>Añadir foto</button>
+    </div>
+    <input type="file" id="mj_file" accept="image/*" multiple style="display:none">
+    <div class="msg" id="mj_fotoMsg" style="text-align:left"></div>
+    <p class="hint" style="margin:0">La foto es lo que garantiza la fidelidad: el monumento que quiere el cliente, una postal o una pieza que te haya enviado.</p>
+    <div class="row">
+      <div><label>Frase o firma <span class="opt">(opcional)</span></label><input id="mj_frase" placeholder="Ej. L'art de viure · Sol, arte e historia"></div>
+      <div><label>Idioma de los textos</label><select id="mj_lang">
+        <option value="">Automático (idioma local)</option>
+        <option value="es">Español</option><option value="ca">Català</option>
+        <option value="fr">Français</option><option value="it">Italiano</option></select></div>
+    </div>
+    <label>Fruta o elemento del mosaico</label>
+    <input id="mj_elem" placeholder="Ej. limones · naranjas · pimientos · limones y sardinas">
+    <div class="row">
+      <div><label>Mosaico</label><select id="mj_modo">
+        <option value="multi">Multicolor</option>
+        <option value="mono">Monocolor</option></select></div>
+      <div id="mj_colbox" style="display:none"><label>Color del mosaico</label><select id="mj_color">
+        <option value="cobalt blue">Azul cobalto</option>
+        <option value="turquoise">Turquesa</option>
+        <option value="olive green">Verde oliva</option>
+        <option value="sunny yellow">Amarillo</option>
+        <option value="terracotta">Terracota</option>
+        <option value="burgundy red">Rojo burdeos</option></select></div>
+    </div>
+    <div class="row">
+      <div><label>Código de cliente <span class="opt">(opcional)</span></label><input id="mj_codigo" placeholder="Ej. 30567"></div>
+      <div><label>Email <span class="opt">(opcional)</span></label><input id="mj_email" type="email" placeholder="tienda@correo.com"></div>
+    </div>
+    <button class="btn acc" id="mj_btnGen">Crear prompts</button>
+  </section>
+
+  <!-- PASO 2 -->
+  <section class="card hidden" id="mj_step2">
+    <h2 class="step"><span class="num">2</span> Crear las imágenes</h2>
+    <div class="summary" id="mj_summary"></div>
+
+    <div class="autobox">
+      <div class="phase" style="margin-top:6px">✦ Modo automático<small>La web crea el dibujo y las 3 escenas con OpenAI, enviando ella sola tus fotos y las hojas de producto.</small></div>
+      <div class="keyrow">
+        <input id="mj_keyIn" type="password" autocomplete="off" placeholder="Pega aquí tu clave de OpenAI (sk-…)">
+        <button type="button" class="abtn" id="mj_keySave">Guardar</button>
+        <span id="mj_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="mj_keyDel">borrar</a></span>
+      </div>
+      <div class="row">
+        <div><label>Modelo</label><select id="mj_model"></select></div>
+        <div><label>Calidad</label><select id="mj_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
+      </div>
+      <button class="btn acc" id="mj_autoGo">✦ Crear proyecto automáticamente</button>
+      <div class="msg" id="mj_autoMsg"></div>
+      <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
+      <div id="mj_autoCards" style="display:none"></div>
+    </div>
+
+    <details class="manual"><summary>Hacerlo a mano en ChatGPT (sin clave)</summary>
+    <div class="howto"><b>Cómo hacerlo en ChatGPT (todo en el mismo chat):</b>
+      <ol>
+        <li>Abre un <b>chat nuevo</b>, adjunta la foto de referencia y pega el <b>Prompt 1</b>. Saldrá solo el dibujo.</li>
+        <li>Comprueba que el monumento se parece a la foto. Si no, pega la <i>corrección</i>.</li>
+        <li>Con el dibujo aprobado, pega las <b>escenas 1 y 2</b> una a una. Cada botón envía también la hoja con las fotos reales de esos artículos (varios ángulos y detalles) para que ChatGPT copie su forma.</li>
+        <li>Guarda las 3 imágenes en tu carrete: las usarás en el paso 4 para la presentación.</li>
+      </ol>
+    </div>
+
+    <div class="phase">Prompt 1 · Dibujo<small>Solo la ilustración, fiel a la foto</small></div>
+    <div class="prompt-box short" id="mj_pA"></div>
+    <button class="btn acc" id="mj_shareBtn">Copiar prompt 1</button>
+    <div class="msg" id="mj_msgA"></div>
+
+    <div class="phase">Escena 1 · Cocina y hogar<small>Mug, posavasos, tabla, paño, reposacucharas, salvamanteles y bolsa</small></div>
+    <div class="prompt-box short" id="mj_pS1"></div>
+    <button class="btn gold" id="mj_shareS1">📎 Enviar fotos de producto y copiar escena 1</button>
+    <div class="msg" id="mj_msgS1"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 1</summary><img id="mj_sheet1" alt="Hoja de productos escena 1"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+    <div class="phase">Escena 2 · Accesorios y regalo<small>Espejos y abanicos con expositor, monederos, estuche, reloj, termo y cajas libro</small></div>
+    <div class="prompt-box short" id="mj_pS2"></div>
+    <button class="btn gold" id="mj_shareS2">📎 Enviar fotos de producto y copiar escena 2</button>
+    <div class="msg" id="mj_msgS2"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 2</summary><img id="mj_sheet2" alt="Hoja de productos escena 2"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+
+    <div class="phase" style="font-size:15px">¿No ha salido fiel?<small>Copia la corrección y pégala en la misma conversación</small></div>
+    <div class="fixrow">
+      <button type="button" id="mj_fixS">Corregir el monumento</button>
+      <button type="button" id="mj_fixP">Los productos cambian el dibujo</button>
+    </div>
+    <div class="msg" id="mj_msgFix"></div>
+    </details>
+
+    <button class="btn ghost" id="mj_btnGoBud">Ver presupuesto →</button>
+  </section>
+
+  <!-- PASO 3 -->
+  <section class="card hidden" id="mj_step3">
+    <h2 class="step"><span class="num">3</span> Presupuesto</h2>
+    <p class="hint">Quita o deja cada artículo para afinar el presupuesto. Las cantidades suben en múltiplos del mínimo.</p>
+    <div class="summary" id="mj_budHead"></div>
+    <div class="budlist" id="mj_budBody"></div>
+    <div class="totalbar"><span class="lab">TOTAL <small id="mj_budCount" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="mj_budTotal">0,00 €</span></div>
+    <p class="minnote">Precios por unidad según tarifa. </p>
+    <div class="actions">
+    </div>
+    <div class="msg" id="mj_copiedBud"></div>
+    <button class="btn ghost" id="mj_btnPrintBud">🖨 Imprimir / Guardar presupuesto en PDF</button>
+    <button class="btn acc" id="mj_btnGoPres">Crear presentación para el cliente →</button>
+  </section>
+
+  <!-- PASO 4 -->
+  <section class="card hidden" id="mj_step4">
+    <h2 class="step"><span class="num">4</span> Presentación</h2>
+    <p class="hint">Sube las imágenes que te ha dado ChatGPT. La presentación junta portada, las 2 escenas con sus artículos y el presupuesto con lo que hayas dejado marcado.</p>
+    <div class="pslots" id="mj_presSlots"></div>
+    <button class="btn acc" id="mj_btnPres">Abrir presentación</button>
+    <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
+  </section>
+  <div class="seal">Signes Collections · Desde 1968 · v71</div>
+</div>
+</div><!-- /#appmj -->
 
 <div id="pres"></div>
 <script>
@@ -1060,14 +1206,16 @@ const FRAME={
  mp:'thin white wooden frame',
  pc:'natural light-wood frame',
  hr:'natural oak frame',
- pa:'thin natural light-wood frame'
+ pa:'thin natural light-wood frame',
+ mj:'thin white frame'
 };
 const SCENE_BG={
  ns:'warm wooden table, Mediterranean atmosphere, soft natural light',
  mp:'bright neutral background, sunny Mediterranean atmosphere, soft natural light',
  pc:'warm neutral surface (aged linen or light kraft), warm natural light, soft shadows',
  hr:'neutral natural background (linen / kraft tones), soft natural light, sober artisanal atmosphere',
- pa:d=>d.env==='nieve'?'warm wooden chalet table, cosy winter light, a hint of snowy mountains through the window':'bright neutral background, sunny atmosphere, soft natural light'
+ pa:d=>d.env==='nieve'?'warm wooden chalet table, cosy winter light, a hint of snowy mountains through the window':'bright neutral background, sunny atmosphere, soft natural light',
+ mj:'bright, sunny Mediterranean setting, light stone or white tiled surface, soft natural light'
 };
 
 function scenePrompt(k,n){
@@ -1078,7 +1226,7 @@ Use the master artwork you created earlier in this conversation as the ONE AND O
 
 PRODUCT SHEET: if an image titled "REAL PRODUCTS — SCENE …" is attached, it shows the real products of this scene, labelled with their names, from several angles and with close-up details. Copy from it exactly: the outline and shape, the proportions, the material and finish, the thickness, edges, seams, zips, holes and handles, and HOW the print covers the surface. Replace ONLY the motif printed on them (sardines, dogs, women, lemons, lizards, stripes…) with our artwork, and remove any brand logos. Never add handles, borders, stripes or materials that are not in the photos.
 
-ALL-OVER PRINT: every product is fully printed (sublimation) — the artwork covers the whole printed surface to the edges; where the artwork has to be extended, continue ONLY its own plain background colour (for example its cream paper tone). Only the parts that are plain in the photos stay plain: cork back, wooden ribs, cream bag handles, steel cap.
+ALL-OVER PRINT: every product is fully printed (sublimation) — the artwork covers the whole printed surface to the edges; where the artwork has to be extended, continue ONLY its own background — its plain colour (for example its cream paper tone) or, if the artwork is an all-over pattern such as a tile mosaic, the same pattern. Only the parts that are plain in the photos stay plain: cork back, wooden ribs, cream bag handles, steel cap.
 FAITHFUL TO THE ARTWORK — VERY IMPORTANT: the products must look exactly like the approved artwork and nothing more. Do NOT add any stripes, borders, frames, checks, patterns, textures, extra colours or decorative motifs that are not in the artwork — not on the products, not on the boxes, not on the packaging. The patterns visible in the product photos (stripes, lemons, sardines, dogs, flowers…) belong to the old designs and must NEVER be copied. If the artwork is clean and minimal, every product and box must stay equally clean and minimal.
 SMALL PRODUCTS (coasters, spoon rest, mirror, purse, glasses case): show only the destination NAME (big and correctly spelled) and the main drawing — leave out the region, the signature phrase, small texts and stamps so nothing becomes blurred or misspelled.
 SCALE: the mug (9.5 cm tall) is the size reference for everything else.${getD(k).frase?`\nSIGNATURE PHRASE "${getD(k).frase}": it is part of the artwork, so it MUST appear, exactly as written and correctly spelled, on every LARGE printed product that shows the full design — the tote bag, the tea towel and its pack, the board, the square trivet, the mug and its box, the bottle and its box, the clock, the fan and the displays. Leave it out only on the small products listed above.`:''}
@@ -1241,13 +1389,38 @@ TEXT: only the destination name, the region${d.frase?' and the signature phrase'
   }
 };
 
+
+/* ---------------- MAJOLICA ---------------- */
+COLS.mj={
+  name:'MAJOLICA', label:'Majolica',
+  promptA(d){
+    const L=langRule(d.lang,d.destino);
+    const elem=d.elem||'lemons with their green leaves and white blossoms';
+    const tiles=d.modo==='mono'
+      ? `MONOCHROME tile mosaic: all the tiles in shades of ${d.mcolor||'cobalt blue'} on white (light and dark tones of that one colour only), like classic one-colour faïence.`
+      : `MULTICOLOUR tile mosaic: cobalt blue, turquoise, sunny yellow, orange and a touch of green on white, like Mediterranean majolica / Amalfi and Moorish ceramic tiles.`;
+    const photos=d.fotos?`\nREFERENCE PHOTOS: the attached photos are visual references (a landmark, a tile pattern or a fruit) — include or follow them faithfully if they fit the design.`:'';
+    return `STEP 1 OF 3 — MASTER ARTWORK ONLY (one flat design: no products, no mockup, no table, no hands).
+Create the master artwork of the MAJOLICA souvenir collection by Signes Collections for ${d.destino}${d.region?` (${d.region})`:''}. Generate the image directly, without asking questions or describing it first.
+
+STYLE — Majolica: a hand-painted glazed CERAMIC TILE design, rich, bright and joyful, like Mediterranean majolica.
+THREE ELEMENTS, all of them clearly visible:
+1. BACKGROUND — a dense ${tiles} Square tiles with ornamental rosettes, stars and floral medallions, thin grout lines, slightly glossy hand-painted look. The pattern covers the whole background edge to edge and can be extended seamlessly to any product shape.
+2. FRUIT / ELEMENT — ${elem}, drawn realistically in rich colours, integrated with the tiles: grouped in generous clusters around the centre and in the corners, partly overlapping the tiles, never covering the name. Keep them recognisable and appetising.
+3. DESTINATION — "${d.destino}" in an elegant hand-lettered blue script (or a script in the main tile colour), inside a central white ornamental cartouche framed by a decorative scrollwork tile border.${d.region?` Below the name, smaller, "${d.region}".`:''}${d.frase?`\n• SIGNATURE PHRASE: "${d.frase}" (print exactly as written, never translate it) — small, in the lower part of the cartouche or just under it, in an elegant script.`:''}${d.orient?`\nCLIENT DETAILS to include: ${d.orient}`:''}${photos}
+
+FORMAT: vertical 2:3, the tile pattern filling the whole image, the cartouche with the name in the centre.
+TEXT: only the destination name${d.region?', the region':''}${d.frase?' and the signature phrase':''}, in ${L}, correctly spelled. No other words.`;
+  }
+};
+
 const FIX_SUBJECT=`The subject does not match the reference photo. Redraw ONLY the subject, copying the photo exactly: same silhouette, same proportions, same number of arches / towers / floors / windows and the same viewpoint. Keep everything else (style, texts, colours, layout) exactly as it is.`;
 const FIX_PRODUCTS=`The products have changed the design or the shapes. Use EXACTLY the approved artwork from earlier in this conversation on every product — the same drawing of the subject, the same texts and colours — and keep the real product shapes from the product photos. Do not redraw or reinterpret the artwork. Keep the same products, composition and lighting.`;
 
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
-const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa'};
+const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa',mj:'appmj'};
 function enterCol(k,fromHistory){
   if(!fromHistory){ try{ history.pushState({col:k},'','#'+k); }catch(e){} }
   document.getElementById('home').classList.add('hidden');
@@ -1260,6 +1433,7 @@ function enterMosaic(){enterCol('mp');}
 function enterPopCollage(){enterCol('pc');}
 function enterHeritage(){enterCol('hr');}
 function enterPanorama(){enterCol('pa');}
+function enterMajolica(){enterCol('mj');}
 function showHome(){
   Object.values(APP_IDS).forEach(id=>$(id).classList.add('hidden'));
   closePresentation&&$('pres').classList.contains('on')&&closePresentation();
@@ -1279,7 +1453,7 @@ window.addEventListener('popstate',e=>{
 /* ============================================================
    FOTOS DE REFERENCIA
    ============================================================ */
-const FOTOS={ns:[],mp:[],pc:[],hr:[],pa:[]};
+const FOTOS={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[]};
 const MAX_FOTOS=7;
 
 function resizeImage(file){
@@ -1325,14 +1499,14 @@ function getD(k){
   return {
     codigo:val(k+'_codigo'), email:val(k+'_email'), tienda:val(k+'_tienda'),
     destino:val(k+'_destino'), region:val(k+'_region'), lang:val(k+'_lang'),
-    orient:val(k+'_orient'), anio:val(k+'_anio'), anioFund:'', frase:val(k+'_frase'), env:val(k+'_env'),
+    orient:val(k+'_orient'), anio:val(k+'_anio'), anioFund:'', frase:val(k+'_frase'), env:val(k+'_env'), elem:val(k+'_elem'), modo:val(k+'_modo'), mcolor:val(k+'_color'),
     fotos:FOTOS[k].length
   };
 }
 function generate(k){
   const d=getD(k);
   if(!d.destino){alert('Escribe el destino.');$(k+'_destino').focus();return;}
-  if(!d.orient && !d.fotos){
+  if(k!=='mj' && !d.orient && !d.fotos){
     if(!confirm('No has indicado qué quiere destacar el cliente ni has añadido foto. La IA elegirá el monumento por su cuenta y puede ser menos fiel. ¿Continuar?'))return;
   }
   const C=COLS[k];
@@ -1387,7 +1561,7 @@ async function copyFix(k,which){
 /* ============================================================
    ESCANDALLO (común a las 4 colecciones)
    ============================================================ */
-const BUD={ns:[],mp:[],pc:[],hr:[],pa:[]};
+const BUD={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[]};
 function buildBudget(k){
   BUD[k]=PRODUCTS.map(p=>({...p,qty:p.min,activo:true}));
   renderBudget(k);
@@ -1478,7 +1652,7 @@ function showBudget(k){$(k+'_step3').classList.remove('hidden');if(!BUD[k].lengt
    PRESENTACIÓN PARA EL CLIENTE (PDF)
    ============================================================ */
 const PRES_SLOTS=[{key:'art',es:'Dibujo'},{key:'s1',es:'Escena 1 · Cocina y hogar'},{key:'s2',es:'Escena 2 · Accesorios y regalo'}];
-const PRES={ns:{},mp:{},pc:{},hr:{},pa:{}};
+const PRES={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{}};
 function renderPresSlots(k){
   const box=$(k+'_presSlots'); box.innerHTML='';
   PRES_SLOTS.forEach(s=>{
@@ -1587,7 +1761,7 @@ Object.keys(COLS).forEach(k=>{
 const KEY_STORE='sc_openai_key', MODEL_STORE='sc_openai_model', QUAL_STORE='sc_openai_quality';
 function lsGet(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
 function lsSet(k,v){try{ if(v) localStorage.setItem(k,v); else localStorage.removeItem(k);}catch(e){}}
-const AUTO={ns:{},mp:{},pc:{},hr:{},pa:{}};   // blobs: art, s1, s2, s3
+const AUTO={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{}};   // blobs: art, s1, s2, s3
 let AUTO_BUSY=false;
 
 function keyState(){return !!lsGet(KEY_STORE);}
@@ -1842,7 +2016,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=70;
+const APP_VERSION=71;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
@@ -1864,6 +2038,9 @@ const APP_VERSION=70;
   const upd=()=>{ fb.style.display=document.getElementById('home').classList.contains('hidden')?'':'none'; };
   new MutationObserver(upd).observe(document.getElementById('home'),{attributes:true,attributeFilter:['class']}); upd();
 })();
+
+/* Majolica: mostrar el color solo si es monocolor */
+(function(){const m=$('mj_modo'),b=$('mj_colbox'); if(!m)return; const u=()=>{b.style.display=m.value==='mono'?'':'none';}; m.onchange=u; u();})();
 
 </script>
 </body>
