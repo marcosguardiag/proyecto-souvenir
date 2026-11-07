@@ -305,9 +305,14 @@
       <div class="lname" style="color:#1F4FA3">Majolica</div>
       <div class="ldesc">Mosaico de azulejos con fruta y el nombre del destino</div>
     </div>
+    <div class="linecard go" onclick="enterVector()">
+      <span class="badge" style="background:#37474F;color:#fff">Nuevo</span>
+      <div class="lname" style="color:#37474F">Vector</div>
+      <div class="ldesc">Icono de línea fina · minimalista</div>
+    </div>
   </div>
   <div class="home-links">
-    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a><span class="sep"> · </span><a onclick="enterMajolica()">Majolica</a>
+    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a><span class="sep"> · </span><a onclick="enterMajolica()">Majolica</a><span class="sep"> · </span><a onclick="enterVector()">Vector</a>
   </div>
 </div>
 
@@ -441,7 +446,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v76</div>
+  <div class="seal">Signes Collections · Desde 1968 · v77</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -572,7 +577,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v76</div>
+  <div class="seal">Signes Collections · Desde 1968 · v77</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -703,7 +708,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v76</div>
+  <div class="seal">Signes Collections · Desde 1968 · v77</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -834,7 +839,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v76</div>
+  <div class="seal">Signes Collections · Desde 1968 · v77</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -972,7 +977,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v76</div>
+  <div class="seal">Signes Collections · Desde 1968 · v77</div>
 </div>
 </div><!-- /#apppa -->
 <div id="appmj" class="hidden" style="--accent:#1F4FA3">
@@ -1117,9 +1122,152 @@
     <button class="btn acc" id="mj_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v76</div>
+  <div class="seal">Signes Collections · Desde 1968 · v77</div>
 </div>
 </div><!-- /#appmj -->
+<div id="appvc" class="hidden" style="--accent:#37474F">
+<div class="subbar">
+  <div class="collection-tag" style="color:#37474F;font-size:16px">Vector</div>
+  <div class="slogan">Línea limpia · icono del destino</div>
+</div>
+<div class="wrap">
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
+
+  <!-- PASO 1 -->
+  <section class="card" id="vc_step1">
+    <h2 class="step"><span class="num">1</span> Proyecto del cliente</h2>
+    <p class="hint">Destino, lo que quiere destacar el cliente y una foto de referencia. Nada más.</p>
+    <div class="row">
+      <div><label>Destino</label><input id="vc_destino" placeholder="Ej. Barcelona"></div>
+      <div><label>Región <span class="opt">(opcional)</span></label><input id="vc_region" placeholder="Recomendado · Ej. Haute-Savoie, Costa Brava"></div>
+    </div>
+    <label>¿Qué quiere destacar el cliente?</label>
+    <textarea id="vc_orient" rows="2" placeholder="Ej. La Sagrada Família y la Torre Glòries, juntas"></textarea>
+    <div class="fotoblock" style="">
+    <label>Foto de referencia <span class="opt">(la 1.ª es la principal · máx. 7)</span></label>
+    <div class="fotozone">
+      <div id="vc_thumbs" style="display:contents"></div>
+      <button type="button" class="addfoto" id="vc_addFoto"><b>+</b>Añadir foto</button>
+    </div>
+    <input type="file" id="vc_file" accept="image/*" multiple style="display:none">
+    <div class="msg" id="vc_fotoMsg" style="text-align:left"></div>
+    
+    <p class="hint" style="margin:0">La foto es lo que garantiza la fidelidad: el monumento que quiere el cliente, una postal o una pieza que te haya enviado.</p>
+    </div>
+    <div class="row">
+      <div><label>Frase o firma <span class="opt">(opcional)</span></label><input id="vc_frase" placeholder="Ej. L'art de viure · Sol, arte e historia"></div>
+      <div><label>Idioma de los textos</label><select id="vc_lang">
+        <option value="">Automático (idioma local)</option>
+        <option value="es">Español</option><option value="ca">Català</option>
+        <option value="fr">Français</option><option value="it">Italiano</option></select></div>
+    </div>
+    <div class="row">
+      <div><label>Color de la línea</label><select id="vc_color">
+        <option value="dark slate grey (#37474F)">Gris pizarra</option>
+        <option value="navy blue (#1F3A5F)">Azul marino</option>
+        <option value="black (#1A1A1A)">Negro</option>
+        <option value="terracotta (#B5522B)">Terracota</option>
+        <option value="olive green (#5A6B4A)">Verde oliva</option>
+        <option value="burgundy (#7B2E2E)">Burdeos</option></select></div>
+      <div><label>Fondo</label><select id="vc_fondo">
+        <option value="white">Blanco</option>
+        <option value="cream">Crema</option>
+        <option value="tint">Color suave</option></select></div>
+    </div>
+    <div class="row">
+      <div><label>Código de cliente <span class="opt">(opcional)</span></label><input id="vc_codigo" placeholder="Ej. 30567"></div>
+      <div><label>Email <span class="opt">(opcional)</span></label><input id="vc_email" type="email" placeholder="tienda@correo.com"></div>
+    </div>
+    <button class="btn acc" id="vc_btnGen">Crear prompts</button>
+  </section>
+
+  <!-- PASO 2 -->
+  <section class="card hidden" id="vc_step2">
+    <h2 class="step"><span class="num">2</span> Crear las imágenes</h2>
+    <div class="summary" id="vc_summary"></div>
+
+    <div class="autobox">
+      <div class="phase" style="margin-top:6px">✦ Modo automático<small>La web crea el dibujo y las 3 escenas con OpenAI, enviando ella sola tus fotos y las hojas de producto.</small></div>
+      <div class="keyrow">
+        <input id="vc_keyIn" type="password" autocomplete="off" placeholder="Pega aquí tu clave de OpenAI (sk-…)">
+        <button type="button" class="abtn" id="vc_keySave">Guardar</button>
+        <span id="vc_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="vc_keyDel">borrar</a></span>
+      </div>
+      <div class="row">
+        <div><label>Modelo</label><select id="vc_model"></select></div>
+        <div><label>Calidad</label><select id="vc_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
+      </div>
+      <button class="btn acc" id="vc_autoGo">✦ Crear proyecto automáticamente</button>
+      <div class="msg" id="vc_autoMsg"></div>
+      <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
+      <div id="vc_autoCards" style="display:none"></div>
+    </div>
+
+    <details class="manual"><summary>Hacerlo a mano en ChatGPT (sin clave)</summary>
+    <div class="howto"><b>Cómo hacerlo en ChatGPT (todo en el mismo chat):</b>
+      <ol>
+        <li>Abre un <b>chat nuevo</b>, adjunta la foto de referencia y pega el <b>Prompt 1</b>. Saldrá solo el dibujo.</li>
+        <li>Comprueba que el monumento se parece a la foto. Si no, pega la <i>corrección</i>.</li>
+        <li>Con el dibujo aprobado, pega las <b>escenas 1 y 2</b> una a una. Cada botón envía también la hoja con las fotos reales de esos artículos (varios ángulos y detalles) para que ChatGPT copie su forma.</li>
+        <li>Guarda las 3 imágenes en tu carrete: las usarás en el paso 4 para la presentación.</li>
+      </ol>
+    </div>
+
+    <div class="phase">Prompt 1 · Dibujo<small>Solo la ilustración, fiel a la foto</small></div>
+    <div class="prompt-box short" id="vc_pA"></div>
+    <button class="btn acc" id="vc_shareBtn">Copiar prompt 1</button>
+    <div class="msg" id="vc_msgA"></div>
+
+    <div class="phase">Escena 1 · Cocina y hogar<small>Mug, posavasos, tabla, paño, reposacucharas, salvamanteles y bolsa</small></div>
+    <div class="prompt-box short" id="vc_pS1"></div>
+    <button class="btn gold" id="vc_shareS1">📎 Enviar fotos de producto y copiar escena 1</button>
+    <div class="msg" id="vc_msgS1"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 1</summary><img id="vc_sheet1" alt="Hoja de productos escena 1"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+    <div class="phase">Escena 2 · Accesorios y regalo<small>Espejos y abanicos con expositor, monederos, estuche, reloj, termo y cajas libro</small></div>
+    <div class="prompt-box short" id="vc_pS2"></div>
+    <button class="btn gold" id="vc_shareS2">📎 Enviar fotos de producto y copiar escena 2</button>
+    <div class="msg" id="vc_msgS2"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 2</summary><img id="vc_sheet2" alt="Hoja de productos escena 2"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+
+    <div class="phase" style="font-size:15px">¿No ha salido fiel?<small>Copia la corrección y pégala en la misma conversación</small></div>
+    <div class="fixrow">
+      <button type="button" id="vc_fixS">Corregir el monumento</button>
+      <button type="button" id="vc_fixP">Los productos cambian el dibujo</button>
+    </div>
+    <div class="msg" id="vc_msgFix"></div>
+    </details>
+
+    <button class="btn ghost" id="vc_btnGoBud">Ver presupuesto →</button>
+  </section>
+
+  <!-- PASO 3 -->
+  <section class="card hidden" id="vc_step3">
+    <h2 class="step"><span class="num">3</span> Presupuesto</h2>
+    <p class="hint">Quita o deja cada artículo para afinar el presupuesto. Las cantidades suben en múltiplos del mínimo.</p>
+    <div class="summary" id="vc_budHead"></div>
+    <div class="budlist" id="vc_budBody"></div>
+    <div class="totalbar"><span class="lab">TOTAL <small id="vc_budCount" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="vc_budTotal">0,00 €</span></div>
+    <p class="minnote">Precios por unidad según tarifa. </p>
+    <div class="actions">
+    </div>
+    <div class="msg" id="vc_copiedBud"></div>
+    <button class="btn ghost" id="vc_btnPrintBud">🖨 Imprimir / Guardar presupuesto en PDF</button>
+    <button class="btn acc" id="vc_btnGoPres">Crear presentación para el cliente →</button>
+  </section>
+
+  <!-- PASO 4 -->
+  <section class="card hidden" id="vc_step4">
+    <h2 class="step"><span class="num">4</span> Presentación</h2>
+    <p class="hint">Sube las imágenes que te ha dado ChatGPT. La presentación junta portada, las 2 escenas con sus artículos y el presupuesto con lo que hayas dejado marcado.</p>
+    <div class="pslots" id="vc_presSlots"></div>
+    <button class="btn acc" id="vc_btnPres">Abrir presentación</button>
+    <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
+  </section>
+  <div class="seal">Signes Collections · Desde 1968 · v77</div>
+</div>
+</div><!-- /#appvc -->
 
 <div id="pres"></div>
 <script>
@@ -1232,7 +1380,8 @@ const FRAME={
  pc:'natural light-wood frame',
  hr:'natural oak frame',
  pa:'thin natural light-wood frame',
- mj:'thin white frame'
+ mj:'thin white frame',
+ vc:'thin black frame'
 };
 const SCENE_BG={
  ns:'warm wooden table, Mediterranean atmosphere, soft natural light',
@@ -1240,7 +1389,8 @@ const SCENE_BG={
  pc:'warm neutral surface (aged linen or light kraft), warm natural light, soft shadows',
  hr:'neutral natural background (linen / kraft tones), soft natural light, sober artisanal atmosphere',
  pa:d=>d.env==='nieve'?'warm wooden chalet table, cosy winter light, a hint of snowy mountains through the window':'bright neutral background, sunny atmosphere, soft natural light',
- mj:'bright, sunny Mediterranean setting, light stone or white tiled surface, soft natural light'
+ mj:'bright, sunny Mediterranean setting, light stone or white tiled surface, soft natural light',
+ vc:'clean, bright, minimal Scandinavian-style setting: light wood table, white wall, soft daylight'
 };
 
 function scenePrompt(k,n){
@@ -1445,13 +1595,35 @@ TEXT: only the destination name${d.region?', the region':''}${d.frase?' and the 
   }
 };
 
+
+/* ---------------- VECTOR ---------------- */
+COLS.vc={
+  name:'VECTOR', label:'Vector',
+  promptA(d){
+    const L=langRule(d.lang,d.destino);
+    const col=d.lcolor||'dark slate grey (#37474F)';
+    const bg=d.fondo==='cream'?'a warm cream / off-white':d.fondo==='tint'?`a very pale tint of the line colour`:'pure white';
+    return `${stepAHead('VECTOR',d)}
+
+${briefBlock(d)}
+
+${fidelityBlock(d)}
+
+STYLE — Vector: a clean, minimalist LINE-ART ICON, like a modern flat outline illustration. ONE single line colour: ${col}, on ${bg} background. Uniform monoline strokes of the SAME thickness everywhere, rounded line ends, no shading, no gradients, no textures, no colour fills (only the background colour inside the shapes). Simplify each building into its essential geometric outline — towers, spires, domes, arches, windows reduced to simple dashes, dots and rectangles — but keep its real silhouette and proportions instantly recognisable. Several landmarks of ${d.destino} may stand side by side on one straight ground line, like a small skyline. A few simple outline clouds (2–3) floating above. Lots of empty space around: elegant, airy, modern.
+
+LAYOUT (vertical 2:3): the skyline / icon centred in the middle of the image, standing on a thin horizontal ground line; below it, "${d.destino.toUpperCase()}" in a bold, clean geometric sans-serif in the same line colour, centred${d.region?`; under it, smaller and spaced, "${d.region}"`:''}.${d.frase?`\n• SIGNATURE PHRASE: "${d.frase}" (print exactly as written, never translate it) — small, in a light sans-serif, under the name.`:''}
+
+TEXT: only the destination name${d.region?', the region':''}${d.frase?' and the signature phrase':''}, in ${L}, correctly spelled. No other words, no watermark.`;
+  }
+};
+
 const FIX_SUBJECT=`The subject does not match the reference photo. Redraw ONLY the subject, copying the photo exactly: same silhouette, same proportions, same number of arches / towers / floors / windows and the same viewpoint. Keep everything else (style, texts, colours, layout) exactly as it is.`;
 const FIX_PRODUCTS=`The products have changed the design or the shapes. Use EXACTLY the approved artwork from earlier in this conversation on every product — the same drawing of the subject, the same texts and colours — and keep the real product shapes from the product photos. Do not redraw or reinterpret the artwork. Keep the same products, composition and lighting.`;
 
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
-const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa',mj:'appmj'};
+const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa',mj:'appmj',vc:'appvc'};
 function enterCol(k,fromHistory){
   if(!fromHistory){ try{ history.pushState({col:k},'','#'+k); }catch(e){} }
   document.getElementById('home').classList.add('hidden');
@@ -1465,6 +1637,7 @@ function enterPopCollage(){enterCol('pc');}
 function enterHeritage(){enterCol('hr');}
 function enterPanorama(){enterCol('pa');}
 function enterMajolica(){enterCol('mj');}
+function enterVector(){enterCol('vc');}
 function showHome(){
   Object.values(APP_IDS).forEach(id=>$(id).classList.add('hidden'));
   closePresentation&&$('pres').classList.contains('on')&&closePresentation();
@@ -1484,7 +1657,7 @@ window.addEventListener('popstate',e=>{
 /* ============================================================
    FOTOS DE REFERENCIA
    ============================================================ */
-const FOTOS={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[]};
+const FOTOS={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[],vc:[]};
 const MAX_FOTOS=7;
 
 function resizeImage(file){
@@ -1530,7 +1703,7 @@ function getD(k){
   return {
     codigo:val(k+'_codigo'), email:val(k+'_email'), tienda:val(k+'_tienda'),
     destino:val(k+'_destino'), region:val(k+'_region'), lang:val(k+'_lang'),
-    orient:val(k+'_orient'), anio:val(k+'_anio'), anioFund:'', frase:val(k+'_frase'), env:val(k+'_env'), elem:val(k+'_elem'), modo:val(k+'_modo'), mcolor:val(k+'_color'),
+    orient:val(k+'_orient'), anio:val(k+'_anio'), anioFund:'', frase:val(k+'_frase'), env:val(k+'_env'), elem:val(k+'_elem'), modo:val(k+'_modo'), mcolor:val(k+'_color'), lcolor:val('vc_color'), fondo:val('vc_fondo'),
     fotos:FOTOS[k].length
   };
 }
@@ -1592,7 +1765,7 @@ async function copyFix(k,which){
 /* ============================================================
    ESCANDALLO (común a las 4 colecciones)
    ============================================================ */
-const BUD={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[]};
+const BUD={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[],vc:[]};
 function buildBudget(k){
   BUD[k]=PRODUCTS.map(p=>({...p,qty:p.min,activo:true}));
   renderBudget(k);
@@ -1683,7 +1856,7 @@ function showBudget(k){$(k+'_step3').classList.remove('hidden');if(!BUD[k].lengt
    PRESENTACIÓN PARA EL CLIENTE (PDF)
    ============================================================ */
 const PRES_SLOTS=[{key:'art',es:'Dibujo'},{key:'s1',es:'Escena 1 · Cocina y hogar'},{key:'s2',es:'Escena 2 · Accesorios y regalo'}];
-const PRES={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{}};
+const PRES={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{},vc:{}};
 function renderPresSlots(k){
   const box=$(k+'_presSlots'); box.innerHTML='';
   PRES_SLOTS.forEach(s=>{
@@ -1792,7 +1965,7 @@ Object.keys(COLS).forEach(k=>{
 const KEY_STORE='sc_openai_key', MODEL_STORE='sc_openai_model', QUAL_STORE='sc_openai_quality';
 function lsGet(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
 function lsSet(k,v){try{ if(v) localStorage.setItem(k,v); else localStorage.removeItem(k);}catch(e){}}
-const AUTO={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{}};   // blobs: art, s1, s2, s3
+const AUTO={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{},vc:{}};   // blobs: art, s1, s2, s3
 let AUTO_BUSY=false;
 
 function keyState(){return !!lsGet(KEY_STORE);}
@@ -2047,7 +2220,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=76;
+const APP_VERSION=77;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
