@@ -172,6 +172,11 @@
   .mjopt{border:2px solid var(--line);border-radius:6px;padding:4px;background:#fff;cursor:pointer;text-align:center;font-size:11.5px;line-height:1.25;color:#5d5346}
   .mjgrp{grid-column:1/-1;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-top:6px;border-bottom:1px solid var(--line);padding-bottom:2px}
   .mjgrid.two{grid-template-columns:1fr 1fr}
+  .cchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .cchip{display:inline-block;margin:0;padding:0;text-transform:none;letter-spacing:0;font-size:13px}
+  .cchip input{display:none}
+  .cchip span{display:inline-block;border:1.5px solid var(--line);border-radius:16px;padding:6px 10px;background:#fff;font-size:13px;cursor:pointer}
+  .cchip input:checked+span{border-color:var(--accent);background:var(--accent);color:#fff}
   .mjopt img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:3px;margin-bottom:4px}
   .mjopt.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
   .sheetbox{margin-top:6px;font-size:13px;color:var(--accent)}
@@ -462,7 +467,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -596,7 +601,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -635,19 +640,30 @@
         <option value="es">Español</option><option value="ca">Català</option>
         <option value="fr">Français</option><option value="it">Italiano</option></select></div>
     </div>
+    <label>Color del grabado</label>
+    <select id="hr_ink"><option value="auto">✨ Que la IA proponga el color</option><option value="terracota">🟤 Terracota</option><option value="negro">⚫ Negro</option><option value="indigo">🔵 Azul índigo</option><option value="azul">🔵 Azul mediterráneo</option><option value="amarillo">🟡 Amarillo ocre</option><option value="rojo">🔴 Rojo</option><option value="naranja">🟠 Naranja</option><option value="verde">🟢 Verde oliva</option><option value="berenjena">🟣 Berenjena</option></select>
     <label>Borde</label>
     <select id="hr_borde">
       <option value="none">Sin borde</option>
       <option value="line">Línea fina</option>
       <option value="stripes">Rayas verticales</option>
       <option value="mosaic">Mosaico</option></select>
+    <div id="hr_bbox" style="display:none">
+      <label id="hr_binkLbl">Color del borde</label>
+      <select id="hr_bink"><option value="same">Mismo color que el grabado</option><option value="auto">✨ Que la IA proponga otro color</option><option value="terracota">🟤 Terracota</option><option value="negro">⚫ Negro</option><option value="indigo">🔵 Azul índigo</option><option value="azul">🔵 Azul mediterráneo</option><option value="amarillo">🟡 Amarillo ocre</option><option value="rojo">🔴 Rojo</option><option value="naranja">🟠 Naranja</option><option value="verde">🟢 Verde oliva</option><option value="berenjena">🟣 Berenjena</option></select>
+    </div>
     <div id="hr_mbox" style="display:none">
       <label>Tipo de mosaico del borde</label>
       <div class="mjgrid" id="hr_mstyles"></div>
-      <label>Colores del borde</label>
+      <label>Colores del mosaico</label>
       <select id="hr_mcol">
-        <option value="match">A juego con la tinta (monocromo)</option>
+        <option value="match">Un solo color (el del borde)</option>
+        <option value="multi">Varios colores (elígelos abajo)</option>
         <option value="orig">Colores originales del mosaico</option></select>
+      <div id="hr_multibox" style="display:none">
+        <div class="cchips" id="hr_mmulti"><label class="cchip"><input type="checkbox" value="terracota"><span>🟤 Terracota</span></label><label class="cchip"><input type="checkbox" value="negro"><span>⚫ Negro</span></label><label class="cchip"><input type="checkbox" value="indigo"><span>🔵 Azul índigo</span></label><label class="cchip"><input type="checkbox" value="azul"><span>🔵 Azul mediterráneo</span></label><label class="cchip"><input type="checkbox" value="amarillo"><span>🟡 Amarillo ocre</span></label><label class="cchip"><input type="checkbox" value="rojo"><span>🔴 Rojo</span></label><label class="cchip"><input type="checkbox" value="naranja"><span>🟠 Naranja</span></label><label class="cchip"><input type="checkbox" value="verde"><span>🟢 Verde oliva</span></label><label class="cchip"><input type="checkbox" value="berenjena"><span>🟣 Berenjena</span></label></div>
+        <div class="hint">Marca 2, 3 o más colores. Si no marcas ninguno, la IA propone una combinación que vaya con el grabado.</div>
+      </div>
     </div>
     <div class="row">
       <div><label>Código de cliente <span class="opt">(opcional)</span></label><input id="hr_codigo" placeholder="Ej. 30567"></div>
@@ -743,7 +759,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -877,7 +893,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -1018,7 +1034,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#apppa -->
 <div id="appmj" class="hidden" style="--accent:#1F4FA3">
@@ -1166,7 +1182,7 @@
     <button class="btn acc" id="mj_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#appmj -->
 <div id="appvc" class="hidden" style="--accent:#37474F">
@@ -1325,7 +1341,7 @@
     <button class="btn acc" id="vc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#appvc -->
 <div id="appdd" class="hidden" style="--accent:#2a2520">
@@ -1475,7 +1491,7 @@
     <button class="btn acc" id="dd_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#appdd -->
 <div id="appur" class="hidden" style="--accent:#E0632A">
@@ -1609,7 +1625,7 @@
     <button class="btn acc" id="ur_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v90</div>
+  <div class="seal">Signes Collections · Desde 1968 · v91</div>
 </div>
 </div><!-- /#appur -->
 
@@ -1773,6 +1789,12 @@ ${n===1?'FINAL CHECK — the ceramic trivet is a PERFECT 20×20 cm SQUARE with i
 /* ============================================================
    COLECCIONES (estilo del dibujo)
    ============================================================ */
+const HR_INK={terracota:'TERRACOTTA (warm reddish-brown earth)',negro:'BLACK (deep charcoal black)',indigo:'DEEP INDIGO BLUE',azul:'MEDITERRANEAN COBALT BLUE',amarillo:'OCHRE / MUSTARD YELLOW (dark enough to read well on cream)',rojo:'BRICK RED',naranja:'BURNT ORANGE',verde:'OLIVE GREEN',berenjena:'AUBERGINE (deep purple)'};
+function hrBorderColour(d){
+  if(!d.bink||d.bink==='same') return 'the SAME ink colour as the engraving';
+  if(d.bink==='auto') return 'ONE second colour of your choice that harmonises with the ink of the engraving (a warm or cool accent such as terracotta, ochre, indigo or olive — different from the ink)';
+  return 'the colour '+HR_INK[d.bink]+' (chosen by the client; it may differ from the ink of the engraving)';
+}
 const COLS={
  ns:{
   name:'NOSTALGICS', label:'Nostalgics', refPrefix:'',
@@ -1868,7 +1890,7 @@ ${briefBlock(d)}
 
 ${fidelityBlock(d)}
 
-STYLE — Esencia & Origen: artisanal ENGRAVING / LINOCUT / etching printed in ONE single ink colour (monochrome) on natural cream paper. Hand-made, sober, timeless, museum-quality craft. Choose the ink colour that best suits ${d.destino}: aubergine, deep indigo, olive green, terracotta brown or charcoal. No gradients, no pop colours, no photographic rendering.
+STYLE — Esencia & Origen: artisanal ENGRAVING / LINOCUT / etching printed in ONE single ink colour (monochrome) on natural cream paper. Hand-made, sober, timeless, museum-quality craft. ${HR_INK[d.ink]?`INK COLOUR (chosen by the client): ${HR_INK[d.ink]} — use exactly this one colour for the whole engraving, the stamp and all the texts.`:`Choose the ink colour that best suits ${d.destino}: terracotta, black, deep indigo, Mediterranean blue, ochre yellow, brick red, burnt orange, olive green or aubergine.`} No gradients, no pop colours, no photographic rendering.
 
 LAYOUT (vertical 2:3):
 • "${d.destino}" in an elegant engraved serif at the top; below it, smaller, ${d.region?`"${d.region}"`:`the region or tourist area it belongs to (never repeat the same name; leave it out if there is no larger region)`}.
@@ -1876,7 +1898,7 @@ LAYOUT (vertical 2:3):
 • A small circular stamp with an engraving of the LOCAL SYMBOL of ${d.destino}${d.orient?' (if the client brief mentions a symbol, use that one)':''}. Choose the symbol that is MOST DISTINCTIVE of this specific town, the one a local would recognise as its own — a typical product, boat, animal, plant, craft or tradition of the town itself (e.g. Collioure → a Catalan fishing boat or an anchovy; Cadaqués → a llaüt boat; Besalú → its medieval bridge; Camargue → a bull or a flamingo; Grasse → a jasmine flower; Roses → a sea urchin or a fishing boat; Annecy → a swan). Use a generic regional emblem (bee, cicada, lavender, olive branch) ONLY if the town has no more specific symbol. Never repeat the same symbol for every destination. ${stamp}.
 • ${d.frase?`Just below the stamp, the client's SIGNATURE PHRASE: "${d.frase}" (print exactly as written, never translate it), small and elegant, in italic serif.`:'A short poetic tagline just below the stamp.'}
 
-${d.borde==='stripes'?`BORDER — VERTICAL STRIPES: along the LEFT and RIGHT edges of the design, a band of bold vertical stripes (like a classic French striped tea towel / marinière), alternating the SAME ink colour as the engraving and the cream paper, about 4–5 stripes per side covering roughly 10–12% of the width on each side. The stripes are perfectly vertical, parallel and evenly spaced, with a slightly worn hand-printed edge that matches the engraving; the top and bottom edges have NO stripes. They are part of the design and must appear on the products too. The engraving and texts stay in the cream centre and never touch the stripes.\n\n`:d.borde==='line'?`BORDER: a thin engraved rectangular frame line in the ink colour, with a generous margin, around the whole design (it may have small decorative corner ornaments, like an old engraved print).\n\n`:d.borde==='mosaic'?`BORDER — MOSAIC FRAME: a decorative tile border all around the design (a band about 7–8% of the image width on every side), made of ${(MJ_STYLES.find(x=>x.id===HR_MSEL)||MJ_STYLES[0]).en}. The LAST attached image shows this exact mosaic type: copy its tile layout and motifs, ${d.bcol==='orig'?'keeping its original colours':'but printed in the SAME single ink colour as the engraving (monochrome, light and dark tones of that ink on cream) so the whole piece stays one-colour'}. The tiles are drawn with a fine engraved / hand-printed feel that matches the linocut style. Inside the border the cream background, the engraving and the texts stay exactly as described — the border never touches or covers them.\n\n`:''}TEXT: only these words, in ${L}, correctly spelled. Do not print "Signes Collections" on the artwork.`;
+${d.borde==='stripes'?`BORDER — VERTICAL STRIPES: along the LEFT and RIGHT edges of the design, a band of bold vertical stripes (like a classic French striped tea towel / marinière), alternating ${hrBorderColour(d)} and the cream paper, about 4–5 stripes per side covering roughly 10–12% of the width on each side. The stripes are perfectly vertical, parallel and evenly spaced, with a slightly worn hand-printed edge that matches the engraving; the top and bottom edges have NO stripes. They are part of the design and must appear on the products too. The engraving and texts stay in the cream centre and never touch the stripes.\n\n`:d.borde==='line'?`BORDER: a thin engraved rectangular frame line in ${hrBorderColour(d)}, with a generous margin, around the whole design (it may have small decorative corner ornaments, like an old engraved print).\n\n`:d.borde==='mosaic'?`BORDER — MOSAIC FRAME: a decorative tile border all around the design (a band about 7–8% of the image width on every side), made of ${(MJ_STYLES.find(x=>x.id===HR_MSEL)||MJ_STYLES[0]).en}. The LAST attached image shows this exact mosaic type: copy its tile layout and motifs, ${d.bcol==='orig'?'keeping its original colours':d.bcol==='multi'?(d.mmulti.length?'recoloured in SEVERAL colours: '+d.mmulti.map(c=>HR_INK[c]).join(', ')+' (plus the cream of the paper), distributed harmoniously across the tiles like a real hand-painted mosaic':'recoloured in a harmonious palette of 3 or 4 colours of your choice that suits the destination and goes well with the ink of the engraving (plus the cream of the paper)')+'; the engraving and the texts in the centre keep their single ink colour':'but printed in ONE single colour: '+hrBorderColour(d)+' (light and dark tones of that colour on cream)'}. The tiles are drawn with a fine engraved / hand-printed feel that matches the linocut style. Inside the border the cream background, the engraving and the texts stay exactly as described — the border never touches or covers them.\n\n`:''}TEXT: only these words, in ${L}, correctly spelled. Do not print "Signes Collections" on the artwork.`;
   },
  },
 };
@@ -2106,7 +2128,7 @@ function getD(k){
   return {
     codigo:val(k+'_codigo'), email:val(k+'_email'), tienda:val(k+'_tienda'),
     destino:val(k+'_destino'), region:val(k+'_region'), lang:val(k+'_lang'),
-    orient:val(k+'_orient'), anio:val(k+'_anio'), anioFund:'', frase:val(k+'_frase'), env:val(k+'_env'), elem:val(k+'_elem'), modo:val(k+'_modo'), mcolor:val(k+'_color'), lcolor:val('vc_color'), fondo:val('vc_fondo'), borde:val(k==='hr'?'hr_borde':'vc_borde'), bcol:val(k==='hr'?'hr_mcol':'vc_mcol'),
+    orient:val(k+'_orient'), anio:val(k+'_anio'), anioFund:'', frase:val(k+'_frase'), env:val(k+'_env'), elem:val(k+'_elem'), modo:val(k+'_modo'), mcolor:val(k+'_color'), lcolor:val('vc_color'), fondo:val('vc_fondo'), borde:val(k==='hr'?'hr_borde':'vc_borde'), bcol:val(k==='hr'?'hr_mcol':'vc_mcol'), ink:val('hr_ink'), bink:val('hr_bink'), mmulti:[...document.querySelectorAll('#hr_mmulti input:checked')].map(x=>x.value),
     fotos:FOTOS[k].length
   };
 }
@@ -2623,7 +2645,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=90;
+const APP_VERSION=91;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
@@ -2678,12 +2700,12 @@ const APP_VERSION=90;
   draw(); const u=()=>{mb.style.display=sel.value==='mosaic'?'':'none';}; sel.onchange=u; u();})();
 
 /* Esencia & Origen: borde y selector de mosaico */
-(function(){const sel=$('hr_borde'),mb=$('hr_mbox'),box=$('hr_mstyles'); if(!sel)return;
+(function(){const sel=$('hr_borde'),mb=$('hr_mbox'),box=$('hr_mstyles'),bb=$('hr_bbox'),mc=$('hr_mcol'),mx=$('hr_multibox'); if(!sel)return;
   try{const v=parseInt(lsGet('sc_hr_mstyle'));if(v)HR_MSEL=v;}catch(e){}
   const opt=st=>`<div class="mjopt${st.id===HR_MSEL?' sel':''}" data-id="${st.id}"><img src="${st.th}" alt="">${String(st.id).padStart(2,'0')} · ${st.es}</div>`;
   const draw=()=>{box.innerHTML=['Azulejo','Trencadís'].map(g=>`<div class="mjgrp">${g}</div>`+MJ_STYLES.filter(st=>st.grp===g).map(opt).join('')).join('');
     box.querySelectorAll('.mjopt').forEach(el=>el.onclick=()=>{HR_MSEL=+el.dataset.id;lsSet('sc_hr_mstyle',String(HR_MSEL));draw();});};
-  draw(); const u=()=>{mb.style.display=sel.value==='mosaic'?'':'none';}; sel.onchange=u; u();})();
+  draw(); const u=()=>{const m=sel.value==='mosaic'; mb.style.display=m?'':'none'; mx.style.display=m&&mc.value==='multi'?'':'none'; bb.style.display=(sel.value!=='none'&&!(m&&mc.value!=='match'))?'':'none'; $('hr_binkLbl').textContent=m?'Color del mosaico':sel.value==='stripes'?'Color de las rayas':'Color de la línea';}; sel.onchange=u; mc.onchange=u; u();})();
 
 /* Opción directa: usar un diseño propio (master) */
 async function useOwnMaster(k,file){
