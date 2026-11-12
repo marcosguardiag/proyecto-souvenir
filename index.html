@@ -245,6 +245,27 @@
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   }
 
+  #apptm #tm_btnGen, #apptm #tm_btnOwn, #apptm .manual, #apptm #tm_btnOwn + input + .hint, #apptm #tm_autoGo, #apptm #tm_autoGo + .msg + .hint, #apptm #tm_step2 .autobox > .phase small{display:none}
+  .tmgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px}
+  .tmm{position:relative;border:2px dashed var(--accent);border-radius:6px;background:#fbf8f1;aspect-ratio:2/3;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;color:var(--accent);font-size:11px;overflow:hidden;text-align:center}
+  .tmm b{font-size:24px;font-weight:300;line-height:1}
+  .tmm.has{border-style:solid}
+  .tmm img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tmm .tag{position:absolute;left:4px;bottom:4px;background:var(--accent);color:#fff;border-radius:10px;padding:1px 7px;font-size:11px;z-index:1}
+  .tmm .ddx{width:26px;height:26px;line-height:26px;font-size:13px;top:4px;right:4px;z-index:1}
+  .tmprods{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+  .tmp{display:flex;flex-direction:column;gap:4px;border:2px solid var(--line);border-radius:6px;background:#fff;padding:6px;cursor:pointer;font-size:12.5px;line-height:1.25;color:#3a332a}
+  .tmp .top{display:flex;gap:6px;align-items:center}
+  .tmp img{width:38px;height:38px;object-fit:contain;flex:none}
+  .tmp.sel{border-color:var(--accent);background:#f7f2ea}
+  .tmp.used{opacity:.45;cursor:default}
+  .tmp .ms{display:flex;gap:4px;flex-wrap:wrap}
+  .tmp .ms button{border:1.5px solid var(--accent);background:#fff;color:var(--accent);border-radius:12px;padding:2px 8px;font-size:12px;cursor:pointer}
+  .tmp .ms button.on{background:var(--accent);color:#fff}
+  .tmgal{display:grid;gap:10px;margin-top:8px}
+  .tmgal .gi{border:1px solid var(--line);border-radius:6px;padding:6px;background:#fff}
+  .tmgal img{width:100%;display:block;border-radius:4px}
+  .tmgal small{display:block;margin-top:4px;color:#6b6152}
   #appdd #dd_btnGen, #appdd #dd_btnOwn, #appdd .manual, #appdd #dd_step1 .hint + .hint, #appdd #dd_btnOwn + input + .hint{display:none}
   .ddslot{position:relative;margin-top:6px;border:2px dashed var(--accent);border-radius:6px;background:#fbf8f1;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;color:var(--accent);font-size:14px;overflow:hidden}
   .ddslot b{font-size:34px;font-weight:300;line-height:1}
@@ -329,9 +350,19 @@
       <div class="lname" style="color:#E0632A">Urban</div>
       <div class="ldesc">Cartel contemporáneo · la vida de la calle</div>
     </div>
+    <div class="linecard go" onclick="enterDirect()">
+      <span class="badge" style="background:#2a2520;color:#fff">Taller</span>
+      <div class="lname" style="color:#2a2520">Taller de colección · Un máster</div>
+      <div class="ldesc">Sube un diseño ya hecho y se aplica a las 2 escenas</div>
+    </div>
+    <div class="linecard go" onclick="enterMulti()">
+      <span class="badge" style="background:#5B4636;color:#fff">Taller</span>
+      <div class="lname" style="color:#5B4636">Taller de colección · Multimáster</div>
+      <div class="ldesc">Hasta 4 másters en los productos que elijas</div>
+    </div>
   </div>
   <div class="home-links">
-    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a><span class="sep"> · </span><a onclick="enterMajolica()">Majolica</a><span class="sep"> · </span><a onclick="enterVector()">Vector</a><span class="sep"> · </span><a onclick="enterUrban()">Urban</a>
+    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a><span class="sep"> · </span><a onclick="enterMajolica()">Majolica</a><span class="sep"> · </span><a onclick="enterVector()">Vector</a><span class="sep"> · </span><a onclick="enterUrban()">Urban</a><span class="sep"> · </span><a onclick="enterDirect()">Taller · Un máster</a><span class="sep"> · </span><a onclick="enterMulti()">Taller · Multimáster</a>
   </div>
 </div>
 
@@ -468,7 +499,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -602,7 +633,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -760,7 +791,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -894,7 +925,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -1035,7 +1066,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#apppa -->
 <div id="appmj" class="hidden" style="--accent:#1F4FA3">
@@ -1183,7 +1214,7 @@
     <button class="btn acc" id="mj_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#appmj -->
 <div id="appvc" class="hidden" style="--accent:#37474F">
@@ -1342,13 +1373,153 @@
     <button class="btn acc" id="vc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#appvc -->
+<div id="apptm" class="hidden" style="--accent:#5B4636">
+<div class="subbar">
+  <div class="collection-tag" style="color:#5B4636;font-size:16px">Taller de colección · Multimáster</div>
+  <div class="slogan">Hasta 4 másters en los productos que elijas</div>
+</div>
+<div class="wrap">
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
+
+  <!-- PASO 1 -->
+  <section class="card" id="tm_step1">
+    <h2 class="step"><span class="num">1</span> Proyecto del cliente</h2>
+    <p class="hint">Escribe el destino, sube hasta 4 másters ya hechos y elige hasta 4 productos por composición (máximo 8 productos en 2 composiciones).</p>
+    <div class="row">
+      <div><label>Destino</label><input id="tm_destino" placeholder="Ej. Nice"></div>
+      <div><label>Región <span class="opt">(opcional)</span></label><input id="tm_region" placeholder="Recomendado · Ej. Haute-Savoie, Costa Brava"></div>
+    </div>
+    
+    <div class="fotoblock" style="display:none">
+    <label>Foto de referencia <span class="opt">(la 1.ª es la principal · máx. 7)</span></label>
+    <div class="fotozone">
+      <div id="tm_thumbs" style="display:contents"></div>
+      <button type="button" class="addfoto" id="tm_addFoto"><b>+</b>Añadir foto</button>
+    </div>
+    <input type="file" id="tm_file" accept="image/*" multiple style="display:none">
+    <div class="msg" id="tm_fotoMsg" style="text-align:left"></div>
+    
+    <p class="hint" style="margin:0">La foto es lo que garantiza la fidelidad: el monumento que quiere el cliente, una postal o una pieza que te haya enviado.</p>
+    </div>
+    <div class="row">
+      
+      <div><label>Idioma de los textos</label><select id="tm_lang">
+        <option value="">Automático (idioma local)</option>
+        <option value="es">Español</option><option value="ca">Català</option>
+        <option value="fr">Français</option><option value="it">Italiano</option></select></div>
+    </div>
+    <label>Másters <span class="opt">(hasta 4 · toca para añadir o cambiar)</span></label>
+    <div class="tmgrid" id="tm_masters"></div>
+    <input type="file" id="tm_mfile" accept="image/*" style="display:none">
+    <label>Productos <span class="opt" id="tm_pcount">(elige hasta 4)</span></label>
+    <div class="tmprods" id="tm_prods"></div>
+    <p class="hint" style="margin:6px 0 0">Debajo de cada producto elegido, toca M1, M2… para decidir qué máster lleva.</p>
+    <button class="btn acc" id="tm_go" style="margin-top:14px">✦ Crear imagen con estos productos</button>
+    <div class="msg" id="tm_goMsg"></div>
+    <div class="row">
+      <div><label>Código de cliente <span class="opt">(opcional)</span></label><input id="tm_codigo" placeholder="Ej. 30567"></div>
+      <div><label>Email <span class="opt">(opcional)</span></label><input id="tm_email" type="email" placeholder="tienda@correo.com"></div>
+    </div>
+    <button class="btn acc" id="tm_btnGen">Crear prompts</button>
+    <button class="btn ghost" id="tm_btnOwn">⬆ Ya tengo el diseño: aplicarlo a los productos</button>
+    <input type="file" id="tm_ownFile" accept="image/*" style="display:none">
+    <p class="hint" style="margin:6px 0 0;text-align:center">Opción directa: sube tu propio diseño (master) y la web lo aplica en las 2 escenas, sin crear uno nuevo.</p>
+  </section>
+
+  <!-- PASO 2 -->
+  <section class="card hidden" id="tm_step2">
+    <h2 class="step"><span class="num">2</span> Crear las imágenes</h2>
+    <div class="summary" id="tm_summary"></div>
+
+    <div class="autobox">
+      <div class="phase" style="margin-top:6px">✦ Modo automático<small>La web crea el dibujo y las 3 escenas con OpenAI, enviando ella sola tus fotos y las hojas de producto.</small></div>
+      <div class="keyrow">
+        <input id="tm_keyIn" type="password" autocomplete="off" placeholder="Pega aquí tu clave de OpenAI (sk-…)">
+        <button type="button" class="abtn" id="tm_keySave">Guardar</button>
+        <span id="tm_keyOk" class="keyok">✓ Clave guardada en este iPhone · <a href="javascript:void(0)" id="tm_keyDel">borrar</a></span>
+      </div>
+      <div class="row">
+        <div><label>Modelo</label><select id="tm_model"></select></div>
+        <div><label>Calidad</label><select id="tm_quality"><option value="high">Alta (presentación)</option><option value="medium">Media (pruebas, más barata)</option></select></div>
+      </div>
+      <button class="btn acc" id="tm_autoGo">✦ Crear proyecto automáticamente</button>
+      <div class="msg" id="tm_autoMsg"></div>
+      <p class="hint" style="margin:4px 0 0">Cada imagen tarda entre 30 s y 2 min. No bloquees la pantalla ni cambies de app mientras genera.</p>
+      <div id="tm_autoCards" style="display:none"></div>
+    </div>
+
+    <details class="manual"><summary>Hacerlo a mano en ChatGPT (sin clave)</summary>
+    <div class="howto"><b>Cómo hacerlo en ChatGPT (todo en el mismo chat):</b>
+      <ol>
+        <li>Abre un <b>chat nuevo</b>, adjunta la foto de referencia y pega el <b>Prompt 1</b>. Saldrá solo el dibujo.</li>
+        <li>Comprueba que el monumento se parece a la foto. Si no, pega la <i>corrección</i>.</li>
+        <li>Con el dibujo aprobado, pega las <b>escenas 1 y 2</b> una a una. Cada botón envía también la hoja con las fotos reales de esos artículos (varios ángulos y detalles) para que ChatGPT copie su forma.</li>
+        <li>Guarda las 3 imágenes en tu carrete: las usarás en el paso 4 para la presentación.</li>
+      </ol>
+    </div>
+
+    <div class="phase">Prompt 1 · Dibujo<small>Solo la ilustración, fiel a la foto</small></div>
+    <div class="prompt-box short" id="tm_pA"></div>
+    <button class="btn acc" id="tm_shareBtn">Copiar prompt 1</button>
+    <div class="msg" id="tm_msgA"></div>
+
+    <div class="phase">Escena 1 · Cocina y hogar<small>Mug, posavasos, tabla, paño, reposacucharas, salvamanteles y bolsa</small></div>
+    <div class="prompt-box short" id="tm_pS1"></div>
+    <button class="btn gold" id="tm_shareS1">📎 Enviar fotos de producto y copiar escena 1</button>
+    <div class="msg" id="tm_msgS1"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 1</summary><img id="tm_sheet1" alt="Hoja de productos escena 1"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+    <div class="phase">Escena 2 · Accesorios y regalo<small>Espejos y abanicos con expositor, monederos, estuche, cuadro, termo, caja libro y bola de Navidad</small></div>
+    <div class="prompt-box short" id="tm_pS2"></div>
+    <button class="btn gold" id="tm_shareS2">📎 Enviar fotos de producto y copiar escena 2</button>
+    <div class="msg" id="tm_msgS2"></div>
+    <details class="sheetbox"><summary>Ver hoja de productos de la escena 2</summary><img id="tm_sheet2" alt="Hoja de productos escena 2"><small>Mantén pulsada la imagen para guardarla en Fotos.</small></details>
+
+
+    <div class="phase" style="font-size:15px">¿No ha salido fiel?<small>Copia la corrección y pégala en la misma conversación</small></div>
+    <div class="fixrow">
+      <button type="button" id="tm_fixS">Corregir el monumento</button>
+      <button type="button" id="tm_fixP">Los productos cambian el dibujo</button>
+    </div>
+    <div class="msg" id="tm_msgFix"></div>
+    </details>
+
+    <button class="btn ghost" id="tm_btnGoBud">Ver presupuesto →</button>
+  </section>
+
+  <!-- PASO 3 -->
+  <section class="card hidden" id="tm_step3">
+    <h2 class="step"><span class="num">3</span> Presupuesto</h2>
+    <p class="hint">Quita o deja cada artículo para afinar el presupuesto. Las cantidades suben en múltiplos del mínimo.</p>
+    <div class="summary" id="tm_budHead"></div>
+    <div class="budlist" id="tm_budBody"></div>
+    <div class="totalbar"><span class="lab">TOTAL <small id="tm_budCount" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="tm_budTotal">0,00 €</span></div>
+    <p class="minnote">Precios por unidad según tarifa. </p>
+    <div class="actions">
+    </div>
+    <div class="msg" id="tm_copiedBud"></div>
+    <button class="btn ghost" id="tm_btnPrintBud">🖨 Imprimir / Guardar presupuesto en PDF</button>
+    <button class="btn acc" id="tm_btnGoPres">Crear presentación para el cliente →</button>
+  </section>
+
+  <!-- PASO 4 -->
+  <section class="card hidden" id="tm_step4">
+    <h2 class="step"><span class="num">4</span> Presentación</h2>
+    <p class="hint">Sube las imágenes que te ha dado ChatGPT. La presentación junta portada, las 2 escenas con sus artículos y el presupuesto con lo que hayas dejado marcado.</p>
+    <div class="pslots" id="tm_presSlots"></div>
+    <button class="btn acc" id="tm_btnPres">Abrir presentación</button>
+    <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
+  </section>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+</div>
+</div><!-- /#apptm -->
 <div id="appdd" class="hidden" style="--accent:#2a2520">
 <div class="subbar">
-  <div class="collection-tag" style="color:#2a2520;font-size:16px">Diseño directo</div>
-  <div class="slogan">Aplicar un diseño ya hecho a los productos</div>
+  <div class="collection-tag" style="color:#2a2520;font-size:16px">Taller de colección · Un máster</div>
+  <div class="slogan">Aplica un diseño ya hecho a las 2 escenas</div>
 </div>
 <div class="wrap">
   <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
@@ -1356,7 +1527,7 @@
   <!-- PASO 1 -->
   <section class="card" id="dd_step1">
     <h2 class="step"><span class="num">1</span> Proyecto del cliente</h2>
-    <p class="hint">Escribe el destino y sube el diseño ya hecho: se aplica directamente a los productos, sin crear uno nuevo.</p>
+    <p class="hint">Escribe el destino y sube el diseño ya hecho: se aplica directamente a los productos de las 2 escenas, sin crear uno nuevo.</p>
     <div class="row">
       <div><label>Destino</label><input id="dd_destino" placeholder="Ej. Nice"></div>
       <div><label>Región <span class="opt">(opcional)</span></label><input id="dd_region" placeholder="Recomendado · Ej. Haute-Savoie, Costa Brava"></div>
@@ -1492,7 +1663,7 @@
     <button class="btn acc" id="dd_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#appdd -->
 <div id="appur" class="hidden" style="--accent:#E0632A">
@@ -1626,7 +1797,7 @@
     <button class="btn acc" id="ur_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v96</div>
+  <div class="seal">Signes Collections · Desde 1968 · v97</div>
 </div>
 </div><!-- /#appur -->
 
@@ -2044,8 +2215,12 @@ TEXT: only the destination name${d.region?', the region':''}${d.frase?' and the 
 
 
 /* ---------------- DISEÑO DIRECTO (oculto) ---------------- */
+COLS.tm={
+  name:'TALLER DE COLECCIÓN · MULTIMÁSTER', label:'Taller de colección · Multimáster',
+  promptA(d){ return `Multimaster collection for ${d.destino}: the attached master designs are applied to the chosen products.`; }
+};
 COLS.dd={
-  name:'DISEÑO DIRECTO', label:'Diseño directo',
+  name:'TALLER DE COLECCIÓN · UN MÁSTER', label:'Taller de colección · Un máster',
   promptA(d){ return `Use the attached artwork exactly as it is, as the master design for the souvenir collection of ${d.destino}. Do not redraw it.`; }
 };
 
@@ -2055,7 +2230,7 @@ const FIX_PRODUCTS=`The products have changed the design or the shapes. Use EXAC
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
-const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa',mj:'appmj',vc:'appvc',ur:'appur',dd:'appdd'};
+const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa',mj:'appmj',vc:'appvc',ur:'appur',dd:'appdd',tm:'apptm'};
 function enterCol(k,fromHistory){
   if(!fromHistory){ try{ history.pushState({col:k},'','#'+k); }catch(e){} }
   document.getElementById('home').classList.add('hidden');
@@ -2072,6 +2247,7 @@ function enterMajolica(){enterCol('mj');}
 function enterVector(){enterCol('vc');}
 function enterUrban(){enterCol('ur');}
 function enterDirect(){enterCol('dd');}
+function enterMulti(){enterCol('tm');}
 function showHome(){
   Object.values(APP_IDS).forEach(id=>$(id).classList.add('hidden'));
   closePresentation&&$('pres').classList.contains('on')&&closePresentation();
@@ -2091,7 +2267,7 @@ window.addEventListener('popstate',e=>{
 /* ============================================================
    FOTOS DE REFERENCIA
    ============================================================ */
-const FOTOS={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[],vc:[],ur:[],dd:[]};
+const FOTOS={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[],vc:[],ur:[],dd:[],tm:[]};
 const MAX_FOTOS=7;
 
 function resizeImage(file){
@@ -2199,8 +2375,9 @@ async function copyFix(k,which){
 /* ============================================================
    ESCANDALLO (común a las 4 colecciones)
    ============================================================ */
-const BUD={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[],vc:[],ur:[],dd:[]};
+const BUD={ns:[],mp:[],pc:[],hr:[],pa:[],mj:[],vc:[],ur:[],dd:[],tm:[]};
 function buildBudget(k){
+  if(k==='tm'){ tmBuildBudget(); return; }
   BUD[k]=PRODUCTS.map(p=>({...p,qty:p.min,activo:true}));
   renderBudget(k);
 }
@@ -2209,12 +2386,13 @@ function projRef(k,ref){
   if(!raw) return ref;
   return raw[0]+ref+raw[raw.length-1];
 }
-function budTotal(k){return BUD[k].filter(p=>p.activo).reduce((s,p)=>s+p.precio*p.qty,0);}
+function units(p){return p.qty*(p.designs?p.designs.length:1);}
+function budTotal(k){return BUD[k].filter(p=>p.activo).reduce((s,p)=>s+p.precio*units(p),0);}
 function renderBudget(k){
   const d=getD(k), cli=d.codigo||'CLIENTE';
   $(k+'_budHead').innerHTML=`<b>${d.destino||''}</b>${d.region?' · '+d.region:''}${d.tienda?' · '+d.tienda:''} · Cliente <b>${cli}</b>`;
   const body=$(k+'_budBody'); body.innerHTML='';
-  const groups=[...SCENES.map(s=>({n:s.n,title:`Escena ${s.n} · ${s.es}`,img:PRES[k]['s'+s.n]})),{n:0,title:'Pieza de presentación',img:PRES[k].art}];
+  const groups=k==='tm'?TM.rounds.map((r,j)=>({n:j+1,title:`Composición ${j+1}`,img:r.url})):[...SCENES.map(s=>({n:s.n,title:`Escena ${s.n} · ${s.es}`,img:PRES[k]['s'+s.n]})),{n:0,title:'Pieza de presentación',img:PRES[k].art}];
   groups.forEach(g=>{
     const items=BUD[k].map((p,i)=>({p,i})).filter(x=>x.p.esc===g.n);
     if(!items.length) return;
@@ -2229,20 +2407,20 @@ function renderBudget(k){
       const right=p.gratis
         ? `<div class="qty"><span>${p.qty} ud</span></div><div class="bimp">Gratis</div>`
         : `<div class="qty"><button onclick="budQty('${k}',${i},-1)" ${(!p.activo||p.qty<=p.min)?'disabled':''}>−</button><span>${p.qty}</span><button onclick="budQty('${k}',${i},1)" ${p.activo?'':'disabled'}>+</button></div>
-           <div class="bimp">${p.activo?eur(p.precio*p.qty):'—'}</div>`;
+           <div class="bimp">${p.activo?eur(p.precio*units(p)):'—'}</div>`;
       it.innerHTML=`
         <div class="chk ${p.activo?'on':''}" onclick="budToggle('${k}',${i})" title="Incluir / quitar"></div>
         ${thumb}
         <div class="bmain"><div class="bname">${p.nombre}</div>
           <div class="bref">${p.gratis?'Pieza de presentación':'Ref. '+projRef(k,p.ref)} · ${p.medidas}</div>
-          <div class="bsub">${p.gratis?'Sin cargo':`${eur(p.precio)}/ud · mín. ${p.min}`}</div></div>
+          <div class="bsub">${p.gratis?'Sin cargo':`${eur(p.precio)}/ud · mín. ${p.min}${p.designs?' por diseño':''}`}</div>${p.designs?tmDesignRow(k,i,p):''}</div>
         <div class="bright">${right}</div>`;
       body.appendChild(it);
     });
   });
   $(k+'_budTotal').textContent=eur(budTotal(k));
   const n=BUD[k].filter(p=>p.activo&&!p.gratis).length;
-  $(k+'_budCount').textContent=`${n} artículo${n===1?'':'s'} · ${BUD[k].filter(p=>p.activo&&!p.gratis).reduce((s,p)=>s+p.qty,0)} uds`;
+  $(k+'_budCount').textContent=`${n} artículo${n===1?'':'s'} · ${BUD[k].filter(p=>p.activo&&!p.gratis).reduce((s,p)=>s+units(p),0)} uds`;
 }
 window.budToggle=(k,i)=>{const p=BUD[k][i];p.activo=!p.activo;renderBudget(k);};
 window.budQty=(k,i,dir)=>{const p=BUD[k][i];if(!p.activo||p.gratis)return;const n=p.qty+dir*p.min;if(n>=p.min)p.qty=n;renderBudget(k);};
@@ -2256,7 +2434,7 @@ function budgetText(k){
     '-'.repeat(50)];
   BUD[k].filter(p=>p.activo).forEach(p=>{
     if(p.gratis){lines.push(`${p.nombre}: gratis (presentación)`);return;}
-    lines.push(`${projRef(k,p.ref)}  ${p.nombre.padEnd(30).slice(0,30)} ${String(p.qty).padStart(4)} x ${eur(p.precio)} = ${eur(p.precio*p.qty)}`);});
+    lines.push(`${projRef(k,p.ref)}  ${p.nombre.padEnd(30).slice(0,30)} ${p.designs?p.qty+' x '+p.designs.length+' dis. =':''}${String(units(p)).padStart(5)} x ${eur(p.precio)} = ${eur(p.precio*units(p))}${p.designs?'  ('+p.designs.map(m=>'M'+m).join(', ')+')':''}`);});
   lines.push('-'.repeat(50),`TOTAL: ${eur(budTotal(k))}`);
   return lines.filter(Boolean).join('\n');
 }
@@ -2290,10 +2468,10 @@ function showBudget(k){$(k+'_step3').classList.remove('hidden');if(!BUD[k].lengt
    PRESENTACIÓN PARA EL CLIENTE (PDF)
    ============================================================ */
 const PRES_SLOTS=[{key:'art',es:'Dibujo'},{key:'s1',es:'Escena 1 · Cocina y hogar'},{key:'s2',es:'Escena 2 · Accesorios y regalo'}];
-const PRES={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{},vc:{},ur:{},dd:{}};
+const PRES={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{},vc:{},ur:{},dd:{},tm:{}};
 function renderPresSlots(k){
   const box=$(k+'_presSlots'); box.innerHTML='';
-  PRES_SLOTS.forEach(s=>{
+  (k==='tm'?[{key:'s1',es:'Composición 1'},{key:'s2',es:'Composición 2'}]:PRES_SLOTS).forEach(s=>{
     const has=PRES[k][s.key];
     const el=document.createElement('div'); el.className='pslot'+(has?' has':'');
     el.innerHTML=`${has?`<img src="${has}" alt="">`:'<b>+</b>'}<span>${s.es}</span>${has?'<button type="button" aria-label="Quitar">×</button>':''}<input type="file" accept="image/*" style="display:none">`;
@@ -2316,7 +2494,7 @@ function openPresentation(k,onlyBudget){
   const fecha=new Date().toLocaleDateString('es-ES',{day:'numeric',month:'long',year:'numeric'});
   const sel=BUD[k].filter(p=>p.activo);
   const items=n=>sel.filter(p=>p.esc===n);
-  const prodCard=p=>`<div class="pp-item"><div class="pp-name">${esc(p.nombre)}</div><div class="pp-meta">${p.gratis?'':'Ref. '+projRef(k,p.ref)+' · '}${esc(p.medidas)}</div><div class="pp-price">${p.gratis?'Sin cargo':eur(p.precio)+'/ud · mín. '+p.min}</div></div>`;
+  const prodCard=p=>`<div class="pp-item"><div class="pp-name">${esc(p.nombre)}</div><div class="pp-meta">${p.gratis?'':'Ref. '+projRef(k,p.ref)+' · '}${esc(p.medidas)}</div><div class="pp-price">${p.gratis?'Sin cargo':eur(p.precio)+'/ud · mín. '+p.min+(p.designs?' por diseño':'')}</div>${p.designs?`<div class="pp-meta">Diseños: ${p.designs.map(m=>'M'+m).join(', ')} · ${units(p)} uds</div>`:''}</div>`;
 
   let html=`<div class="pp-bar"><button type="button" onclick="window.print()">Guardar como PDF / Imprimir</button><button type="button" class="pp-close" onclick="closePresentation()">Cerrar</button></div>`;
   // Portada
@@ -2325,15 +2503,16 @@ function openPresentation(k,onlyBudget){
     <div class="pp-col">${esc(C.label)}</div>
     <h1>${esc(d.destino)}</h1>
     ${d.region?`<div class="pp-reg">${esc(d.region)}</div>`:''}
-    ${P.art?`<div class="pp-art"><img src="${P.art}" alt=""></div>`:''}
+    ${k==='tm'?`<div class="pp-art" style="display:flex;gap:8px;justify-content:center">${TM.masters.map((m,i)=>m?`<div style="flex:1;max-width:24%;text-align:center"><img src="${m.url}" alt="" style="width:100%"><div class="pp-meta">M${i+1}</div></div>`:'').join('')}</div>`:P.art?`<div class="pp-art"><img src="${P.art}" alt=""></div>`:''}
     <div class="pp-for">${d.tienda?`Propuesta para <b>${esc(d.tienda)}</b> · `:''}${d.codigo?`Cliente ${esc(d.codigo)} · `:''}${fecha}</div>
   </section>`;
   // Escenas
-  if(!onlyBudget) SCENES.forEach(s=>{
+  const SC=k==='tm'?TM.rounds.map((r,j)=>({n:j+1,es:'Composición '+(j+1)})):SCENES;
+  if(!onlyBudget) SC.forEach(s=>{
     const its=items(s.n);
     if(!P['s'+s.n] && !its.length) return;
     html+=`<section class="pp-page" style="--pa:${accent}">
-      <div class="pp-h"><span>${esc(C.label)} · ${esc(d.destino)}</span><span>${s.n}/${SCENES.length}</span></div>
+      <div class="pp-h"><span>${esc(C.label)} · ${esc(d.destino)}</span><span>${s.n}/${SC.length}</span></div>
       <h2>${esc(s.es)}</h2>
       ${P['s'+s.n]?`<div class="pp-scene"><img src="${P['s'+s.n]}" alt=""></div>`:`<div class="pp-noimg">Imagen pendiente</div>`}
       <div class="pp-grid">${its.map(prodCard).join('')}</div>
@@ -2342,8 +2521,8 @@ function openPresentation(k,onlyBudget){
   // Escandallo
   const rows=sel.map(p=>p.gratis
     ? `<tr><td>—</td><td>${esc(p.nombre)}</td><td>${esc(p.medidas)}</td><td class="r">—</td><td class="r">${p.qty}</td><td class="r">Gratis</td></tr>`
-    : `<tr><td>${projRef(k,p.ref)}</td><td>${esc(p.nombre)}</td><td>${esc(p.medidas)}</td><td class="r">${eur(p.precio)}</td><td class="r">${p.qty}</td><td class="r">${eur(p.precio*p.qty)}</td></tr>`).join('');
-  const uds=sel.filter(p=>!p.gratis).reduce((s,p)=>s+p.qty,0);
+    : `<tr><td>${projRef(k,p.ref)}</td><td>${esc(p.nombre)}</td><td>${esc(p.medidas)}</td><td class="r">${eur(p.precio)}</td><td class="r">${units(p)}${p.designs?`<br><small>${p.designs.length} dis. × ${p.qty}</small>`:''}</td><td class="r">${eur(p.precio*units(p))}</td></tr>`).join('');
+  const uds=sel.filter(p=>!p.gratis).reduce((s,p)=>s+units(p),0);
   html+=`<section class="pp-page" style="--pa:${accent}">
     <div class="pp-h"><span>${esc(C.label)} · ${esc(d.destino)}</span><span>Presupuesto</span></div>
     <h2>Presupuesto de la colección</h2>
@@ -2399,7 +2578,7 @@ Object.keys(COLS).forEach(k=>{
 const KEY_STORE='sc_openai_key', MODEL_STORE='sc_openai_model', QUAL_STORE='sc_openai_quality';
 function lsGet(k){try{return localStorage.getItem(k)||'';}catch(e){return '';}}
 function lsSet(k,v){try{ if(v) localStorage.setItem(k,v); else localStorage.removeItem(k);}catch(e){}}
-const AUTO={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{},vc:{},ur:{},dd:{}};   // blobs: art, s1, s2, s3
+const AUTO={ns:{},mp:{},pc:{},hr:{},pa:{},mj:{},vc:{},ur:{},dd:{},tm:{}};   // blobs: art, s1, s2, s3
 let AUTO_BUSY=false;
 
 function keyState(){return !!lsGet(KEY_STORE);}
@@ -2655,7 +2834,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=96;
+const APP_VERSION=97;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
@@ -2782,6 +2961,165 @@ Object.keys(COLS).forEach(k=>{
     catch(e){ showErr(k,'art',e.message); }
     finally{ clearInterval(tm); AUTO_BUSY=false; }
   };
+})();
+
+/* ============================================================
+   TALLER DE COLECCIÓN · MULTIMÁSTER
+   ============================================================ */
+const TM={masters:[null,null,null,null], sel:[], rounds:[], cur:null, busy:false, slot:0};
+const TM_MAX_ROUND=4, TM_MAX_TOTAL=8;
+function tmUsedRefs(){return TM.rounds.flatMap(r=>r.items.map(x=>x.ref));}
+function tmLoaded(){return TM.masters.map((m,i)=>m?i+1:0).filter(Boolean);}
+function tmRenderMasters(){
+  const box=$('tm_masters'); if(!box) return;
+  box.innerHTML=TM.masters.map((m,i)=>m
+    ?`<div class="tmm has" data-i="${i}"><img src="${m.url}" alt=""><span class="tag">M${i+1}</span><button type="button" class="ddx" data-x="${i}" aria-label="Borrar">✕</button></div>`
+    :`<div class="tmm" data-i="${i}"><b>+</b>Máster ${i+1}</div>`).join('');
+  box.querySelectorAll('.tmm').forEach(el=>el.onclick=e=>{
+    const x=e.target.closest('.ddx');
+    if(x){ e.stopPropagation(); const i=+x.dataset.x; try{URL.revokeObjectURL(TM.masters[i].url);}catch(_){} TM.masters[i]=null;
+      TM.sel.forEach(s=>{ if(s.m===i+1) s.m=tmLoaded()[0]||0; }); tmRenderMasters(); tmRenderProds(); if(BUD.tm.length){ BUD.tm.forEach(p=>p.designs=p.designs.filter(m=>m!==i+1)); renderBudget('tm'); } return; }
+    TM.slot=+el.dataset.i; $('tm_mfile').click(); });
+}
+function tmRenderProds(){
+  const box=$('tm_prods'); if(!box) return;
+  const used=tmUsedRefs(), loaded=tmLoaded();
+  const left=Math.min(TM_MAX_ROUND, TM_MAX_TOTAL-used.length);
+  $('tm_pcount').textContent=left>0?`(elige hasta ${left} · ${used.length}/${TM_MAX_TOTAL} en la colección)`:'(colección completa: 8 productos)';
+  box.innerHTML=PRODUCTS.map(p=>{
+    const u=used.includes(p.ref), s=TM.sel.find(x=>x.ref===p.ref);
+    const ms=s&&loaded.length?`<div class="ms">${loaded.map(m=>`<button type="button" class="${s.m===m?'on':''}" data-m="${m}">M${m}</button>`).join('')}</div>`:'';
+    return `<div class="tmp${s?' sel':''}${u?' used':''}" data-ref="${p.ref}"><div class="top">${PROD_BLANK[p.ref]?`<img src="${PROD_BLANK[p.ref]}" alt="">`:''}<span>${u?'✓ ':''}${p.nombre}</span></div>${ms}</div>`;}).join('');
+  box.querySelectorAll('.tmp').forEach(el=>el.onclick=e=>{
+    const ref=el.dataset.ref; if(tmUsedRefs().includes(ref)) return;
+    const b=e.target.closest('button[data-m]'); const s=TM.sel.find(x=>x.ref===ref);
+    if(b&&s){ s.m=+b.dataset.m; tmRenderProds(); return; }
+    if(s){ TM.sel=TM.sel.filter(x=>x.ref!==ref); }
+    else{
+      const lim=Math.min(TM_MAX_ROUND, TM_MAX_TOTAL-tmUsedRefs().length);
+      if(TM.sel.length>=lim){ flash('tm_goMsg',lim>0?`Máximo ${lim} productos en esta composición.`:'La colección ya tiene 8 productos.',4000); return; }
+      const L=tmLoaded(); TM.sel.push({ref,m:L.length?L[TM.sel.length%L.length]:0});
+    }
+    tmRenderProds();
+  });
+}
+function tmPrompt(sel){
+  const d=getD('tm');
+  const ms=[...new Set(sel.map(x=>x.m))].sort();
+  const its=sel.map(x=>({x,p:PRODUCTS.find(p=>p.ref===x.ref)}));
+  const tiles=its.filter(o=>PROD_TILE[o.p.ref]);
+  let n=1; const mImg={}; ms.forEach(m=>mImg[m]=n++);
+  const tImg={}; tiles.forEach(o=>tImg[o.p.ref]=n++);
+  return `PRODUCT PHOTOGRAPH — SOUVENIR COLLECTION "${d.destino}"${d.region?' ('+d.region+')':''}.
+Create ONE realistic premium catalogue photograph, retail B2B quality, showing ONLY these ${its.length} products, each printed with its assigned master design.
+
+ATTACHED IMAGES:
+${ms.map(m=>`Image ${mImg[m]} = MASTER M${m} (a finished artwork).`).join('\n')}
+${tiles.map(o=>`Image ${tImg[o.p.ref]} = ${o.p.nombre} (real product photos — copy its exact shape, proportions, material and construction).`).join('\n')}
+
+PRODUCTS AND THEIR DESIGN:
+${its.map(o=>`• ${o.p.nombre.toUpperCase()} — print MASTER M${o.x.m} (image ${mImg[o.x.m]}). ${o.p.en}`).join('\n')}
+
+RULES:
+- EACH PRODUCT CARRIES ONLY ITS ASSIGNED MASTER, used exactly as it is: the same drawing, texts, colours, borders and background. You may crop, scale or re-arrange it to fit the shape, but never redraw, simplify or change it, never mix two masters on one product, and its box or packaging uses the same master.
+- ALL-OVER PRINT: every product is fully printed (sublimation) — the master covers the whole printed surface to the edges; where it has to be extended, continue only its own background colour or pattern. Only the parts that are plain in the photos stay plain (cork back, wooden ribs, cream bag handles, steel cap).
+- FAITHFUL TO THE MASTERS: do not add stripes, borders, frames, patterns or colours that are not in the assigned master. The motifs visible in the product photos (stripes, lemons, sardines, olive trees…) belong to old designs and must NEVER be copied; remove any brand logos.
+- DESTINATION NAME: keep the destination name exactly as it appears in each master; if a master has no name, add "${d.destino}" correctly spelled in a matching style.
+- SMALL PRODUCTS (coasters, spoon rest, mirror, purse, glasses case, Christmas ball): only the destination name and the main drawing of the master.
+- REAL SIZES: every product keeps its real size and proportions relative to the others (sizes are in each description). Overlapping is allowed when one stands in front of another, but never change a size to avoid it.
+- COMPOSITION: ignore any mention in the descriptions of other products or of a fixed scene layout. Arrange ONLY these products in a balanced, uncluttered still life on a light stone table against a soft cream wall, in bright natural Mediterranean light — items meant for the wall (the framed canvas) hang on the wall, tall items at the back, small items in front, every design readable.
+- ONLY THESE PRODUCTS: no other products or objects except at most one discreet green plant.
+
+OUTPUT: one single image — no variants, no captions, no text outside the products.`;
+}
+function tmImages(sel){
+  const ms=[...new Set(sel.map(x=>x.m))].sort();
+  return ms.map(m=>({blob:TM.masters[m-1].blob,name:`master-M${m}.png`}))
+    .concat(sel.filter(x=>PROD_TILE[x.ref]).map(x=>({blob:dataUrlToBlob(PROD_TILE[x.ref]),name:`producto-${x.ref}.jpg`})));
+}
+function tmRenderWork(){
+  const box=$('tm_autoCards'); if(!box) return; box.style.display='';
+  const c=TM.cur;
+  const names=c?c.items.map(x=>`${PRODUCTS.find(p=>p.ref===x.ref).nombre} (M${x.m})`).join(' · '):'';
+  box.innerHTML=(c?`<div class="acard" id="tm_ac_cur">
+    <div class="ahead"><b>Composición ${TM.rounds.length+1}</b><span class="astate" id="tm_as_cur">${c.blob?'Lista ✓':'Pendiente'}</span></div>
+    <small style="display:block;margin:4px 0;color:#6b6152">${names}</small>
+    <div class="aimg" id="tm_ai_cur">${c.url?`<img src="${c.url}" alt="" onclick="tmSave()"><button type="button" class="abtn save" onclick="tmSave()">⬇︎ Guardar en Fotos</button>`:''}</div>
+    <div class="aerr" id="tm_err" style="display:none"></div>
+    <div class="aact">
+      <textarea id="tm_note" rows="2" placeholder="Nota para repetir (opcional). Ej.: la taza más pequeña, el abanico abierto"></textarea>
+      <div class="arow"><button type="button" class="abtn ghost" onclick="tmRun(true)">↻ Repetir</button>
+      ${c.blob?'<button type="button" class="abtn" onclick="tmKeep()">✓ Guardar en la colección</button>':''}</div>
+    </div></div>`:'')+
+    (TM.rounds.length?`<div class="phase" style="font-size:15px">Colección · ${tmUsedRefs().length} de ${TM_MAX_TOTAL} productos</div><div class="tmgal">${TM.rounds.map((r,j)=>`<div class="gi"><b>Composición ${j+1}</b><img src="${r.url}" alt=""><small>${r.items.map(x=>PRODUCTS.find(p=>p.ref===x.ref).nombre+' (M'+x.m+')').join(' · ')}</small><button type="button" class="abtn ghost" style="margin-top:6px" onclick="tmDrop(${j})">✕ Quitar de la colección</button></div>`).join('')}</div>`:'');
+}
+window.tmSave=()=>{ if(!TM.cur||!TM.cur.blob) return; AUTO.tm.cur=TM.cur.blob; saveToPhotos('tm','cur'); };
+window.tmRun=async(redo)=>{
+  if(TM.busy) return;
+  const c=TM.cur; if(!c) return;
+  if(!keyState()){ flash('tm_autoMsg','Pega primero tu clave de OpenAI y pulsa Guardar.',6000); $('tm_keyIn').focus(); return; }
+  const note=redo&&$('tm_note')?q($('tm_note').value):'';
+  TM.busy=true; const t0=Date.now(); const st=()=>{const e=$('tm_as_cur'); if(e){e.textContent=`Generando… ${Math.round((Date.now()-t0)/1000)} s`; e.className='astate busy';}};
+  const tid=setInterval(st,1000); st(); $('tm_err')&&($('tm_err').style.display='none');
+  try{
+    let prompt=tmPrompt(c.items)+(note?`\n\nCORRECTION REQUESTED BY THE CLIENT (most important): ${note}`:'');
+    let imgs=tmImages(c.items);
+    if(note&&c.blob){ prompt='The FIRST attached image is the current photograph: keep it and change ONLY what the correction asks.\n\n'+prompt; imgs=[{blob:c.blob,name:'foto-actual.png'}].concat(imgs); }
+    const blob=await openaiImage(prompt,imgs,'1536x1024');
+    if(c.url) URL.revokeObjectURL(c.url);
+    c.blob=blob; c.url=URL.createObjectURL(blob);
+    tmRenderWork(); flash('tm_autoMsg','Revisa la imagen: guárdala en la colección o repítela con una nota.',8000);
+  }catch(e){ tmRenderWork(); const er=$('tm_err'); if(er){er.textContent=e.message; er.style.display='';} const s2=$('tm_as_cur'); if(s2){s2.textContent='Error'; s2.className='astate err';} }
+  finally{ clearInterval(tid); TM.busy=false; }
+};
+window.tmKeep=()=>{
+  const c=TM.cur; if(!c||!c.blob||TM.busy) return;
+  TM.rounds.push({items:c.items,blob:c.blob,url:c.url}); TM.cur=null;
+  tmSyncPres(); tmBuildBudget(); tmRenderWork(); tmRenderProds();
+  if(tmUsedRefs().length>=TM_MAX_TOTAL||TM.rounds.length>=2){ flash('tm_autoMsg','Colección completa. Revisa el presupuesto y crea la presentación.',9000); showBudget('tm'); }
+  else { flash('tm_goMsg','Guardada. Elige los siguientes productos (los ya usados salen marcados con ✓).',9000); $('tm_prods').scrollIntoView({behavior:'smooth',block:'start'}); }
+};
+window.tmDrop=j=>{ if(TM.busy) return; const r=TM.rounds[j]; if(!r) return; if(!confirm('¿Quitar esta composición de la colección? Sus productos volverán a estar disponibles.')) return;
+  try{URL.revokeObjectURL(r.url);}catch(_){} TM.rounds.splice(j,1); tmSyncPres(); tmBuildBudget(); tmRenderWork(); tmRenderProds(); };
+function tmSyncPres(){
+  ['s1','s2'].forEach(x=>{ delete PRES.tm[x]; delete AUTO.tm[x]; });
+  TM.rounds.forEach((r,j)=>{ PRES.tm['s'+(j+1)]=r.url; AUTO.tm['s'+(j+1)]=r.blob; });
+  const f=TM.masters.find(Boolean); if(f) PRES.tm.art=f.url; else delete PRES.tm.art;
+}
+function tmBuildBudget(){
+  const old={}; BUD.tm.forEach(p=>old[p.ref]=p);
+  BUD.tm=[];
+  TM.rounds.forEach((r,j)=>r.items.forEach(x=>{
+    const p=PRODUCTS.find(p=>p.ref===x.ref), o=old[x.ref];
+    BUD.tm.push(o?{...o,esc:j+1}:{...p,esc:j+1,qty:p.min,activo:true,designs:[x.m]});
+  }));
+  if($('tm_budBody')) renderBudget('tm');
+}
+function tmDesignRow(k,i,p){
+  const L=tmLoaded(); if(!L.length) return '';
+  return `<div class="tmp" style="border:none;padding:4px 0 0;background:none;cursor:default"><div class="ms">${L.map(m=>`<button type="button" class="${p.designs.includes(m)?'on':''}" onclick="budDesign('${k}',${i},${m})">M${m}</button>`).join('')}</div><small style="color:#6b6152">${p.designs.length} diseño${p.designs.length===1?'':'s'} × ${p.qty} = ${units(p)} uds</small></div>`;
+}
+window.budDesign=(k,i,m)=>{ const p=BUD[k][i]; if(!p.activo) return; if(p.designs.includes(m)){ if(p.designs.length>1) p.designs=p.designs.filter(x=>x!==m); } else { p.designs.push(m); p.designs.sort(); } renderBudget(k); };
+(function(){
+  const f=$('tm_mfile'), go=$('tm_go'); if(!f||!go) return;
+  f.onchange=async()=>{ const x=f.files[0]; f.value=''; if(!x) return; const r=await resizeImage(x); const i=TM.slot;
+    if(TM.masters[i]) try{URL.revokeObjectURL(TM.masters[i].url);}catch(_){}
+    TM.masters[i]={blob:r.blob,url:URL.createObjectURL(r.blob)};
+    TM.sel.forEach(s=>{ if(!s.m) s.m=i+1; }); tmSyncPres(); tmRenderMasters(); tmRenderProds(); if(BUD.tm.length) renderBudget('tm'); };
+  go.onclick=()=>{
+    if(TM.busy) return;
+    const d=getD('tm');
+    if(!d.destino){ alert('Escribe primero el destino.'); $('tm_destino').focus(); return; }
+    if(!tmLoaded().length){ alert('Sube al menos un máster.'); return; }
+    if(!TM.sel.length){ alert('Elige al menos un producto.'); return; }
+    if(TM.sel.some(s=>!s.m||!TM.masters[s.m-1])){ alert('Cada producto elegido tiene que tener un máster (M1, M2…).'); return; }
+    if(TM.cur&&TM.cur.blob&&!confirm('La composición actual no está guardada en la colección. ¿Descartarla y crear una nueva?')) return;
+    generate('tm',true);
+    TM.cur={items:TM.sel.map(s=>({...s})),blob:null,url:null}; TM.sel=[]; tmRenderProds(); tmRenderWork();
+    setTimeout(()=>$('tm_ac_cur').scrollIntoView({behavior:'smooth',block:'center'}),300);
+    tmRun(false);
+  };
+  tmRenderMasters(); tmRenderProds();
 })();
 
 </script>
