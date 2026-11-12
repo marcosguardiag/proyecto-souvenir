@@ -251,6 +251,7 @@
   .tmm b{font-size:24px;font-weight:300;line-height:1}
   .tmm.has{border-style:solid}
   .tmm img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .tmm .busy{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.75);font-size:11px;color:#3a332a;z-index:2;padding:4px}
   .tmm .tag{position:absolute;left:4px;bottom:4px;background:var(--accent);color:#fff;border-radius:10px;padding:1px 7px;font-size:11px;z-index:1}
   .tmm .ddx{width:26px;height:26px;line-height:26px;font-size:13px;top:4px;right:4px;z-index:1}
   .tmprods{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
@@ -499,7 +500,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -633,7 +634,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -791,7 +792,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -925,7 +926,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -1066,7 +1067,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#apppa -->
 <div id="appmj" class="hidden" style="--accent:#1F4FA3">
@@ -1214,7 +1215,7 @@
     <button class="btn acc" id="mj_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#appmj -->
 <div id="appvc" class="hidden" style="--accent:#37474F">
@@ -1373,7 +1374,7 @@
     <button class="btn acc" id="vc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#appvc -->
 <div id="apptm" class="hidden" style="--accent:#5B4636">
@@ -1414,6 +1415,14 @@
     <label>Másters <span class="opt">(hasta 4 · toca para añadir o cambiar)</span></label>
     <div class="tmgrid" id="tm_masters"></div>
     <input type="file" id="tm_mfile" accept="image/*" style="display:none">
+    <div id="tm_declBox" style="display:none;margin-top:10px;border:1px solid var(--line);border-radius:6px;padding:10px;background:#fbf8f1">
+      <b style="font-size:14px">🎨 Declinar el máster en colores</b>
+      <div class="hint" style="margin:4px 0 0">Con un solo máster puedes crear hasta 3 versiones del mismo diseño en otros colores (M2, M3, M4) y hacer una colección del mismo máster en varios colores.</div>
+      <div class="cchips" id="tm_declCols"><label class="cchip"><input type="checkbox" value="terracota"><span>🟤 Terracota</span></label><label class="cchip"><input type="checkbox" value="negro"><span>⚫ Negro</span></label><label class="cchip"><input type="checkbox" value="indigo"><span>🔵 Azul índigo</span></label><label class="cchip"><input type="checkbox" value="azul"><span>🔵 Azul mediterráneo</span></label><label class="cchip"><input type="checkbox" value="turquesa"><span>🩵 Turquesa</span></label><label class="cchip"><input type="checkbox" value="verde"><span>🟢 Verde oliva</span></label><label class="cchip"><input type="checkbox" value="amarillo"><span>🟡 Amarillo</span></label><label class="cchip"><input type="checkbox" value="naranja"><span>🟠 Naranja</span></label><label class="cchip"><input type="checkbox" value="rojo"><span>🔴 Rojo</span></label><label class="cchip"><input type="checkbox" value="rosa"><span>🩷 Rosa</span></label><label class="cchip"><input type="checkbox" value="berenjena"><span>🟣 Berenjena</span></label></div>
+      <div class="hint" style="margin:6px 0 0">Marca hasta 3 colores. Si no marcas ninguno, la IA propone 3 combinaciones.</div>
+      <button type="button" class="btn ghost" id="tm_declGo" style="margin-top:8px">🎨 Crear versiones de color</button>
+      <div class="msg" id="tm_declMsg"></div>
+    </div>
     <label>Productos <span class="opt" id="tm_pcount">(elige hasta 4)</span></label>
     <div class="tmprods" id="tm_prods"></div>
     <p class="hint" style="margin:6px 0 0">Debajo de cada producto elegido, toca M1, M2… para decidir qué máster lleva.</p>
@@ -1513,7 +1522,7 @@
     <button class="btn acc" id="tm_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#apptm -->
 <div id="appdd" class="hidden" style="--accent:#2a2520">
@@ -1663,7 +1672,7 @@
     <button class="btn acc" id="dd_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#appdd -->
 <div id="appur" class="hidden" style="--accent:#E0632A">
@@ -1797,7 +1806,7 @@
     <button class="btn acc" id="ur_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v97</div>
+  <div class="seal">Signes Collections · Desde 1968 · v98</div>
 </div>
 </div><!-- /#appur -->
 
@@ -2834,7 +2843,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=97;
+const APP_VERSION=98;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
@@ -2974,12 +2983,13 @@ function tmRenderMasters(){
   const box=$('tm_masters'); if(!box) return;
   box.innerHTML=TM.masters.map((m,i)=>m
     ?`<div class="tmm has" data-i="${i}"><img src="${m.url}" alt=""><span class="tag">M${i+1}</span><button type="button" class="ddx" data-x="${i}" aria-label="Borrar">✕</button></div>`
-    :`<div class="tmm" data-i="${i}"><b>+</b>Máster ${i+1}</div>`).join('');
+    :TM.pending&&TM.pending[i]?`<div class="tmm" data-i="${i}"><div class="busy">${TM.pending[i]}</div></div>`:`<div class="tmm" data-i="${i}"><b>+</b>Máster ${i+1}</div>`).join('');
+  const db=$('tm_declBox'); if(db) db.style.display=(tmLoaded().length===1||TM.declBusy)?'':'none';
   box.querySelectorAll('.tmm').forEach(el=>el.onclick=e=>{
     const x=e.target.closest('.ddx');
     if(x){ e.stopPropagation(); const i=+x.dataset.x; try{URL.revokeObjectURL(TM.masters[i].url);}catch(_){} TM.masters[i]=null;
       TM.sel.forEach(s=>{ if(s.m===i+1) s.m=tmLoaded()[0]||0; }); tmRenderMasters(); tmRenderProds(); if(BUD.tm.length){ BUD.tm.forEach(p=>p.designs=p.designs.filter(m=>m!==i+1)); renderBudget('tm'); } return; }
-    TM.slot=+el.dataset.i; $('tm_mfile').click(); });
+    if(TM.declBusy) return; TM.slot=+el.dataset.i; $('tm_mfile').click(); });
 }
 function tmRenderProds(){
   const box=$('tm_prods'); if(!box) return;
@@ -3120,6 +3130,40 @@ window.budDesign=(k,i,m)=>{ const p=BUD[k][i]; if(!p.activo) return; if(p.design
     tmRun(false);
   };
   tmRenderMasters(); tmRenderProds();
+})();
+
+/* Multimáster: declinar un máster en colores */
+const TM_COL={terracota:'TERRACOTTA and warm earth tones',negro:'BLACK and charcoal with cream',indigo:'DEEP INDIGO BLUE',azul:'MEDITERRANEAN COBALT BLUE',turquesa:'TURQUOISE and sea-green',verde:'OLIVE GREEN and sage',amarillo:'SUNNY YELLOW and ochre',naranja:'ORANGE and burnt orange',rojo:'RED and brick red',rosa:'PINK and soft coral',berenjena:'AUBERGINE and deep purple'};
+function imgSize(blob){return new Promise(r=>{const u=URL.createObjectURL(blob),i=new Image();i.onload=()=>{URL.revokeObjectURL(u);const q=i.naturalWidth/i.naturalHeight;r(q>1.15?'1536x1024':q<0.87?'1024x1536':'1024x1024');};i.onerror=()=>{URL.revokeObjectURL(u);r('1024x1536');};i.src=u;});}
+(function(){
+  const go=$('tm_declGo'), box=$('tm_declCols'); if(!go) return;
+  box.addEventListener('change',e=>{ const on=[...box.querySelectorAll('input:checked')]; if(on.length>3){ e.target.checked=false; flash('tm_declMsg','Máximo 3 colores.',3000);} upd(); });
+  const upd=()=>{ const n=box.querySelectorAll('input:checked').length; go.textContent=n?`🎨 Crear ${n} ${n>1?'versiones':'versión'} de color`:'🎨 Que la IA proponga 3 versiones de color'; };
+  upd();
+  go.onclick=async()=>{
+    if(TM.declBusy||TM.busy) return;
+    const L=tmLoaded(); if(L.length!==1){ flash('tm_declMsg','Sube un solo máster para declinarlo.',4000); return; }
+    if(!keyState()){ flash('tm_declMsg','Pega tu clave de OpenAI en el paso 2 (o en cualquier línea) y vuelve a pulsar.',7000); return; }
+    const src=TM.masters[L[0]-1];
+    const free=[0,1,2,3].filter(i=>!TM.masters[i]);
+    const cols=[...box.querySelectorAll('input:checked')].map(x=>x.value);
+    const jobs=(cols.length?cols:[null,null,null]).slice(0,free.length).map((c,j)=>({c,i:free[j]}));
+    const size=await imgSize(src.blob);
+    TM.declBusy=true; TM.pending={}; jobs.forEach(j=>TM.pending[j.i]='En cola…'); tmRenderMasters();
+    const done=[]; let errs=0;
+    for(const j of jobs){
+      TM.pending[j.i]='Creando color…'; tmRenderMasters();
+      const avoid=done.length?` It must also be clearly different from these palettes already made: ${done.join('; ')}.`:'';
+      const pal=j.c?`a palette based on ${TM_COL[j.c]} (the main colour), with a few harmonious tones that combine with it`:`a NEW harmonious palette of your choice, clearly different from the original colours, suitable for a souvenir collection.${avoid}`;
+      const p=`Edit the attached artwork to create a COLOUR VARIANT of it. Keep EVERYTHING exactly the same — the drawing, the composition, the line work, every text and its spelling, the layout, the borders and the format. Change ONLY the colours: recolour the whole artwork with ${pal}. Keep the same light/dark contrast so every text stays perfectly readable. Do not add or remove anything. Output the complete artwork.`;
+      try{ const out=await openaiImage(p,[{blob:src.blob,name:'master.png'}],size);
+        TM.masters[j.i]={blob:out,url:URL.createObjectURL(out)}; done.push(j.c?TM_COL[j.c]:'variant '+(done.length+1)); }
+      catch(e){ errs++; flash('tm_declMsg',e.message,15000); }
+      delete TM.pending[j.i]; tmRenderMasters(); tmRenderProds();
+    }
+    TM.declBusy=false; TM.pending={}; tmSyncPres(); tmRenderMasters(); tmRenderProds(); if(BUD.tm.length) renderBudget('tm');
+    if(!errs) flash('tm_declMsg','Listo: ya tienes las versiones de color como M2, M3… Asígnalas a los productos.',8000);
+  };
 })();
 
 </script>
