@@ -351,6 +351,11 @@
       <div class="lname" style="color:#E0632A">Urban</div>
       <div class="ldesc">Cartel contemporáneo · la vida de la calle</div>
     </div>
+    <div class="linecard go" onclick="enterBudgets()">
+      <span class="badge" style="background:#6B7F3A;color:#fff">Herramienta</span>
+      <div class="lname" style="color:#6B7F3A">Preparar presupuestos</div>
+      <div class="ldesc">Todos los productos con precio y mínimos · ajusta cantidades con + y −</div>
+    </div>
     <div class="linecard go" onclick="enterDirect()">
       <span class="badge" style="background:#2a2520;color:#fff">Taller</span>
       <div class="lname" style="color:#2a2520">Taller de colección · Un máster</div>
@@ -1573,6 +1578,29 @@
   <div class="seal">Signes Collections · Desde 1968 · v106</div>
 </div>
 </div><!-- /#apptm -->
+<div id="appbud" class="hidden" style="--accent:#6B7F3A">
+<div class="subbar">
+  <div class="collection-tag" style="color:#6B7F3A;font-size:16px">Preparar presupuestos</div>
+  <div class="slogan">Productos, precios y cantidades</div>
+</div>
+<div class="wrap">
+  <button class="back backbar" onclick="goHome()">← Volver a colecciones</button>
+  <section class="card" id="pb_step1">
+    <h2 class="step"><span class="num">€</span> Presupuesto</h2>
+    <div class="field"><label>Cliente</label><input id="pb_cli" placeholder="Nombre del cliente o tienda" oninput="pbRender()"></div>
+    <div class="field"><label>Destino / proyecto</label><input id="pb_dest" placeholder="Ej. Annecy" oninput="pbRender()"></div>
+    <p class="hint">Cada artículo empieza en su cantidad mínima. Con + y − subes o bajas: abanicos, posavasos y paños de cocina de 72 en 72; el resto de 24 en 24. Toca la casilla para quitar o volver a poner un artículo.</p>
+    <div class="budlist" id="pb_body"></div>
+    <div class="totalbar"><span class="lab">TOTAL <small id="pb_count" style="font-family:'Jost';font-size:12px;color:#8a7e6b;letter-spacing:0"></small></span><span class="val" id="pb_total">0,00 €</span></div>
+    <p class="minnote">Precios por unidad según tarifa, sin IVA.</p>
+    <div class="msg" id="pb_msg"></div>
+    <button class="btn ghost" onclick="pbReset()">↺ Volver a los mínimos</button>
+    <button class="btn ghost" onclick="pbCopy()">Copiar presupuesto</button>
+    <button class="btn acc" onclick="pbPrint()">🖨 Imprimir / Guardar presupuesto en PDF</button>
+  </section>
+</div>
+</div>
+
 <div id="appdd" class="hidden" style="--accent:#2a2520">
 <div class="subbar">
   <div class="collection-tag" style="color:#2a2520;font-size:16px">Taller de colección · Un máster</div>
@@ -2311,7 +2339,7 @@ const FIX_PRODUCTS=`The products have changed the design or the shapes. Use EXAC
 /* ============================================================
    NAVEGACIÓN
    ============================================================ */
-const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa',mj:'appmj',vc:'appvc',ur:'appur',dd:'appdd',tm:'apptm'};
+const APP_IDS={ns:'app',mp:'appmp',pc:'apppc',hr:'appheri',pa:'apppa',mj:'appmj',vc:'appvc',ur:'appur',dd:'appdd',tm:'apptm',pb:'appbud'};
 function enterCol(k,fromHistory){
   if(!fromHistory){ try{ history.pushState({col:k},'','#'+k); }catch(e){} }
   document.getElementById('home').classList.add('hidden');
@@ -2329,6 +2357,7 @@ function enterVector(){enterCol('vc');}
 function enterUrban(){enterCol('ur');}
 function enterDirect(){enterCol('dd');}
 function enterMulti(){enterCol('tm');}
+function enterBudgets(){enterCol('pb');pbInit();}
 function showHome(){
   Object.values(APP_IDS).forEach(id=>$(id).classList.add('hidden'));
   closePresentation&&$('pres').classList.contains('on')&&closePresentation();
@@ -2341,7 +2370,7 @@ function goHome(){
 window.addEventListener('popstate',e=>{
   if($('pres').classList.contains('on')){ closePresentation(); }
   const k=e.state&&e.state.col;
-  if(k && APP_IDS[k]) enterCol(k,true); else showHome();
+  if(k && APP_IDS[k]){ enterCol(k,true); if(k==='pb') pbInit(); } else showHome();
 });
 
 
@@ -2504,6 +2533,72 @@ function renderBudget(k){
   $(k+'_budCount').textContent=`${n} artículo${n===1?'':'s'} · ${BUD[k].filter(p=>p.activo&&!p.gratis).reduce((s,p)=>s+units(p),0)} uds`;
 }
 window.budToggle=(k,i)=>{const p=BUD[k][i];p.activo=!p.activo;renderBudget(k);};
+/* ===== PREPARAR PRESUPUESTOS (herramienta independiente) ===== */
+const PB_STEP={'39754':72,'39078':72,'42189':72}; // abanico, posavasos, paño de cocina; el resto 24
+const pbStep=p=>PB_STEP[p.ref]||24;
+let PB=null;
+function pbInit(){ if(!PB) PB=PRODUCTS.map(p=>({...p,qty:p.min,activo:true})); pbRender(); }
+function pbReset(){ PB=PRODUCTS.map(p=>({...p,qty:p.min,activo:true})); pbRender(); }
+function pbTotal(){ return PB.filter(p=>p.activo&&!isNaN(p.precio)).reduce((s,p)=>s+p.precio*p.qty,0); }
+function pbRender(){
+  if(!PB) return;
+  const body=$('pb_body'); body.innerHTML='';
+  SCENES.forEach(g=>{
+    const items=PB.map((p,i)=>({p,i})).filter(x=>x.p.esc===g.n);
+    if(!items.length) return;
+    const h=document.createElement('div'); h.className='budgroup';
+    h.innerHTML=`<div class="bgtitle">Selección ${g.n} · ${g.es}</div>`;
+    body.appendChild(h);
+    items.forEach(({p,i})=>{
+      const it=document.createElement('div');
+      it.className='buditem'+(p.activo?'':' off');
+      const thumb=PROD_BLANK[p.ref]?`<img class="bimg blank" src="${PROD_BLANK[p.ref]}" alt="">`:`<div class="bimg frameico">▭</div>`;
+      it.innerHTML=`
+        <div class="chk ${p.activo?'on':''}" onclick="pbToggle(${i})" title="Incluir / quitar"></div>
+        ${thumb}
+        <div class="bmain"><div class="bname">${p.nombre}</div>
+          <div class="bref">Ref. ${p.ref} · ${p.medidas}</div>
+          <div class="bsub">${eur(p.precio)}/ud · mín. ${p.min} · de ${pbStep(p)} en ${pbStep(p)}</div></div>
+        <div class="bright"><div class="qty"><button onclick="pbQty(${i},-1)" ${(!p.activo||p.qty-pbStep(p)<p.min)?'disabled':''}>−</button><span>${p.qty}</span><button onclick="pbQty(${i},1)" ${p.activo?'':'disabled'}>+</button></div>
+          <div class="bimp">${p.activo?eur(p.precio*p.qty):'—'}</div></div>`;
+      body.appendChild(it);
+    });
+  });
+  $('pb_total').textContent=eur(pbTotal());
+  const act=PB.filter(p=>p.activo);
+  $('pb_count').textContent=`${act.length} artículo${act.length===1?'':'s'} · ${act.reduce((s,p)=>s+p.qty,0)} uds`;
+}
+window.pbToggle=i=>{PB[i].activo=!PB[i].activo;pbRender();};
+window.pbQty=(i,dir)=>{const p=PB[i];if(!p.activo)return;const n=p.qty+dir*pbStep(p);if(n>=p.min)p.qty=n;pbRender();};
+function pbText(){
+  const cli=q($('pb_cli').value), dest=q($('pb_dest').value);
+  const L=['PRESUPUESTO — SIGNES COLLECTIONS',cli?'Cliente: '+cli:'',dest?'Proyecto: '+dest:'','-'.repeat(50)];
+  PB.filter(p=>p.activo).forEach(p=>L.push(`${p.ref}  ${p.nombre.padEnd(30).slice(0,30)} ${String(p.qty).padStart(5)} x ${eur(p.precio)} = ${eur(p.precio*p.qty)}`));
+  L.push('-'.repeat(50),'TOTAL: '+eur(pbTotal()),'Precios sin IVA.');
+  return L.filter(Boolean).join('\n');
+}
+async function pbCopy(){ const ok=await copyText(pbText()); flash('pb_msg',ok?'✓ Presupuesto copiado':'No se pudo copiar.'); }
+function pbPrint(){
+  const cli=q($('pb_cli').value), dest=q($('pb_dest').value);
+  const esc=t=>String(t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  let rows='';
+  SCENES.forEach(g=>{
+    const it=PB.filter(p=>p.activo&&p.esc===g.n); if(!it.length) return;
+    rows+=`<tr class="g"><td colspan="5">Selección ${g.n} · ${esc(g.es)}</td></tr>`;
+    it.forEach(p=>rows+=`<tr><td>${esc(p.nombre)}<br><small>${esc(p.medidas)}</small></td><td>${esc(p.ref)}</td><td class="r">${p.qty}</td><td class="r">${eur(p.precio)}</td><td class="r">${eur(p.precio*p.qty)}</td></tr>`);
+  });
+  const html=`<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Presupuesto ${esc(cli||'')}</title>
+<style>body{font-family:-apple-system,Helvetica,Arial,sans-serif;color:#2a2520;margin:24px}h1{font-size:22px;margin:0 0 4px}p{margin:2px 0;color:#5d5346}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px}th{text-align:left;border-bottom:2px solid #2a2520;padding:6px 4px;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+td{border-bottom:1px solid #e4dccd;padding:6px 4px;vertical-align:top}td small{color:#8a7e6b}.r{text-align:right;white-space:nowrap}tr.g td{background:#f3eee4;font-weight:600}
+tfoot td{border-top:2px solid #2a2520;border-bottom:none;font-weight:600;font-size:15px}.note{font-size:11px;color:#8a7e6b;margin-top:14px}</style></head><body>
+<h1>Presupuesto</h1>${cli?`<p>Cliente: <b>${esc(cli)}</b></p>`:''}${dest?`<p>Proyecto: <b>${esc(dest)}</b></p>`:''}<p>${new Date().toLocaleDateString('es-ES')}</p>
+<table><thead><tr><th>Producto</th><th>Ref.</th><th class="r">Cantidad</th><th class="r">Precio ud.</th><th class="r">Importe</th></tr></thead><tbody>${rows}</tbody>
+<tfoot><tr><td colspan="4">Total</td><td class="r">${eur(pbTotal())}</td></tr></tfoot></table>
+<p class="note">Precios por unidad según tarifa, sin IVA. Marcos Guardia · marcos@signes-grimalt.com · Signes Grimalt, depuis 1968</p>
+<script>setTimeout(()=>window.print(),400)<\/script></body></html>`;
+  const w=window.open(); if(w){ w.document.write(html); w.document.close(); } else flash('pb_msg','Permite las ventanas emergentes para imprimir.',4000);
+}
 window.budQty=(k,i,dir)=>{const p=BUD[k][i];if(!p.activo||p.gratis)return;const n=p.qty+dir*p.min;if(n>=p.min)p.qty=n;renderBudget(k);};
 function budgetText(k){
   const C=COLS[k], d=getD(k), cli=d.codigo||'CLIENTE';
