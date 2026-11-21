@@ -341,10 +341,30 @@
       <div class="lname" style="color:#1F4FA3">Majolica</div>
       <div class="ldesc">Mosaico de azulejos con fruta y el nombre del destino</div>
     </div>
-    <div class="linecard go" onclick="enterVector()">
-      <span class="badge" style="background:#37474F;color:#fff">Nuevo</span>
+    <div class="linecard go" onclick="enterVectorStyle('line')">
+      <span class="badge" style="background:#37474F;color:#fff">Disponible</span>
       <div class="lname" style="color:#37474F">Vector</div>
-      <div class="ldesc">Icono de línea fina · minimalista<br>Nuevo: Vector Moderno y Moderno Mediterráneo</div>
+      <div class="ldesc">Icono de línea fina · minimalista</div>
+    </div>
+    <div class="linecard go" onclick="enterVectorStyle('mod')">
+      <span class="badge" style="background:#B5652B;color:#fff">Nuevo</span>
+      <div class="lname" style="color:#B5652B">Vector Moderno</div>
+      <div class="ldesc">Recortes planos con textura · espíritu cartel retro</div>
+    </div>
+    <div class="linecard go" onclick="enterVectorStyle('med')">
+      <span class="badge" style="background:#1F4E79;color:#fff">Nuevo</span>
+      <div class="lname" style="color:#1F4E79">Moderno Mediterráneo</div>
+      <div class="ldesc">Grandes formas, olas que fluyen y sol</div>
+    </div>
+    <div class="linecard go" onclick="enterVectorStyle('anc')">
+      <span class="badge" style="background:#A6461F;color:#fff">Nuevo</span>
+      <div class="lname" style="color:#A6461F">Ancestral</div>
+      <div class="ldesc">Arte rupestre · pigmento ocre sobre roca, manos en negativo</div>
+    </div>
+    <div class="linecard go" onclick="enterVectorStyle('mar')">
+      <span class="badge" style="background:#0E6E8C;color:#fff">Nuevo</span>
+      <div class="lname" style="color:#0E6E8C">Marea</div>
+      <div class="ldesc">Escena inmersiva · arco de roca, rayos de luz bajo el agua</div>
     </div>
     <div class="linecard go" onclick="enterUrban()">
       <span class="badge" style="background:#E0632A;color:#fff">Nuevo</span>
@@ -368,7 +388,7 @@
     </div>
   </div>
   <div class="home-links">
-    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a><span class="sep"> · </span><a onclick="enterMajolica()">Majolica</a><span class="sep"> · </span><a onclick="enterVector()">Vector</a><span class="sep"> · </span><a onclick="enterUrban()">Urban</a><span class="sep"> · </span><a onclick="enterDirect()">Taller · Un máster</a><span class="sep"> · </span><a onclick="enterMulti()">Taller · Multimáster</a>
+    <a onclick="enterNostalgics()">Nostalgics</a><span class="sep"> · </span><a onclick="enterMosaic()">Mosaic Pop</a><span class="sep"> · </span><a onclick="enterHeritage()">Esencia & Origen</a><span class="sep"> · </span><a onclick="enterPopCollage()">Pop Collage</a><span class="sep"> · </span><a onclick="enterPanorama()">Panorama</a><span class="sep"> · </span><a onclick="enterMajolica()">Majolica</a><span class="sep"> · </span><a onclick="enterVectorStyle('line')">Vector</a><span class="sep"> · </span><a onclick="enterVectorStyle('mod')">Vector Moderno</a><span class="sep"> · </span><a onclick="enterVectorStyle('med')">Moderno Mediterráneo</a><span class="sep"> · </span><a onclick="enterVectorStyle('anc')">Ancestral</a><span class="sep"> · </span><a onclick="enterVectorStyle('mar')">Marea</a><span class="sep"> · </span><a onclick="enterUrban()">Urban</a><span class="sep"> · </span><a onclick="enterDirect()">Taller · Un máster</a><span class="sep"> · </span><a onclick="enterMulti()">Taller · Multimáster</a>
   </div>
 </div>
 
@@ -511,7 +531,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -651,7 +671,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -815,7 +835,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -955,7 +975,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -1102,7 +1122,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#apppa -->
 <div id="appmj" class="hidden" style="--accent:#1F4FA3">
@@ -1256,12 +1276,12 @@
     <button class="btn acc" id="mj_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#appmj -->
 <div id="appvc" class="hidden" style="--accent:#37474F">
 <div class="subbar">
-  <div class="collection-tag" style="color:#37474F;font-size:16px">Vector</div>
+  <div id="vc_tag" class="collection-tag" style="color:#37474F;font-size:16px">Vector</div>
   <div class="slogan">Línea limpia · icono del destino</div>
 </div>
 <div class="wrap">
@@ -1429,7 +1449,7 @@
     <button class="btn acc" id="vc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#appvc -->
 <div id="apptm" class="hidden" style="--accent:#5B4636">
@@ -1583,7 +1603,7 @@
     <button class="btn acc" id="tm_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#apptm -->
 <div id="appbud" class="hidden" style="--accent:#6B7F3A">
@@ -1762,7 +1782,7 @@
     <button class="btn acc" id="dd_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#appdd -->
 <div id="appur" class="hidden" style="--accent:#E0632A">
@@ -1902,7 +1922,7 @@
     <button class="btn acc" id="ur_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v106</div>
+  <div class="seal">Signes Collections · Desde 1968 · v113</div>
 </div>
 </div><!-- /#appur -->
 
@@ -2465,6 +2485,10 @@ function enterHeritage(){enterCol('hr');}
 function enterPanorama(){enterCol('pa');}
 function enterMajolica(){enterCol('mj');}
 function enterVector(){enterCol('vc');}
+const VC_STYLE_NAMES={line:'Vector',mod:'Vector Moderno',med:'Moderno Mediterráneo',anc:'Ancestral',mar:'Marea'};
+function setVectorStyle(st){ const sel=document.getElementById('vc_estilo'); if(sel){ sel.value=st; sel.dispatchEvent(new Event('change')); } const tag=document.getElementById('vc_tag'); if(tag) tag.textContent=VC_STYLE_NAMES[st]||'Vector'; }
+function enterVectorStyle(st){ enterCol('vc'); setVectorStyle(st); }
+document.addEventListener('change',e=>{ if(e.target&&e.target.id==='vc_estilo'){ const tag=document.getElementById('vc_tag'); if(tag) tag.textContent=VC_STYLE_NAMES[e.target.value]||'Vector'; } });
 function enterUrban(){enterCol('ur');}
 function enterDirect(){enterCol('dd');}
 function enterMulti(){enterCol('tm');}
@@ -3124,7 +3148,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=112;
+const APP_VERSION=113;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
