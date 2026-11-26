@@ -1150,7 +1150,7 @@
     </div>
     <input type="file" id="mj_file" accept="image/*" multiple style="display:none">
     <div class="msg" id="mj_fotoMsg" style="text-align:left"></div>
-    <div id="mj_modebox" style="display:none"><label>¿Cómo quieres el lugar de la foto?</label><div class="mjgrid two" id="mj_modes"></div></div>
+    <div id="mj_modebox"><label>¿Integrado en el mosaico o no?</label><div class="mjgrid two" id="mj_modes"></div><div id="mj_modehint" style="font-size:12px;color:#8a6d3b;margin-top:4px">Añade una foto del lugar para usar esta opción.</div></div>
     <p class="hint" style="margin:0">La foto es lo que garantiza la fidelidad: el monumento que quiere el cliente, una postal o una pieza que te haya enviado.</p>
     </div>
     <div class="row">
@@ -3185,11 +3185,11 @@ const APP_VERSION=113;
 /* Majolica: modo integrado / enmarcado (solo con foto) */
 (function(){const box=$('mj_modes'),wrap=$('mj_modebox'); if(!box)return;
   try{const v=lsGet('sc_mj_mode');if(v)MJ_MODE=v;}catch(e){}
-  const opts=[{id:'integ',es:'Integrado en el mosaico',th:MJ_MODES.integ},{id:'frame',es:'Mosaico alrededor',th:MJ_MODES.frame}];
+  const opts=[{id:'integ',es:'Integrado en el mosaico (todo de cerámica)',th:MJ_MODES.integ},{id:'frame',es:'No integrado: mosaico alrededor',th:MJ_MODES.frame}];
   const draw=()=>{box.innerHTML=opts.map(o=>`<div class="mjopt${o.id===MJ_MODE?' sel':''}" data-id="${o.id}"><img src="${o.th}" alt="">${o.es}</div>`).join('');
     box.querySelectorAll('.mjopt').forEach(el=>el.onclick=()=>{MJ_MODE=el.dataset.id;lsSet('sc_mj_mode',MJ_MODE);draw();});};
   draw();
-  const upd=()=>{wrap.style.display=FOTOS.mj.length?'':'none';};
+  const upd=()=>{wrap.style.display='';const h=$('mj_modehint');if(h)h.style.display=FOTOS.mj.length?'none':'';};
   const orig=window.renderFotos||renderFotos;
   const _rf=renderFotos; renderFotos=function(k){_rf(k); if(k==='mj') upd();}; upd();
 })();
