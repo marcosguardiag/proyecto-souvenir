@@ -94,6 +94,18 @@
   .pbart .pbart-empty{width:110px;height:165px;border:1px dashed #cfc5b2;border-radius:4px;display:grid;place-items:center;color:#a39780;font-size:12px;text-align:center}
   .bimg.photo{cursor:pointer;object-fit:contain}
   .bsub .low{color:#b5533c;font-weight:500}
+  .pbitem{flex-wrap:wrap;row-gap:8px}
+  .pbitem .bright{flex:1 0 100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding-left:94px;text-align:left}
+  .pbitem .bimp{margin-top:0;margin-left:auto;white-space:nowrap}
+  .pbitem .qty{gap:5px}
+  .pbitem .qty .s{width:32px;height:30px;font-size:12px}
+  .pbitem .qty .b{width:42px;height:36px;font-size:14px;font-weight:600;border-width:1.5px}
+  .pbitem .qty span{min-width:34px;font-weight:500}
+  .pbdel{width:34px;height:34px;flex:0 0 34px;align-self:flex-start;border:1px solid #e2c4ba;background:#fbf3f0;border-radius:6px;cursor:pointer;font-size:15px;line-height:1}
+  .pbdel:hover{border-color:#b5533c}
+  .pbrest{font-size:12.5px;color:#8a7e6b;padding:10px 4px 0}
+  .pbrest button{border:none;background:none;color:var(--accent);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+  @media(max-width:420px){.pbitem .bright{padding-left:0}}
   .pp-item .pp-ph{width:100%;aspect-ratio:1;object-fit:contain;background:#faf7f1;border-radius:3px;display:block;margin-bottom:6px}
   .pp-tab td img{width:46px;height:46px;object-fit:contain;background:#faf7f1;border-radius:3px;display:block}
   .actions{display:flex;gap:12px;flex-wrap:wrap}
@@ -538,7 +550,7 @@
     <button class="btn acc" id="ns_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#app -->
 <div id="appmp" class="hidden" style="--accent:#2D7DA3">
@@ -678,7 +690,7 @@
     <button class="btn acc" id="mp_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#appmp -->
 <div id="appheri" class="hidden" style="--accent:#6B5B7B">
@@ -842,7 +854,7 @@
     <button class="btn acc" id="hr_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#appheri -->
 <div id="apppc" class="hidden" style="--accent:#E8390E">
@@ -982,7 +994,7 @@
     <button class="btn acc" id="pc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#apppc -->
 <div id="apppa" class="hidden" style="--accent:#2A7F9E">
@@ -1129,7 +1141,7 @@
     <button class="btn acc" id="pa_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#apppa -->
 <div id="appmj" class="hidden" style="--accent:#1F4FA3">
@@ -1283,7 +1295,7 @@
     <button class="btn acc" id="mj_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#appmj -->
 <div id="appvc" class="hidden" style="--accent:#37474F">
@@ -1456,7 +1468,7 @@
     <button class="btn acc" id="vc_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#appvc -->
 <div id="apptm" class="hidden" style="--accent:#5B4636">
@@ -1610,7 +1622,7 @@
     <button class="btn acc" id="tm_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#apptm -->
 <div id="appbud" class="hidden" style="--accent:#6B7F3A">
@@ -1800,7 +1812,7 @@
     <button class="btn acc" id="dd_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#appdd -->
 <div id="appur" class="hidden" style="--accent:#E0632A">
@@ -1940,7 +1952,7 @@
     <button class="btn acc" id="ur_btnPres">Abrir presentación</button>
     <p class="hint" style="margin:8px 0 0;text-align:center">En el iPhone: «Guardar como PDF / Imprimir» → botón compartir → <b>Guardar en Archivos</b> o enviar por WhatsApp / email.</p>
   </section>
-  <div class="seal">Signes Collections · Desde 1968 · v114</div>
+  <div class="seal">Signes Collections · Desde 1968 · v115</div>
 </div>
 </div><!-- /#appur -->
 
@@ -2698,32 +2710,39 @@ function pbRender(){
   if(!PB) return;
   const body=$('pb_body'); body.innerHTML='';
   SCENES.forEach(g=>{
-    const items=PB.map((p,i)=>({p,i})).filter(x=>x.p.esc===g.n);
+    const items=PB.map((p,i)=>({p,i})).filter(x=>x.p.esc===g.n&&!x.p.del);
     if(!items.length) return;
     const h=document.createElement('div'); h.className='budgroup';
     h.innerHTML=`<div class="bgtitle">Selección ${g.n} · ${g.es}</div>`;
     body.appendChild(h);
     items.forEach(({p,i})=>{
       const it=document.createElement('div');
-      it.className='buditem'+(p.activo?'':' off');
+      it.className='buditem pbitem'+(p.activo?'':' off');
       const thumb=PB_PH[p.ref]?`<img class="bimg photo" src="${PB_PH[p.ref].url}" alt="" title="Tocar para rehacer la foto" onclick="pbPhotoOne('${p.ref}')">`:PB_PH['busy'+p.ref]?`<div class="bimg frameico">⏳</div>`:PROD_BLANK[p.ref]?`<img class="bimg blank" src="${PROD_BLANK[p.ref]}" alt="">`:`<div class="bimg frameico">▭</div>`;
       it.innerHTML=`
         <div class="chk ${p.activo?'on':''}" onclick="pbToggle(${i})" title="Incluir / quitar"></div>
         ${thumb}
         <div class="bmain"><div class="bname">${p.nombre}</div>
           <div class="bref">Ref. ${p.ref} · ${p.medidas}</div>
-          <div class="bsub">${eur(p.precio)}/ud · mín. ${p.min} · de 12 en 12${p.qty<p.min?' · <span class="low">bajo mínimo</span>':''}</div></div>
-        <div class="bright"><div class="qty"><button onclick="pbQty(${i},-1)" ${(!p.activo||p.qty-pbStep(p)<PB_MIN)?'disabled':''}>−</button><span>${p.qty}</span><button onclick="pbQty(${i},1)" ${p.activo?'':'disabled'}>+</button></div>
+          <div class="bsub">${eur(p.precio)}/ud · mín. ${p.min}${p.qty<p.min?' · <span class="low">bajo mínimo</span>':''}</div></div>
+        <button class="pbdel" onclick="pbDel(${i})" title="Eliminar del presupuesto">🗑</button>
+        <div class="bright"><div class="qty"><button class="b" onclick="pbQty(${i},-48)" ${p.activo?'':'disabled'} title="Quitar 48 uds">−48</button><button class="s" onclick="pbQty(${i},-12)" ${p.activo?'':'disabled'} title="Quitar 12 uds">−12</button><span>${p.qty}</span><button class="s" onclick="pbQty(${i},12)" ${p.activo?'':'disabled'} title="Añadir 12 uds">+12</button><button class="b" onclick="pbQty(${i},48)" ${p.activo?'':'disabled'} title="Añadir 48 uds">+48</button></div>
           <div class="bimp">${p.activo?eur(p.precio*p.qty):'—'}</div></div>`;
       body.appendChild(it);
     });
   });
+  const borr=PB.filter(p=>p.del);
+  if(borr.length){const r=document.createElement('div');r.className='pbrest';
+    r.innerHTML=`${borr.length} artículo${borr.length===1?'':'s'} eliminado${borr.length===1?'':'s'} · <button onclick="pbUndel()">↩ Recuperar</button>`;body.appendChild(r);}
   $('pb_total').textContent=eur(pbTotal());
   const act=PB.filter(p=>p.activo);
   $('pb_count').textContent=`${act.length} artículo${act.length===1?'':'s'} · ${act.reduce((s,p)=>s+p.qty,0)} uds`;
 }
 window.pbToggle=i=>{PB[i].activo=!PB[i].activo;pbRender();};
-window.pbQty=(i,dir)=>{const p=PB[i];if(!p.activo)return;const n=p.qty+dir*pbStep(p);if(n>=PB_MIN)p.qty=n;pbRender();};
+// +12/−12 (pequeños) y +48/−48 (grandes). Si baja de 12 uds, el artículo se elimina del presupuesto.
+window.pbQty=(i,d)=>{const p=PB[i];if(!p.activo)return;const n=p.qty+d;if(n<PB_MIN){pbDel(i);return;}p.qty=n;pbRender();};
+window.pbDel=i=>{const p=PB[i];p.del=true;p.activo=false;p.qty=p.min;pbRender();flash('pb_msg',`🗑 ${p.nombre} eliminado del presupuesto.`,3000);};
+window.pbUndel=()=>{PB.forEach(p=>{if(p.del){p.del=false;p.activo=true;p.qty=p.min;}});pbRender();};
 /* --- Máster, fotos de producto y presentación (Preparar presupuestos) --- */
 function pbArtRender(){
   $('pb_artBox').innerHTML=PB_ART?`<img src="${PB_ART.url}" alt="">`:`<div class="pbart-empty">Sin máster</div>`;
@@ -3282,7 +3301,7 @@ loadModels();
 /* ============================================================
    AVISO DE VERSIÓN NUEVA (evita quedarse con una copia antigua)
    ============================================================ */
-const APP_VERSION=113;
+const APP_VERSION=115;
 (async function(){
   try{
     const r=await fetch('https://api.github.com/repos/marcosguardiag/proyecto-souvenir/commits/main',{cache:'no-store'});
